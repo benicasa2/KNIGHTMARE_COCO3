@@ -14,6 +14,8 @@ O script cria o repositório público se necessário, envia branch e tag e publi
 
 Se partir do ZIP de fontes, o script também inicializa o Git local e cria o commit e a tag. A pasta de trabalho original já tem esse repositório preparado. O arquivo bundle fornecido localmente permite restaurar o histórico Git com `git clone CAMINHO_DO_BUNDLE KNIGHTMARE_COCO3`.
 
+Após restaurar um bundle, ajuste o destino com `git remote set-url origin https://github.com/benicasa2/KNIGHTMARE_COCO3.git` antes de publicar.
+
 Alternativa: crie o repositório no GitHub, envie main e v0.2.1 e anexe os arquivos de `release/`. O texto está em `docs/release-notes-v0.2.1.md`.
 
 A automação `.github/workflows/release.yml` também permite gerar os anexos e publicar por execução manual no GitHub.

@@ -456,8 +456,8 @@
     "sha256": "3f6851e127453f24b10283a0773a047808a05aed168c87fc6f3e92810aa377f8"
   },
   "analysis/build.json": {
-    "bytes": 2376,
-    "sha256": "823f17dacdd90e3177980e25d319a2c3d7177bd59ba7f1155dc37c2b9e158637"
+    "bytes": 2294,
+    "sha256": "cf2035d3948a777d045e21831784dcd67e19b97a401b9b589b05534442f13297"
   },
   "analysis/campaign-map-compression.json": {
     "bytes": 522,
@@ -2652,8 +2652,8 @@
     "sha256": "bb2df8acd1ff3a84d4380173d94ff91d4355732c0194fdb0c639c116437da43b"
   },
   "docs/manual/VERIFICACAO.json": {
-    "bytes": 671,
-    "sha256": "6d96425142dc9a490281afd38f84d93949e62f4abc19c396c2a629a0ee10b821"
+    "bytes": 661,
+    "sha256": "04bbef6271294304db97c6d02a93b37e522516d9fa35139001b6933ef6275895"
   },
   "docs/release-notes-v0.2.1.md": {
     "bytes": 1495,
@@ -2672,8 +2672,8 @@
     "sha256": "1a17e183384e6b2b0ca922c99d659010beec0eb781b1e20c42399f82e51cb8ea"
   },
   "PUBLICACAO.md": {
-    "bytes": 1377,
-    "sha256": "a15aa245f499ff08c2d73f2b14f92b88fbcce2ff1eb4c495777cdd03e4ce2229"
+    "bytes": 1523,
+    "sha256": "0c59bb9fd5a1b553f2c69b823d79ea5f8e6da239eae44ab0ab298f52b8c36b29"
   },
   "README.md": {
     "bytes": 3948,
@@ -2984,12 +2984,12 @@
     "sha256": "67b0559ead511fd2971e988be835e5197f02c3fae71ba2cabf4a49513bd89a73"
   },
   "src/palette.inc": {
-    "bytes": 77,
-    "sha256": "0bab333abf40ed5b904ebf63d5dc013e47a948e146c94e0bb249901642c32b48"
+    "bytes": 76,
+    "sha256": "8a76dca3816d6bbcc05cd72b676ebf2cee4f487556abc0b44315de230409322e"
   },
   "src/pcm_locations.inc": {
-    "bytes": 278,
-    "sha256": "00e4890feb55f24803fbd1fad3465a00fb5c2fda5bc7efb6d2fc7c6f7e825d3c"
+    "bytes": 266,
+    "sha256": "c4513a87e94a2bea96a6e36703f259145d7774eca7a053d8507d86a634a9b627"
   },
   "src/phase2_data.inc": {
     "bytes": 2547,
@@ -3116,8 +3116,8 @@
     "sha256": "2b1ede74c14e9d5c7153ccbd01bbecdfd683a40b255cf920c00b28acc5318d8f"
   },
   "tools/package_release.py": {
-    "bytes": 2439,
-    "sha256": "79d584e211466a7e8d23afc5cb67663aec81168a714ea33d2a6d29064ab3d20d"
+    "bytes": 2808,
+    "sha256": "9109031e91852cfb9ef8a17ddd3049d77a186672701ff528af6f7bc9fb90d38c"
   },
   "tools/prepare_ai.py": {
     "bytes": 8073,

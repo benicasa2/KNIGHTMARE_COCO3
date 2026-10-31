@@ -11,8 +11,14 @@ def main():
  assert digest(ROOT/'bin/LEVELS.DSK')==evidence['levels_disk_sha256']
  files=sorted(p for p in ROOT.rglob('*') if p.is_file() and not ({'.git','__pycache__','release'} & set(p.relative_to(ROOT).parts)) and p.name!='MANIFEST.json')
  assert not any(p.suffix.lower()=='.rom' for p in files),'Original ROMs must not be included'
+ # Keep working-tree bytes consistent with .gitattributes on Windows/Linux.
+ for p in files:
+  if p.suffix.lower() in ['.asm','.inc','.py','.md','.json','.yml','.ps1','.cmd']:
+   original=p.read_bytes();data=original.replace(b'\r\n',b'\n')
+   if p.suffix.lower() in ['.ps1','.cmd']:data=data.replace(b'\n',b'\r\n')
+   if data!=original:p.write_bytes(data)
  manifest={p.relative_to(ROOT).as_posix():dict(bytes=p.stat().st_size,sha256=digest(p)) for p in files}
- (ROOT/'MANIFEST.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
+ (ROOT/'MANIFEST.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8',newline='\n')
  manual=ROOT/f'docs/manual/KNIGHTMARE_COCO3_Manual_v{VERSION}.pdf';assert manual.is_file()
  runtime=dest/f'KNIGHTMARE_COCO3_v{VERSION}_Jogo.zip';sources=dest/f'KNIGHTMARE_COCO3_v{VERSION}_Fontes.zip'
  runtime_files=[ROOT/n for n in ['EXECUTAR-DAC6.cmd','EXECUTAR-ORCH90.cmd','LEIA-ME.md','VERSAO.txt','VERSION','bin/DAC6.DSK','bin/ORCH90.DSK','bin/LEVELS.DSK','tools/run_demo.py','analysis/CINTILACAO-DUAS-FASES.md','analysis/FASE-2-E-SAIDA.md','analysis/flicker-two-stage-release-verification.json']]+[manual]
