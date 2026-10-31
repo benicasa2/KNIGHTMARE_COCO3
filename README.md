@@ -68,7 +68,7 @@ O manual é gerado por `tools/build_manual.py` com ReportLab, Pillow e as fontes
 
 ## Publicação
 
-Destino solicitado: **benicasa2/KNIGHTMARE_COCO3**. Fontes, anexos e tag preparados localmente. Consulte [PUBLICACAO.md](PUBLICACAO.md) para o procedimento autenticado. Os arquivos locais não confirmam a existência de uma Release no GitHub.
+Repositório: [benicasa2/KNIGHTMARE_COCO3](https://github.com/benicasa2/KNIGHTMARE_COCO3). Os pacotes de jogo, fontes e manual estão na [Release v0.2.1](https://github.com/benicasa2/KNIGHTMARE_COCO3/releases/tag/v0.2.1). Consulte [PUBLICACAO.md](PUBLICACAO.md) para reproduzir o procedimento de publicação.
 
 ## Créditos
 

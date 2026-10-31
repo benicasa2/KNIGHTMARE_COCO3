@@ -2672,12 +2672,12 @@
     "sha256": "1a17e183384e6b2b0ca922c99d659010beec0eb781b1e20c42399f82e51cb8ea"
   },
   "PUBLICACAO.md": {
-    "bytes": 1523,
-    "sha256": "0c59bb9fd5a1b553f2c69b823d79ea5f8e6da239eae44ab0ab298f52b8c36b29"
+    "bytes": 1397,
+    "sha256": "41a1f33bc0237ac15d0dfa85344104f1063daddf9784d2703be18cf8d86796fb"
   },
   "README.md": {
-    "bytes": 3948,
-    "sha256": "2f717372effc080f895ca22bfa57b476422dfd56fc99574da1952088381866d6"
+    "bytes": 4015,
+    "sha256": "09cbd2f5db0d0df152e2ad4ea991760ad3bc4221811af40a41ff5ad6c7ef0344"
   },
   "reference/action-PSG_regs.bin": {
     "bytes": 16,
