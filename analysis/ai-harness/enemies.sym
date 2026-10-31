@@ -1,0 +1,4 @@
+copy_loop EQU $0B2D
+harness_done EQU $0B42
+sample_copy EQU $0B24
+sample_loop EQU $0B10

@@ -1,0 +1,48 @@
+{
+  "rom_bytes": 32768,
+  "ram_bytes": 131072,
+  "framebuffer_before": 57344,
+  "framebuffer_after": 49152,
+  "framebuffer_reclaimed": 8192,
+  "map_before_stages": 1,
+  "map_before_expanded_bytes": 7808,
+  "map_after_stages": 8,
+  "map_after_compressed_bytes": 3047,
+  "map_active_expansion_bytes": 7808,
+  "map_all_flat_bytes": 62464,
+  "map_compression_percent": 95.12199026639344,
+  "pcm_bytes": 6551,
+  "variants": {
+    "DAC6": {
+      "core_before": 20405,
+      "core_after": 16485,
+      "core_headroom_before": 75,
+      "core_headroom_after": 3995,
+      "aux_bytes": 7436,
+      "aux_capacity": 7924,
+      "aux_headroom": 488,
+      "disk_binary_payload_before": 60133,
+      "disk_binary_payload_after": 55841
+    },
+    "ORCH90": {
+      "core_before": 20412,
+      "core_after": 16492,
+      "core_headroom_before": 68,
+      "core_headroom_after": 3988,
+      "aux_bytes": 7436,
+      "aux_capacity": 7924,
+      "aux_headroom": 488,
+      "disk_binary_payload_before": 60140,
+      "disk_binary_payload_after": 55848
+    }
+  },
+  "performance_before": {
+    "idle": 9.696018162457333,
+    "crowded": 60.49288387211224
+  },
+  "performance_after": {
+    "idle": 9.841334583026613,
+    "crowded": 60.62283521136531
+  },
+  "note": "Core reduction includes relocation to auxiliary bank. Active map remains expanded in RAM. Eight maps are data, not eight playable stages."
+}

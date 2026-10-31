@@ -1,0 +1,7 @@
+{
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "status": "phase2 boss motion and five dropped pieces passed",
+  "native_updates": 240,
+  "original_frames": 480
+}

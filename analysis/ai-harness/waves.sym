@@ -1,0 +1,4 @@
+harness_done EQU $0B81
+wave_log_next EQU $0B60
+wave_log_slot EQU $0B31
+wave_sample_loop EQU $0B16

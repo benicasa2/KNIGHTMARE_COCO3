@@ -1,0 +1,12 @@
+{
+  "colors": {
+    "bytes_compared": 6144,
+    "differences": 0,
+    "reference": "reference/action-VRAM.bin"
+  },
+  "patterns": {
+    "bytes_compared": 6144,
+    "differences": 0,
+    "reference": "reference/action-VRAM.bin"
+  }
+}

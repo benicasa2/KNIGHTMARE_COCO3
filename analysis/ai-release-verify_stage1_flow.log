@@ -1,0 +1,30 @@
+DAC6: native traversal reached guardian at camera 120
+{
+  "status": "native first-stage traversal and boss defeat passed",
+  "variant": "DAC6",
+  "ram_kib": 128,
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "guardian_entry_native_tick": 6624,
+  "guardian_defeated_by_native_arrows": true,
+  "attack_updates": 94,
+  "shots_fired": 21,
+  "score": 10000,
+  "entry_frame_sha256": "94ffe2a8ee021f3b5696b83d50eaa778fc07ae8c928c5f5e55c71268ba7adec4",
+  "clear_frame_sha256": "222bb6d88eb11a52deb7c158530c77b2e19ec1229899f423e822646da064d114",
+  "scope": "real scrolling, waves, guardian entry, shots and damage; test invincibility enabled through native I-key decoding and tokens suppressed; not an unassisted playthrough"
+}
+ORCH90: native traversal reached guardian at camera 120
+{
+  "status": "native first-stage traversal and boss defeat passed",
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "guardian_entry_native_tick": 6624,
+  "guardian_defeated_by_native_arrows": true,
+  "attack_updates": 94,
+  "shots_fired": 21,
+  "score": 10000,
+  "entry_frame_sha256": "94ffe2a8ee021f3b5696b83d50eaa778fc07ae8c928c5f5e55c71268ba7adec4",
+  "clear_frame_sha256": "222bb6d88eb11a52deb7c158530c77b2e19ec1229899f423e822646da064d114",
+  "scope": "real scrolling, waves, guardian entry, shots and damage; test invincibility enabled through native I-key decoding and tokens suppressed; not an unassisted playthrough"
+}

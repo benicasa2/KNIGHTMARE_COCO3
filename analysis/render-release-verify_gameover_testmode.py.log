@@ -1,0 +1,42 @@
+{
+  "status": "game-over intro and I-key test-mode scenarios passed",
+  "variant": "DAC6",
+  "ram_kib": 128,
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "checks": {
+    "intro_ignores_test_toggle": true,
+    "real_i_key_toggles_once_until_released": true,
+    "blue_border_marks_test_mode": true,
+    "protection_persists_and_player_can_fire": true,
+    "hostile_bullet_and_enemy_contact_cannot_kill": true,
+    "test_mode_render": "c01ada670be9dc18ddc1a24a5a2d06fd1e2d8dac6d64614337006a7655b2f86b",
+    "second_i_press_disables_protection": true,
+    "three_lives_return_to_blue_intro_without_stack_leak": true,
+    "konami_raster_after_game_over": "443ae2f611c6fc6aff0600a33c5e74c5efcb3d8034da7a5e552907a74ebb1149",
+    "held_fire_does_not_skip_intro_and_video_keeps_running": true,
+    "fresh_game_from_title": "f14f16ddf2df029df84d8d72e93754ebe3a362a5fd87763be6a7b4bcc148f8a5",
+    "r_restart_clears_test_mode": true
+  },
+  "scope": "native keyboard matrix, entity collision fixtures, all three lives lost through normal death code, real intro/title/new-game flow; no physical hardware test"
+}
+{
+  "status": "game-over intro and I-key test-mode scenarios passed",
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "checks": {
+    "intro_ignores_test_toggle": true,
+    "real_i_key_toggles_once_until_released": true,
+    "blue_border_marks_test_mode": true,
+    "protection_persists_and_player_can_fire": true,
+    "hostile_bullet_and_enemy_contact_cannot_kill": true,
+    "test_mode_render": "c01ada670be9dc18ddc1a24a5a2d06fd1e2d8dac6d64614337006a7655b2f86b",
+    "second_i_press_disables_protection": true,
+    "three_lives_return_to_blue_intro_without_stack_leak": true,
+    "konami_raster_after_game_over": "443ae2f611c6fc6aff0600a33c5e74c5efcb3d8034da7a5e552907a74ebb1149",
+    "held_fire_does_not_skip_intro_and_video_keeps_running": true,
+    "fresh_game_from_title": "f14f16ddf2df029df84d8d72e93754ebe3a362a5fd87763be6a7b4bcc148f8a5",
+    "r_restart_clears_test_mode": true
+  },
+  "scope": "native keyboard matrix, entity collision fixtures, all three lives lost through normal death code, real intro/title/new-game flow; no physical hardware test"
+}

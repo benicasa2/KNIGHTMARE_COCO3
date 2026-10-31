@@ -1,0 +1,103 @@
+{
+  "method": "XRoar monitor cycles: 14,318,180 master ticks/s, apply_input to combat_frame_complete; includes interrupts/render/logic, excludes waiting for next tick; twelve samples alternate scroll/non-scroll; controlled 18-object fixture, not campaign FPS",
+  "before": {
+    "method": "XRoar monitor cycles: 14,318,180 master ticks/s, apply_input to combat_frame_complete; includes interrupts/render/logic, excludes waiting for next tick; twelve samples alternate scroll/non-scroll; controlled 18-object fixture, not campaign FPS",
+    "ram_kib": 128,
+    "variant": "DAC6",
+    "cases": {
+      "idle": {
+        "samples_ms": [
+          36.17163633925541,
+          3.6300703022311493,
+          45.54545340259725,
+          24.409247544031434,
+          36.43982684950182,
+          3.7647242875840363,
+          45.43035497528317,
+          24.432155483448316,
+          35.99172520529844,
+          3.773663971258917,
+          45.18227875330524,
+          24.427685641610875
+        ],
+        "mean_ms": 27.43323522961717,
+        "max_ms": 45.54545340259725
+      },
+      "crowded": {
+        "samples_ms": [
+          101.07318108865792,
+          200.98196837866266,
+          179.29764816478072,
+          193.1770658002623,
+          163.0827381692366,
+          205.10874985507934,
+          183.53896933828182,
+          194.42024056130037,
+          158.81739159585925,
+          200.77747311459976,
+          179.71334345566265,
+          193.1552753213048
+        ],
+        "mean_ms": 179.4286704036407,
+        "max_ms": 205.10874985507934
+      }
+    }
+  },
+  "after": {
+    "method": "XRoar monitor cycles: 14,318,180 master ticks/s, apply_input to combat_frame_complete; includes interrupts/render/logic, excludes waiting for next tick; twelve samples alternate scroll/non-scroll; controlled 18-object fixture, not campaign FPS",
+    "ram_kib": 128,
+    "variant": "DAC6",
+    "cases": {
+      "idle": {
+        "samples_ms": [
+          14.460497074348835,
+          1.629816079976645,
+          16.05455441962596,
+          6.7997468952059545,
+          14.461614534808195,
+          1.629816079976645,
+          16.05455441962596,
+          6.7997468952059545,
+          14.461614534808195,
+          1.629816079976645,
+          16.05455441962596,
+          6.7997468952059545
+        ],
+        "mean_ms": 9.73633986069924,
+        "max_ms": 16.05455441962596
+      },
+      "crowded": {
+        "samples_ms": [
+          33.989236062125215,
+          66.48386875985635,
+          57.173746942698024,
+          65.23622415698084,
+          53.057022610415565,
+          67.54322127532969,
+          58.2794740672348,
+          65.53458609962998,
+          52.04404470400568,
+          66.37156398369066,
+          57.01953739930634,
+          65.159119385285
+        ],
+        "mean_ms": 58.99097045387985,
+        "max_ms": 67.54322127532969
+      }
+    }
+  },
+  "comparison": {
+    "idle": {
+      "before_mean_ms": 27.43323522961717,
+      "after_mean_ms": 9.73633986069924,
+      "time_reduction_percent": 64.50896228896912
+    },
+    "crowded": {
+      "before_mean_ms": 179.4286704036407,
+      "after_mean_ms": 58.99097045387985,
+      "time_reduction_percent": 67.12288492069052
+    }
+  },
+  "tested_disk_sha256": "3c0b4b6ce148c2d4a7764c9522528f2052109ea129e79fd14199e04c43864d02",
+  "limitations": "Controlled fixtures; measured update work, not average campaign FPS. Crowded updates still exceed 33.38 ms. Before includes continuous music; after has event audio enabled but silent in these fixtures."
+}

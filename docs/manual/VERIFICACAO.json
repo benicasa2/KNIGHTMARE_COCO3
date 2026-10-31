@@ -1,0 +1,11 @@
+{
+  "status": "manual rendered and all twelve pages visually inspected",
+  "pages": 12,
+  "replacement_characters": 0,
+  "manual_sha256": "273097362ccfb3958be2328e1c9d164b250f5d90c89915e40cb29791d0374e65",
+  "screenshots": "real CoCo3 DAC6 captures; controlled test scenes identified in manual",
+  "illustrations": "original game sprites rendered from included indexed assets; vector key diagram",
+  "scope": "Portuguese player manual for the two-stage v0.2.1 port",
+  "story_reference": "https://manuals.plus/m/e0b612d28cc1ab4fc591a86587b876cd3f2fae274e11ebab61bfd5c6e69275a2",
+  "pdf_rendering": "Poppler at 110 dpi; no clipping or overflow in final review"
+}

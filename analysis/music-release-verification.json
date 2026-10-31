@@ -1,0 +1,130 @@
+{
+  "status": "M music toggle and five/seven enemy cap verified",
+  "date": "2026-10-31",
+  "ram_kib": 128,
+  "disks": {
+    "DAC6": "d169fda4581a61d72e3a3a03152a68c7dab5bf75494ce2b512506b952fdb800c",
+    "ORCH90": "ad4bff4dae0b4d0a9fe5917b8e4cbb8c48c77a3c6c4f364cfc421f05182d5971"
+  },
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed",
+      "music": "music M-key and reduced-enemy scenarios passed"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed",
+      "music": "music M-key and reduced-enemy scenarios passed"
+    }
+  },
+  "reproducible_build": true,
+  "music_default": false,
+  "music_toggle_key": "M",
+  "enemy_cap_on": 5,
+  "enemy_cap_off": 7,
+  "actual_cap_reduction_percent": 28.571428571428573,
+  "performance": {
+    "idle_music_off": {
+      "music": false,
+      "enemy_slots": 7,
+      "samples_ms": [
+        21.952510724128345,
+        5.568864199220851,
+        3.781486194474437,
+        6.723200853739791,
+        21.946923421831546,
+        5.56998165968021,
+        3.781486194474437,
+        6.7243183141991505,
+        21.950275803209625,
+        5.568864199220851,
+        3.781486194474437,
+        6.723200853739791
+      ],
+      "mean_ms": 9.506049884366123,
+      "max_ms": 21.952510724128345
+    },
+    "idle_music_on": {
+      "music": true,
+      "enemy_slots": 5,
+      "samples_ms": [
+        6.6801786260544285,
+        4.550857720743838,
+        8.090972455996502,
+        26.726301806514513,
+        6.681296086513789,
+        4.550857720743838,
+        8.092089916455862,
+        26.61790814195659,
+        6.765664351195473,
+        4.550857720743838,
+        8.090972455996502,
+        26.62126052333467
+      ],
+      "mean_ms": 11.50160146052082,
+      "max_ms": 26.726301806514513
+    },
+    "crowded_music_off": {
+      "music": false,
+      "enemy_slots": 7,
+      "samples_ms": [
+        41.928233895648745,
+        71.45489161331957,
+        56.99718819011913,
+        59.955664756274885,
+        61.27259190763072,
+        71.03249155968146,
+        55.815473754345874,
+        58.73930904626147,
+        60.8982426537451,
+        72.04770438701009,
+        56.83292150259321,
+        59.79139806874896
+      ],
+      "mean_ms": 60.5638426112816,
+      "max_ms": 72.04770438701009
+    },
+    "crowded_music_on": {
+      "music": true,
+      "enemy_slots": 5,
+      "samples_ms": [
+        41.677922752752096,
+        60.07690921611545,
+        64.17407799035911,
+        82.24732472981901,
+        61.787182449166025,
+        59.43828056359118,
+        62.97839529884384,
+        82.30152156209797,
+        62.71132224905679,
+        60.517747367333,
+        63.974611298363335,
+        81.42990240379713
+      ],
+      "mean_ms": 65.27626649010791,
+      "max_ms": 82.30152156209797
+    }
+  },
+  "music_can_increase_frame_cost": true,
+  "core_headroom_bytes": {
+    "DAC6": 1526,
+    "ORCH90": 1518
+  },
+  "physical_hardware_test": false,
+  "remaining_campaign_incomplete": true
+}

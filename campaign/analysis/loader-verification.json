@@ -1,0 +1,122 @@
+{
+  "status": "all eight stage resource packs loaded by native 6809",
+  "ram_kib": 128,
+  "test_scope": "Disk BASIC boot; drive 1 WD2793 reads; native PackBits decoding; MMU writes; byte-for-byte verification; native renderer at three camera fixtures per stage. Not gameplay.",
+  "host_injected_resource_bytes": 0,
+  "resource_disk_sha256": "f84d68ce595d44595d984254db877c415426e36b8cd3f9e40813f40d23187f6f",
+  "boot_disk_sha256": "3a75b83e0d73cf5d6604b8c95d1669f308ffdca8cdc0ef8af80aa71c3194303d",
+  "stages": [
+    {
+      "stage": 1,
+      "loaded_bytes": 16323,
+      "hashes": {
+        "assets/stage1-map.bin": "92e4b8f8f029f277606e0e596ab6bf3afbdc226f5f226d5a7dcf09d62a9e0492",
+        "assets/stage1-tiles.bin": "7fb59db79a20153dcf65f953951e7d88059a2396b4e2dcdc6ec34b6d34b7f4fd",
+        "assets/stage1-script.bin": "652a702e2faa467814541b7c949ef707ad52fa5a294e1f0d90a388095073f11a"
+      },
+      "native_raster_sha256": {
+        "1760": "f773bb0b3ac4d41a19f3289c8b9e7f69f6e9c60f28d9f676f5c011cc9f507afe",
+        "888": "5633a7c0200143fdeb2130027cd70c6817aaf42182a3b76c22c37660ff761188",
+        "0": "0f321f575b933143ecdc35d2bb1b03d418c69d3edeedd8e46c1e816f49668014"
+      }
+    },
+    {
+      "stage": 2,
+      "loaded_bytes": 16373,
+      "hashes": {
+        "assets/stage2-map.bin": "6eb6f84f50a0117c81b0e13949893fb173ad7d720645ee061105ab23cb5066b2",
+        "assets/stage2-tiles.bin": "ef76b4f1f024fc3b1f02a959cc9699680de9404e67825b9fd73c36b7647f9db7",
+        "assets/stage2-script.bin": "db0ce4509ae255198c27bd5f75cb9c9f7c793ea0716d8aaa83bf0a491658ced5"
+      },
+      "native_raster_sha256": {
+        "1760": "31d5b9cb02cc9cf90150e7428711dbbda16ef6fe52a06fe134768291a15cc57f",
+        "888": "5306e5d62231054afdfe0e0551a104959843b97f9a64bfd9ed17a2f3e72bae62",
+        "0": "2b3aa69af519b732d23bf89c8f2eb6434b48ca4b5bf0572787e08236da24913d"
+      }
+    },
+    {
+      "stage": 3,
+      "loaded_bytes": 16373,
+      "hashes": {
+        "assets/stage3-map.bin": "0847a0fb1e376110a422351587fc7dcf42e742403dde79f776d22697e34901a5",
+        "assets/stage3-tiles.bin": "e1cc0a51cac1fe52b3c1d7d622cf7c5e87fcadbdfdbed1e33dc8a631e19dafeb",
+        "assets/stage3-script.bin": "04ee7bc78f57775dc533557cc97227af004599dd65a3bfbefb8a2b2c9f111540"
+      },
+      "native_raster_sha256": {
+        "1760": "39ece6faba969cec4e6d182b8e209f6467d9f36516c5dd405905420079844512",
+        "888": "b4b8883bd9d684556b8c21462df6452d76111a33caed9a2e5f7f09de04058394",
+        "0": "c99d8aa3ace027e55b44edcfe6581a485bdd276fdebaef2cf31b6fabc14be314"
+      }
+    },
+    {
+      "stage": 4,
+      "loaded_bytes": 16391,
+      "hashes": {
+        "assets/stage4-map.bin": "46b18c315ff1ef4368765a6df8c23faccd6e4b273e53e5cf1d43227e9daab75f",
+        "assets/stage4-tiles.bin": "12b39e980c7d00b0320b1070f31ab61d38a3e6acc0f34b9666b8d9f5722a2899",
+        "assets/stage4-script.bin": "5aeb02e2872663d6c0b42f5417bc128e6633db47e4da409af01707fcee03c29f"
+      },
+      "native_raster_sha256": {
+        "1760": "a02206a0e9fda59b2ed4a81bbbc78bcc3f400764926216b2adca52a5ac022cc2",
+        "888": "77238caa1b32bbaf4922147d9e29ad634f2595c0dedb382b7e4d94c45b245465",
+        "0": "c7108b115943833312ccc006c7239c352f5050b5b19176e02fec47f6a652b5ae"
+      }
+    },
+    {
+      "stage": 5,
+      "loaded_bytes": 16423,
+      "hashes": {
+        "assets/stage5-map.bin": "ef9d0e97e3a54f007c324c3f4c6bc170dcd5f03d2114ad5a038657c309fb61f4",
+        "assets/stage5-tiles.bin": "de3da5ed421fe88a20e49a61a748a3d32669c8e6b5f6f3d98c5b600a3883e663",
+        "assets/stage5-script.bin": "ed06e3a1008d00d5f96490a9a8152d2b52433150b0aa756e37d7cd2af5f28c3c"
+      },
+      "native_raster_sha256": {
+        "1760": "87ce4007328b98476e548dab1271bf78c7db18e05c7f36526c5e0e1ccdce2f0d",
+        "888": "d35afd76b02cc6836b4c6dfd64adae0f0e36fa3b082835f5f863a9cdedd2165b",
+        "0": "2b98bb8e1ad095cf91179251191ed44a218efea48c7fae55a432d20a81404152"
+      }
+    },
+    {
+      "stage": 6,
+      "loaded_bytes": 16417,
+      "hashes": {
+        "assets/stage6-map.bin": "2584d257cc6810b5451028c2362ebb697d4e217e6cde1a47756b31ac81561007",
+        "assets/stage6-tiles.bin": "57ab862f37b2475f8f767b3efcd0e7e46658d87bcb1a027ac56e8db4a0638f08",
+        "assets/stage6-script.bin": "daad5f7192435fe01eb7d0bfaaaa7be9ccc15116882a368cd6c1d2b60b8e007f"
+      },
+      "native_raster_sha256": {
+        "1760": "aabd2202aefb66c40f93fb6261a2b2fcc1e9619231b987db3492cebb652e2e92",
+        "888": "7cac910f0be6792bd688ccb90ccfbeac4637b264e289d966c548ec1efece7bd9",
+        "0": "b10f41da15ca7ccf3040de442f3107f6afc7b75a700dfb41702f14dafd307488"
+      }
+    },
+    {
+      "stage": 7,
+      "loaded_bytes": 16381,
+      "hashes": {
+        "assets/stage7-map.bin": "06044bc9bc55baa182f8826da2c2bbc344bd7ea79e5a7c461a87e0abbc525303",
+        "assets/stage7-tiles.bin": "57ab862f37b2475f8f767b3efcd0e7e46658d87bcb1a027ac56e8db4a0638f08",
+        "assets/stage7-script.bin": "64a251fabfceb6535fc3f6eca5249330467a9e00705755017bd42e57b36fcaaa"
+      },
+      "native_raster_sha256": {
+        "1760": "bdc9eae911952417ee9dafdb49b1418cd75d31551e704214148447de3d4de532",
+        "888": "5ba02f73423bc36f64503f75aca0f4618c6510f0f6c823d2b15a2ccc8d54d989",
+        "0": "5137795aa62e3ff048f70e8b380d6fb11ce30621da212ea76499827ee407a880"
+      }
+    },
+    {
+      "stage": 8,
+      "loaded_bytes": 16379,
+      "hashes": {
+        "assets/stage8-map.bin": "69787443c09832d62e230d1b403866d3ae6fdfd0133bb70ecdb318b864f9c3f5",
+        "assets/stage8-tiles.bin": "3380d1f208d73abc5524a6bc4862e5a8e02f40699e87804c4aa2d4c1a2f00eae",
+        "assets/stage8-script.bin": "e3f41816660d3d1959597df8feae115219136db9f13fc1e823515f30cfdb3526"
+      },
+      "native_raster_sha256": {
+        "1760": "29321bf2675a30eb102198fbca19369f821a492b15b34478a55a4733cf7bb3d7",
+        "888": "6ab6625cf7cceef65cb201951d3e304897a0c39cd6e746f3e5c57cc1397bb6b2",
+        "0": "1f97f95b83427a13a7b6e8e27a6dcc6484de66ebf141f1f9079c5a59b3ab88b1"
+      }
+    }
+  ]
+}

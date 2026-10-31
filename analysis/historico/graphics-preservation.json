@@ -1,0 +1,30 @@
+{
+  "DAC6": {
+    "matching_framebuffer_cases": [
+      "initial",
+      "wave_and_arrows",
+      "overlapping_sprites",
+      "overlap_background_restored",
+      "explosion",
+      "restart",
+      "boss_arena",
+      "boss_satellite_and_hostile_fire",
+      "stage_clear"
+    ],
+    "count": 9
+  },
+  "ORCH90": {
+    "matching_framebuffer_cases": [
+      "initial",
+      "wave_and_arrows",
+      "overlapping_sprites",
+      "overlap_background_restored",
+      "explosion",
+      "restart",
+      "boss_arena",
+      "boss_satellite_and_hostile_fire",
+      "stage_clear"
+    ],
+    "count": 9
+  }
+}

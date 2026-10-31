@@ -1,0 +1,17 @@
+[module:null/ui] No UI
+[module:null/ao] No audio
+	No audio
+[joystick] virtual joystick = Keyboard: Cursors+Alt_L,Super_L
+[part:coco3] Tandy | Colour Computer 3
+[coco3:rom] Super Extended Colour BASIC (1 x 32K)
+	Slot   0: CRC32 0xb4c88d6c FILE coco3.rom
+	Slot   0: Super Extended Colour BASIC (Tandy)
+	Super Extended Colour BASIC CRC32 valid
+[coco3:ram] 1 bank * 128K = 128K motherboard RAM
+[gdb] target listening on 127.0.0.1:53572
+[part:rsdos] Tandy | RS-DOS
+[cart:rom] Cartridge ROM (1 x 8K)
+	Slot   0: CRC32 0x0b9c5415 FILE disk11.rom
+	Slot   0: Disk Extended Colour BASIC 1.1 (Tandy)
+[vdisk/jvc] C:\Users\Anderson\Documents\Codex\2026-10-30\este-uma-rom-do-jogo-knightmare\outputs\Knightmare-CoCo3\bin\DAC6.DSK: reading: 35C 1H 18S (256-byte)
+[vdisk/jvc] C:\Users\Anderson\Documents\Codex\2026-10-30\este-uma-rom-do-jogo-knightmare\outputs\Knightmare-CoCo3\bin\LEVELS.DSK: reading: 35C 1H 18S (256-byte)

@@ -1,0 +1,147 @@
+{
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "status": "native combat functional scenarios passed",
+  "test_scope": "controlled emulator scenarios, including injected entity positions and boss hits; not an unassisted full playthrough",
+  "checks": {
+    "initial": "4ef0932f827048eb2bf3a04ce00c6403eb1fcc44870e472f24e9b6116bf811e0",
+    "arrows_and_wasd_on_starting_grass_with_combat": [
+      {
+        "key": "up",
+        "before": [
+          120,
+          135
+        ],
+        "after": [
+          120,
+          133
+        ]
+      },
+      {
+        "key": "down",
+        "before": [
+          120,
+          133
+        ],
+        "after": [
+          120,
+          135
+        ]
+      },
+      {
+        "key": "left",
+        "before": [
+          120,
+          135
+        ],
+        "after": [
+          118,
+          135
+        ]
+      },
+      {
+        "key": "right",
+        "before": [
+          118,
+          135
+        ],
+        "after": [
+          120,
+          135
+        ]
+      },
+      {
+        "key": "W",
+        "before": [
+          120,
+          135
+        ],
+        "after": [
+          120,
+          133
+        ]
+      },
+      {
+        "key": "S",
+        "before": [
+          120,
+          133
+        ],
+        "after": [
+          120,
+          135
+        ]
+      },
+      {
+        "key": "A",
+        "before": [
+          120,
+          135
+        ],
+        "after": [
+          118,
+          135
+        ]
+      },
+      {
+        "key": "D",
+        "before": [
+          118,
+          135
+        ],
+        "after": [
+          120,
+          135
+        ]
+      }
+    ],
+    "held_fire_three_slots": true,
+    "wave_and_arrows": "c4309699e68e3fbec44fd705f3f030de58a6d335aa78d339330093e9cc65a5fc",
+    "solid_terrain_blocks_movement": true,
+    "overlapping_sprites": "b8b245f765c20da301f59500a38061218186527e5de3e082352e88f9d6510d80",
+    "overlap_background_restored": "11753bcec72eb19ff2596b987b642f28c6b7520d309e7e92b50b01add0496640",
+    "enemy_explosion_sound_event": true,
+    "arrow_hit_damage_score": true,
+    "explosion": "0f324edd666214075e6db24eb2774a014686605fb63a08037a4bef1ec7fadb84",
+    "explosion_lifetime": true,
+    "three_hit_enemy": true,
+    "player_death_sound_event": true,
+    "contact_and_life_loss": true,
+    "checkpoint_respawn_without_artificial_immunity": true,
+    "hostile_shot_and_return_to_konami_intro": true,
+    "restart": "4b9ba0dd8e5d836b4226f897ed6adef3662a5f6c41ae503e4704ef297f170ff5",
+    "boss_arena": "ec6965555e377505b6e3ab8931d1d8e4c3470142fd7e3dd7699df6d1ac8e6e93",
+    "boss_satellite_and_hostile_fire": "6851161e91cb98f663eac58e6fcc5bb271d505c82f5c8566f771e253b6097245",
+    "strong_weapon_deals_two_boss_damage": true,
+    "boss_defeat_sound_event": true,
+    "twenty_hit_boss_defeat_and_clear": true,
+    "stage_clear": "dd58146a79ce21bfc5ff10424ea4b079fc46ee52d04a439d8718332cbb47d559",
+    "event_sfx_without_music": {
+      "mode": "event PCM, no background music",
+      "address": "0xff7b",
+      "sample_count": 128,
+      "levels": [
+        56,
+        74,
+        77,
+        90,
+        103,
+        110,
+        115,
+        117,
+        128,
+        141,
+        146,
+        153,
+        164,
+        166,
+        179,
+        200
+      ],
+      "dac_matches_pcm": true,
+      "measured_sample_rate_hz": 3925.1430261271994,
+      "idle_playback_stopped_while_video_clock_continues": true
+    }
+  },
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da"
+}

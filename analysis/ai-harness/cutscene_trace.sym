@@ -1,0 +1,2 @@
+exit_trace_loop EQU $0B12
+harness_done EQU $0B5A

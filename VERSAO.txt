@@ -1,0 +1,17 @@
+Knightmare CoCo 3 - 31/10/2026 - FASES 1 E 2 - MENOS CINTILACAO
+128 KiB, Assembly 6809 nativo, DAC6 e Orchestra-90 CC.
+Apos o primeiro chefe, caminhada automatica pela passagem para a fase 2.
+Equipamento e pontuacao preservados; uma vida adicional.
+Fase 2: mapa, 41 entradas de ondas, 42 objetos, 9 tokens e segundo chefe.
+Drive 0: DAC6.DSK ou ORCH90.DSK. Drive 1: LEVELS.DSK OBRIGATORIO.
+EXECUTAR-DAC6.cmd e EXECUTAR-ORCH90.cmd montam ambos automaticamente.
+Setas/WASD: mover; Espaco: iniciar/disparar; J/L: joystick; P: pausa.
+M: musica opcional (5 inimigos em vez de 7); I: protecao de teste.
+R: nova partida na fase 1, musica e protecao desligadas.
+Apos o segundo chefe e a saida, retorna a abertura KONAMI.
+Fases 3 a 8 ainda nao integradas. Som e morte do segundo chefe adaptados.
+Leia LEIA-ME.md e analysis/FASE-2-E-SAIDA.md.
+
+Revisao atual: restauracao rapida dos sprites e retencao de quadros parados.
+Desenho e ordem das sobreposicoes preservados; sem buffer duplo.
+Comparacao de tempos: analysis/CINTILACAO-DUAS-FASES.md.

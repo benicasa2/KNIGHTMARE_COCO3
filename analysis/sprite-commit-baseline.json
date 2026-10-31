@@ -1,0 +1,807 @@
+{
+  "method": "XRoar master-clock ticks; 12 controlled updates per case; commit and player erasure intervals are timing proxies, not captured-display flicker; boss/wide cases freeze AI to isolate composition cost; no hardware test",
+  "tested_disk_sha256": "24785b2b6f26d0f7ef8f85f33c3fbc81d522913785d8d421fe0b4d7ad0317f36",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "cases": {
+    "stage1-idle": {
+      "samples": [
+        {
+          "frame_ms": 8.652496336824932,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 25.27919051164324,
+          "commit_ms": 22.24640282494004,
+          "player_erased_to_commit_ms": 20.449526406289067,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.109918998084952,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 8.652496336824932,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 8.652496336824932,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 25.27360320934644,
+          "commit_ms": 22.24416790402132,
+          "player_erased_to_commit_ms": 20.447291485370346,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.112153919003672,
+          "commit_ms": 5.6683181801038955,
+          "player_erased_to_commit_ms": 3.870324300993562,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 8.654731257743652,
+          "commit_ms": 5.6683181801038955,
+          "player_erased_to_commit_ms": 3.870324300993562,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 8.654731257743652,
+          "commit_ms": 5.6683181801038955,
+          "player_erased_to_commit_ms": 3.870324300993562,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 25.27695559072452,
+          "commit_ms": 22.2475202853994,
+          "player_erased_to_commit_ms": 20.449526406289067,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.109918998084952,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 8.652496336824932,
+          "commit_ms": 5.666083259185176,
+          "player_erased_to_commit_ms": 3.869206840534202,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 13.673432424139568,
+      "mean_commit_ms": 9.811628759148626,
+      "mean_player_erased_to_commit_ms": 8.014379853677864,
+      "mean_retained_frame": 0
+    },
+    "stage1-crowded": {
+      "samples": [
+        {
+          "frame_ms": 71.14312014515811,
+          "commit_ms": 60.540655306749876,
+          "player_erased_to_commit_ms": 58.74266142763955,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 67.69351970711361,
+          "commit_ms": 60.548477529965396,
+          "player_erased_to_commit_ms": 58.75048365085507,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.19302453244755,
+          "commit_ms": 61.04798235529935,
+          "player_erased_to_commit_ms": 59.24998847618901,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 84.81860124680651,
+          "commit_ms": 77.63053684197293,
+          "player_erased_to_commit_ms": 75.8325429628626,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 71.90466944821199,
+          "commit_ms": 61.3876903349448,
+          "player_erased_to_commit_ms": 59.59081391629383,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 69.20153259702,
+          "commit_ms": 62.036934861833,
+          "player_erased_to_commit_ms": 60.24005844318202,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.73555158546687,
+          "commit_ms": 61.57095385027985,
+          "player_erased_to_commit_ms": 59.77407743162888,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 85.3533060766103,
+          "commit_ms": 78.14568611373792,
+          "player_erased_to_commit_ms": 76.34880969508694,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 71.69514561208199,
+          "commit_ms": 61.19772205685359,
+          "player_erased_to_commit_ms": 59.399728177743256,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 67.69351970711361,
+          "commit_ms": 60.548477529965396,
+          "player_erased_to_commit_ms": 58.75048365085507,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.19302453244755,
+          "commit_ms": 61.04798235529935,
+          "player_erased_to_commit_ms": 59.24998847618901,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 84.81860124680651,
+          "commit_ms": 77.63053684197293,
+          "player_erased_to_commit_ms": 75.8325429628626,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 73.28696803644038,
+      "mean_commit_ms": 65.27780299823954,
+      "mean_player_erased_to_commit_ms": 63.480181605948985,
+      "mean_retained_frame": 0
+    },
+    "stage1-crowded-music": {
+      "samples": [
+        {
+          "frame_ms": 76.53598432202975,
+          "commit_ms": 65.08704318565627,
+          "player_erased_to_commit_ms": 62.934255610699125,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 72.80143146684844,
+          "commit_ms": 65.38875750968349,
+          "player_erased_to_commit_ms": 63.23596993472634,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.0036918099926,
+          "commit_ms": 65.6765035779687,
+          "player_erased_to_commit_ms": 63.43823027787051,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 94.00356749251651,
+          "commit_ms": 86.5478713076662,
+          "player_erased_to_commit_ms": 84.39508373270904,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 77.89146385923351,
+          "commit_ms": 66.51404019225907,
+          "player_erased_to_commit_ms": 64.36237007776128,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 74.40442849580045,
+          "commit_ms": 67.06327200803455,
+          "player_erased_to_commit_ms": 64.8261161683957,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.61606014172192,
+          "commit_ms": 66.18941792881498,
+          "player_erased_to_commit_ms": 64.03774781431719,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 93.59290077370169,
+          "commit_ms": 86.12323633310938,
+          "player_erased_to_commit_ms": 83.97156621861158,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 77.5444923866022,
+          "commit_ms": 66.18103697536978,
+          "player_erased_to_commit_ms": 63.94276367527158,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.04447911675925,
+          "commit_ms": 65.63180515959431,
+          "player_erased_to_commit_ms": 63.479017584637155,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.507666477164,
+          "commit_ms": 66.1804782451401,
+          "player_erased_to_commit_ms": 64.02769067018293,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 93.36661503068127,
+          "commit_ms": 85.91091884583096,
+          "player_erased_to_commit_ms": 83.7581312708738,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 79.44273178108763,
+      "mean_commit_ms": 71.04119843909398,
+      "mean_player_erased_to_commit_ms": 68.86741191967135,
+      "mean_retained_frame": 0
+    },
+    "stage1-boss": {
+      "samples": [
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 38.950760501683874,
+          "commit_ms": 36.08559188388468,
+          "player_erased_to_commit_ms": 34.27586466995107,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 38.950760501683874,
+      "mean_commit_ms": 36.08559188388468,
+      "mean_player_erased_to_commit_ms": 34.27586466995107,
+      "mean_retained_frame": 0
+    },
+    "stage1-wide": {
+      "samples": [
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 28.92714018122415,
+          "commit_ms": 25.878708048089912,
+          "player_erased_to_commit_ms": 24.068980834156296,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 28.92714018122415,
+      "mean_commit_ms": 25.878708048089912,
+      "mean_player_erased_to_commit_ms": 24.068980834156296,
+      "mean_retained_frame": 0
+    },
+    "stage2-idle": {
+      "samples": [
+        {
+          "frame_ms": 9.038020195304151,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 26.097730298124482,
+          "commit_ms": 22.679977483171744,
+          "player_erased_to_commit_ms": 20.88310106452077,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.513880954143612,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 9.038020195304151,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 9.038020195304151,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 26.092142995827682,
+          "commit_ms": 22.677742562253023,
+          "player_erased_to_commit_ms": 20.88086614360205,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.516115875062333,
+          "commit_ms": 5.668876910333576,
+          "player_erased_to_commit_ms": 3.870883031223242,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 9.040255116222871,
+          "commit_ms": 5.668876910333576,
+          "player_erased_to_commit_ms": 3.870883031223242,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 9.040255116222871,
+          "commit_ms": 5.668876910333576,
+          "player_erased_to_commit_ms": 3.870883031223242,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 26.09549537720576,
+          "commit_ms": 22.681094943631102,
+          "player_erased_to_commit_ms": 20.88310106452077,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 12.513880954143612,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 9.038020195304151,
+          "commit_ms": 5.666641989414856,
+          "player_erased_to_commit_ms": 3.869765570763882,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 14.171819789014153,
+      "mean_commit_ms": 9.920441471378812,
+      "mean_player_erased_to_commit_ms": 8.12319256590805,
+      "mean_retained_frame": 0
+    },
+    "stage2-crowded": {
+      "samples": [
+        {
+          "frame_ms": 71.95439643865352,
+          "commit_ms": 60.901036304893495,
+          "player_erased_to_commit_ms": 59.103042425783165,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.76404682718055,
+          "commit_ms": 61.2061030102988,
+          "player_erased_to_commit_ms": 59.40810913118846,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.60648490241078,
+          "commit_ms": 61.048541085529024,
+          "player_erased_to_commit_ms": 59.250547206418695,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 85.66507754477175,
+          "commit_ms": 78.06411150020463,
+          "player_erased_to_commit_ms": 76.2661176210943,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 71.97283453623295,
+          "commit_ms": 61.04407124369158,
+          "player_erased_to_commit_ms": 59.24719482504061,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.97357066331055,
+          "commit_ms": 61.396071288390004,
+          "player_erased_to_commit_ms": 59.59919486973903,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 69.14901195543008,
+          "commit_ms": 61.571512580509534,
+          "player_erased_to_commit_ms": 59.77463616185856,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 86.19978237457553,
+          "commit_ms": 78.57926077196962,
+          "player_erased_to_commit_ms": 76.78238435331865,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 72.50642190557738,
+          "commit_ms": 61.55810305499721,
+          "player_erased_to_commit_ms": 59.760109175886875,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.76404682718055,
+          "commit_ms": 61.2061030102988,
+          "player_erased_to_commit_ms": 59.40810913118846,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 68.60648490241078,
+          "commit_ms": 61.048541085529024,
+          "player_erased_to_commit_ms": 59.250547206418695,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 85.66507754477175,
+          "commit_ms": 78.06411150020463,
+          "player_erased_to_commit_ms": 76.2661176210943,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 73.90226970187551,
+      "mean_commit_ms": 65.47396386970969,
+      "mean_player_erased_to_commit_ms": 63.67634247741915,
+      "mean_retained_frame": 0
+    },
+    "stage2-crowded-music": {
+      "samples": [
+        {
+          "frame_ms": 77.7713368598523,
+          "commit_ms": 65.87708773042384,
+          "player_erased_to_commit_ms": 63.724300155466686,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.67528554606801,
+          "commit_ms": 65.84970994916952,
+          "player_erased_to_commit_ms": 63.69692237421236,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 88.60008744128095,
+          "commit_ms": 80.77451184438246,
+          "player_erased_to_commit_ms": 78.53623854428426,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 118.73743729999204,
+          "commit_ms": 108.81718207202312,
+          "player_erased_to_commit_ms": 106.06599442107866,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 80.94883567604262,
+          "commit_ms": 65.99106869727856,
+          "player_erased_to_commit_ms": 63.22814771151082,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.83173001037841,
+          "commit_ms": 65.99218615773792,
+          "player_erased_to_commit_ms": 63.75503031809909,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 74.16585068772707,
+          "commit_ms": 66.24082110994554,
+          "player_erased_to_commit_ms": 64.08915099544774,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 94.71930091673663,
+          "commit_ms": 86.83673483641077,
+          "player_erased_to_commit_ms": 84.59957899677194,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 77.65344478138981,
+          "commit_ms": 65.75919565196135,
+          "player_erased_to_commit_ms": 63.520922351863156,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.44397123098047,
+          "commit_ms": 65.53290990894094,
+          "player_erased_to_commit_ms": 63.380122333983785,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 73.36127915698783,
+          "commit_ms": 65.53570356008935,
+          "player_erased_to_commit_ms": 63.382915985132186,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 94.40417706719708,
+          "commit_ms": 86.4500935174722,
+          "player_erased_to_commit_ms": 84.29730594251504,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 83.44272805621944,
+      "mean_commit_ms": 74.13810041965296,
+      "mean_player_erased_to_commit_ms": 71.85638584419715,
+      "mean_retained_frame": 0
+    },
+    "stage2-boss": {
+      "samples": [
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 58.340934392499605,
+          "commit_ms": 55.090241916221196,
+          "player_erased_to_commit_ms": 53.28051470228758,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 58.340934392499605,
+      "mean_commit_ms": 55.090241916221196,
+      "mean_player_erased_to_commit_ms": 53.28051470228758,
+      "mean_retained_frame": 0
+    },
+    "stage2-wide": {
+      "samples": [
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        },
+        {
+          "frame_ms": 29.31266403970337,
+          "commit_ms": 25.87926677831959,
+          "player_erased_to_commit_ms": 24.069539564385977,
+          "retained_frame": 0
+        }
+      ],
+      "mean_frame_ms": 29.31266403970337,
+      "mean_commit_ms": 25.87926677831959,
+      "mean_player_erased_to_commit_ms": 24.069539564385977,
+      "mean_retained_frame": 0
+    }
+  }
+}

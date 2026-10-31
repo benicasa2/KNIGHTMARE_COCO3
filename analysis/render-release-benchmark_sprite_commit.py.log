@@ -1,0 +1,62 @@
+{
+  "stage1-idle": {
+    "mean_frame_ms": 9.544974757033831,
+    "mean_commit_ms": 5.6831710920428895,
+    "mean_player_erased_to_commit_ms": 5.112195358162373,
+    "mean_retained_frame": 0.75
+  },
+  "stage1-crowded": {
+    "mean_frame_ms": 66.64101163695386,
+    "mean_commit_ms": 58.62858733907987,
+    "mean_player_erased_to_commit_ms": 57.25741679459261,
+    "mean_retained_frame": 0
+  },
+  "stage1-crowded-music": {
+    "mean_frame_ms": 72.46479650346622,
+    "mean_commit_ms": 64.0609351188489,
+    "mean_player_erased_to_commit_ms": 62.41333279322745,
+    "mean_retained_frame": 0
+  },
+  "stage1-boss": {
+    "mean_frame_ms": 23.873983983997967,
+    "mean_commit_ms": 21.008815366198775,
+    "mean_player_erased_to_commit_ms": 19.644396145320144,
+    "mean_retained_frame": 0
+  },
+  "stage1-wide": {
+    "mean_frame_ms": 25.87200328533375,
+    "mean_commit_ms": 22.82357115219951,
+    "mean_player_erased_to_commit_ms": 21.43400907098528,
+    "mean_retained_frame": 0
+  },
+  "stage2-idle": {
+    "mean_frame_ms": 10.042943074236158,
+    "mean_commit_ms": 5.791564756600816,
+    "mean_player_erased_to_commit_ms": 5.220589022720299,
+    "mean_retained_frame": 0.75
+  },
+  "stage2-crowded": {
+    "mean_frame_ms": 67.16733551331244,
+    "mean_commit_ms": 58.73740005131006,
+    "mean_player_erased_to_commit_ms": 57.36622950682279,
+    "mean_retained_frame": 0
+  },
+  "stage2-crowded-music": {
+    "mean_frame_ms": 76.63920973196313,
+    "mean_commit_ms": 67.32629426365641,
+    "mean_player_erased_to_commit_ms": 65.5535829274391,
+    "mean_retained_frame": 0
+  },
+  "stage2-boss": {
+    "mean_frame_ms": 51.95520659748655,
+    "mean_commit_ms": 48.70451412120814,
+    "mean_player_erased_to_commit_ms": 47.34009490032951,
+    "mean_retained_frame": 0
+  },
+  "stage2-wide": {
+    "mean_frame_ms": 26.257527143812972,
+    "mean_commit_ms": 22.82412988242919,
+    "mean_player_erased_to_commit_ms": 21.434567801214957,
+    "mean_retained_frame": 0
+  }
+}

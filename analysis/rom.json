@@ -1,0 +1,15 @@
+{
+  "source": "C:\\Users\\Anderson\\Pictures\\Knightmare - Majyo Densetsu - Konami (1986) [RC-739] [1409].rom",
+  "size": 32768,
+  "sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "header": {
+    "signature": "AB",
+    "init": "0x407e",
+    "statement": 0,
+    "device": 0,
+    "text": 0
+  },
+  "load_address": "0x4000",
+  "end_exclusive": "0xc000",
+  "status": "reverse engineering in progress; no completed port"
+}

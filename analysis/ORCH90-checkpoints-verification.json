@@ -1,0 +1,116 @@
+{
+  "status": "native checkpoint scenarios passed",
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "segments": [
+    {
+      "segment": 0,
+      "camera_before": 1681,
+      "camera_after": 1776,
+      "framebuffer_sha256": "5c16c68ee5337738e830df469f6b4675f28a40a748df4250c343d6e64754ebfb",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 1,
+      "camera_before": 1489,
+      "camera_after": 1584,
+      "framebuffer_sha256": "10b78b851354735a38a39e654e9083fb8db1e0e19e3bd14295aaae1c55506da6",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 2,
+      "camera_before": 1297,
+      "camera_after": 1392,
+      "framebuffer_sha256": "da5deffb8eabe8f09e3d0b2cb39eb02e57a6bf9acdf684af4b83a45c31554a9f",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 3,
+      "camera_before": 1105,
+      "camera_after": 1200,
+      "framebuffer_sha256": "048b6a47ae5a80d3a2e632b45de5907b4cf5cb1d2e94280221520ab08a427924",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 4,
+      "camera_before": 913,
+      "camera_after": 1008,
+      "framebuffer_sha256": "a41f6cafe0b64c8bd894b7e4acdc88b32f7327dfa84d1336df48c5ef34a4bb42",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 5,
+      "camera_before": 721,
+      "camera_after": 816,
+      "framebuffer_sha256": "9a419b55dc59779bbe47c4ed59ed2abc26ddc3e13ba0d312cde1ddfb06256f25",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 6,
+      "camera_before": 529,
+      "camera_after": 624,
+      "framebuffer_sha256": "b9678c220dc82244c01db6e5bf92ca60efe097b3f11d28d27090028a34f6f171",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 7,
+      "camera_before": 337,
+      "camera_after": 432,
+      "framebuffer_sha256": "938608e0bf21117b72e3fe55ce737d569ecac36b75ed4a5957df995559465e40",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 8,
+      "camera_before": 145,
+      "camera_after": 240,
+      "framebuffer_sha256": "364c232f8ff14e4d7fd301aa9201186bd85f727621c9bf1d73893e36e5b77ef8",
+      "boss_state_retained": false
+    },
+    {
+      "segment": 9,
+      "camera_before": 0,
+      "camera_after": 48,
+      "framebuffer_sha256": "1b4d1bfd747d2357e09f1550ab0e8a6fb922388ecd83c005d63f364a0a3ea3dd",
+      "boss_state_retained": true
+    }
+  ],
+  "wave_rewinds": [
+    0,
+    0,
+    1,
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    8,
+    10,
+    11,
+    12,
+    12,
+    14,
+    15,
+    15,
+    17,
+    18,
+    19,
+    20,
+    20,
+    22,
+    23,
+    24,
+    25,
+    25,
+    25,
+    28,
+    29,
+    29,
+    31,
+    31
+  ],
+  "real_death_interval_native_ticks": 48,
+  "scope": "ten segment restoration fixtures, native full redraws, all 34 ROM rewind cases and actual hostile-shot death/respawn; not a full campaign playthrough"
+}

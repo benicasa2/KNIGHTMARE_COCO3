@@ -1,0 +1,118 @@
+{
+  "method": "Conservative erase-to-final-redraw interval, not captured video flicker: XRoar monitor cycles: 14,318,180 master ticks/s, apply_input to combat_frame_complete; includes interrupts/render/logic, excludes waiting for next tick; twelve samples with original one-in-four native scroll cadence; controlled 18-object fixture, not campaign FPS",
+  "ram_kib": 128,
+  "variant": "DAC6",
+  "cases": {
+    "idle": {
+      "samples": [
+        {
+          "frame_ms": 5.5269594319948485,
+          "erase_to_redraw_ms": 5.481702283390766
+        },
+        {
+          "frame_ms": 7.146159637607573,
+          "erase_to_redraw_ms": 7.100902489003491
+        },
+        {
+          "frame_ms": 22.358707601105728,
+          "erase_to_redraw_ms": 22.313450452501645
+        },
+        {
+          "frame_ms": 5.5269594319948485,
+          "erase_to_redraw_ms": 5.481702283390766
+        },
+        {
+          "frame_ms": 3.739581427248435,
+          "erase_to_redraw_ms": 3.694324278644353
+        },
+        {
+          "frame_ms": 7.146159637607573,
+          "erase_to_redraw_ms": 7.100902489003491
+        },
+        {
+          "frame_ms": 22.353120298808925,
+          "erase_to_redraw_ms": 22.307863150204845
+        },
+        {
+          "frame_ms": 5.528076892454209,
+          "erase_to_redraw_ms": 5.4828197438501265
+        },
+        {
+          "frame_ms": 3.739581427248435,
+          "erase_to_redraw_ms": 3.694324278644353
+        },
+        {
+          "frame_ms": 7.147277098066933,
+          "erase_to_redraw_ms": 7.102019949462851
+        },
+        {
+          "frame_ms": 22.356472680187007,
+          "erase_to_redraw_ms": 22.311215531582924
+        },
+        {
+          "frame_ms": 5.5269594319948485,
+          "erase_to_redraw_ms": 5.481702283390766
+        }
+      ],
+      "mean_frame_ms": 9.841334583026613,
+      "mean_erase_to_redraw_ms": 9.796077434422532,
+      "max_frame_ms": 22.358707601105728
+    },
+    "crowded": {
+      "samples": [
+        {
+          "frame_ms": 40.658240083586044,
+          "erase_to_redraw_ms": 40.61298293498196
+        },
+        {
+          "frame_ms": 74.48600310933372,
+          "erase_to_redraw_ms": 74.44074596072964
+        },
+        {
+          "frame_ms": 57.648667637926046,
+          "erase_to_redraw_ms": 57.603410489321966
+        },
+        {
+          "frame_ms": 55.894813446960434,
+          "erase_to_redraw_ms": 55.849556298356354
+        },
+        {
+          "frame_ms": 59.303626578238294,
+          "erase_to_redraw_ms": 59.258369429634214
+        },
+        {
+          "frame_ms": 74.87879046079878,
+          "erase_to_redraw_ms": 74.8335333121947
+        },
+        {
+          "frame_ms": 58.700756660413546,
+          "erase_to_redraw_ms": 58.65549951180946
+        },
+        {
+          "frame_ms": 56.91226119520777,
+          "erase_to_redraw_ms": 56.86700404660369
+        },
+        {
+          "frame_ms": 60.31995686602627,
+          "erase_to_redraw_ms": 60.27469971742219
+        },
+        {
+          "frame_ms": 75.1274254130064,
+          "erase_to_redraw_ms": 75.08216826440231
+        },
+        {
+          "frame_ms": 57.648667637926046,
+          "erase_to_redraw_ms": 57.603410489321966
+        },
+        {
+          "frame_ms": 55.894813446960434,
+          "erase_to_redraw_ms": 55.849556298356354
+        }
+      ],
+      "mean_frame_ms": 60.62283521136531,
+      "mean_erase_to_redraw_ms": 60.57757806276123,
+      "max_frame_ms": 75.1274254130064
+    }
+  },
+  "tested_disk_sha256": "5110cfa19a580e2de2ab318ca16a7591abd14552358935c70d778e4ddd2edd1e"
+}

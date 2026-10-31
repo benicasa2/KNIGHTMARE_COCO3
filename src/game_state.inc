@@ -1,0 +1,44 @@
+; All direct-page state must remain within $0c00-$0cff.
+game_ticks rmb 2
+camera_y rmb 2
+scroll_steps rmb 2
+ring_head rmb 1
+ring_wraps rmb 1
+scroll_clock rmb 1
+game_divider rmb 1
+paused rmb 1
+input_mode rmb 1
+input_bits rmb 1
+previous_input rmb 1
+input_edges rmb 1
+button_mask rmb 1
+key_rows rmb 8
+key_column rmb 1
+joystick_port rmb 1
+saved_dac rmb 1
+saved_sound rmb 1
+player_x rmb 1
+player_y rmb 1
+walk_clock rmb 1
+player_frame rmb 1
+player_moved rmb 1
+scroll_due rmb 1
+sprite_valid rmb 1
+sprite_screen_row rmb 2
+sprite_xbyte rmb 1
+sprite_pointer rmb 2
+object_row rmb 2
+object_lines rmb 1
+world_line rmb 2
+target_line rmb 1
+tile_line rmb 1
+tiles_left rmb 1
+span_row rmb 2
+span_x rmb 1
+span_n rmb 1
+span_blocks rmb 1
+row_bank rmb 1
+hud_pointer rmb 2
+
+; Zero-based map selector. Gameplay beyond stage 1 is still under development.
+campaign_stage rmb 1

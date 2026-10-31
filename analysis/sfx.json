@@ -1,0 +1,55 @@
+{
+  "sample_rate": 3924.939692982456,
+  "music_enabled": false,
+  "method": "isolated user-ROM routines $490C/$49C0 in openMSX; PSG trace rendered offline with 8x oversampling, quantized to PCM; approximate AY output, one prioritized sound at a time",
+  "effects": {
+    "shot": {
+      "original_effect_id": 3,
+      "trace_sha256": "39f2d9f2f7b5b01f4b61555fdd8877907fa309e986c950fc4ed24b51b309ee60",
+      "active_psg_frames": 4,
+      "samples": 328,
+      "duration_seconds": 0.08356816299278261,
+      "pcm_sha256": "abf66b59aa931079e5ff3a2f4bc03c97c8a8c5710676115e9f9c0113ab83ab4e"
+    },
+    "hit": {
+      "original_effect_id": 11,
+      "trace_sha256": "b97a06e1360b88a872f179749ea3b6c0e8b4ef0e0469e3844ab2e1f70ee5ba55",
+      "active_psg_frames": 35,
+      "samples": 2358,
+      "duration_seconds": 0.600773562002992,
+      "pcm_sha256": "65b00aef02381e23f49340895b6ecb56bd4e268102b216285e08802385046f07"
+    },
+    "explosion": {
+      "original_effect_id": 77,
+      "trace_sha256": "2af5fed8320fd0b39e0f1ca8dda1508ac16e2a1ec83e2312a5ac296293dbaf41",
+      "active_psg_frames": 23,
+      "samples": 1572,
+      "duration_seconds": 0.40051570800199465,
+      "pcm_sha256": "362602754267f2f3718ad9b4c44a30722d3af427fddc9adfcc6383ba8487c257"
+    },
+    "boss": {
+      "original_effect_id": 71,
+      "trace_sha256": "5457428c6f528402cc83b6c16fda042ff07aed1826837657e7959887ed7b77d7",
+      "active_psg_frames": 11,
+      "samples": 786,
+      "duration_seconds": 0.20025785400099733,
+      "pcm_sha256": "e9e925a7d9f50510ffc3ce2bd84d62f6e44d541107e2dde76cd3f8b9cdc63a5a"
+    },
+    "cycle": {
+      "original_effect_id": 14,
+      "trace_sha256": "b6aa66270fe0b9bdd250b04e718fa9ad93c77ea51b72db44fccd109153d92dce",
+      "active_psg_frames": 3,
+      "samples": 262,
+      "duration_seconds": 0.06675261800033244,
+      "pcm_sha256": "9be1d97585eeddf557ed2dbc652fd9883ef52a4728527915b532b4b8ca3bfee8"
+    },
+    "pickup": {
+      "original_effect_id": 18,
+      "trace_sha256": "b15dbe41f464091077674f5dd7acb248ebf157f84d5cf9c4cbdfde4ef15aa8ef",
+      "active_psg_frames": 18,
+      "samples": 1245,
+      "duration_seconds": 0.31720232599394615,
+      "pcm_sha256": "1a6be16f4211c126b026dcd2536cbadbe730edf45dced17921c9c3f5a04b5f76"
+    }
+  }
+}

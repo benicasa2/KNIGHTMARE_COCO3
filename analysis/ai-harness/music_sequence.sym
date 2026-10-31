@@ -1,0 +1,2 @@
+harness_done EQU $0B4A
+music_verify_sample EQU $0B0D

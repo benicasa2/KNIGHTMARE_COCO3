@@ -1,0 +1,1160 @@
+{
+  "status": "native AI differential scenarios passed",
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "source_rom_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "enemy_trajectories": [
+    {
+      "kind": 1,
+      "initial_x": 40,
+      "samples": 180,
+      "sha256": "f28953006a971c029c776f101a13408f1deb5224311fbabafd2c6d47a62eea14"
+    },
+    {
+      "kind": 1,
+      "initial_x": 80,
+      "samples": 180,
+      "sha256": "3be03003c4553a3f5942517f067886ee7addb2b99e254a0f1ee239b548d14965"
+    },
+    {
+      "kind": 1,
+      "initial_x": 127,
+      "samples": 180,
+      "sha256": "c5e4911961e2c73816a0701175900714d2970cac8dbff29f0fb9eecc4bd14bfd"
+    },
+    {
+      "kind": 1,
+      "initial_x": 128,
+      "samples": 180,
+      "sha256": "b4d7cc366fdd133d892f33f6f2dace17d9717986fabc825a12d12802fc1129bf"
+    },
+    {
+      "kind": 1,
+      "initial_x": 176,
+      "samples": 180,
+      "sha256": "baeeab9d752548d1e55459e893911f2353ab6162450fa64a9c1ecfe79bbecad2"
+    },
+    {
+      "kind": 1,
+      "initial_x": 216,
+      "samples": 180,
+      "sha256": "184eee025bd743ef64f0daf9f6e06d66cb5d18301e2c82167f465c8cea86cb13"
+    },
+    {
+      "kind": 2,
+      "initial_x": 40,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 2,
+      "initial_x": 80,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 2,
+      "initial_x": 127,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 2,
+      "initial_x": 128,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 2,
+      "initial_x": 176,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 2,
+      "initial_x": 216,
+      "samples": 180,
+      "sha256": "c75d74a40e81be6f67739f3736bf9a31ca7e9c9678e2850c3f37356efcab7dd4"
+    },
+    {
+      "kind": 9,
+      "initial_x": 40,
+      "samples": 180,
+      "sha256": "b1f272e4ffc5f1c6bad3cd8acaf0b5f932e25cd8cb8185d74feeb22d33e886c5"
+    },
+    {
+      "kind": 9,
+      "initial_x": 80,
+      "samples": 180,
+      "sha256": "0a26ba8513d97893d5fe0b010baa407b03d9c78148cab057b000d72c738647a0"
+    },
+    {
+      "kind": 9,
+      "initial_x": 127,
+      "samples": 180,
+      "sha256": "c56517bd964a9a7d70a28f393be5bcd06d54366e3d9718e880d3b6dbe0a07a78"
+    },
+    {
+      "kind": 9,
+      "initial_x": 128,
+      "samples": 180,
+      "sha256": "78dea31ca59e2df0a920f428e91e1c5b5abc538c00fa3e1464dd087426cde4a5"
+    },
+    {
+      "kind": 9,
+      "initial_x": 176,
+      "samples": 180,
+      "sha256": "bb0fa92bb8d09bd0435747d90bb857534b6f131789e897289a6eceebb56e36d6"
+    },
+    {
+      "kind": 9,
+      "initial_x": 216,
+      "samples": 180,
+      "sha256": "b3dad5b9d6d8f3f267de5a8d68b9cb520aecb9597b3b06d1e813c7455b728165"
+    },
+    {
+      "kind": 14,
+      "initial_x": 40,
+      "samples": 180,
+      "sha256": "71cacbfa8270e9671565abaa06f6ae95d8891139f5b22dc2f28301de20ab97de"
+    },
+    {
+      "kind": 14,
+      "initial_x": 80,
+      "samples": 180,
+      "sha256": "bbaadbfcf18b8fa633c06fe190dedcc099ee92496326ff3083926178d2948410"
+    },
+    {
+      "kind": 14,
+      "initial_x": 127,
+      "samples": 180,
+      "sha256": "5621c755424c6a4aa57c9c72fd710d824f1b9a79d8d8233f6d1da04e0c34931e"
+    },
+    {
+      "kind": 14,
+      "initial_x": 128,
+      "samples": 180,
+      "sha256": "c092752f638ac74b9d4f6a192f2325f14119866bbce333e0de77b1b4638bc9f1"
+    },
+    {
+      "kind": 14,
+      "initial_x": 176,
+      "samples": 180,
+      "sha256": "a514de394254e63a633d7173347cbab42846a5dd577ead82379b7a7b9b3fe008"
+    },
+    {
+      "kind": 14,
+      "initial_x": 216,
+      "samples": 180,
+      "sha256": "927351843960f892bbcc7b58a415fec276fe27fed1003e1cd0672fb88b77abe0"
+    },
+    {
+      "kind": 12,
+      "initial_x": 40,
+      "samples": 180,
+      "sha256": "6bfe1857c1d47fddd5ed91b9a5f50aa08c9c3463453c7ca050156890d7007ea6"
+    },
+    {
+      "kind": 12,
+      "initial_x": 80,
+      "samples": 180,
+      "sha256": "6bfe1857c1d47fddd5ed91b9a5f50aa08c9c3463453c7ca050156890d7007ea6"
+    },
+    {
+      "kind": 12,
+      "initial_x": 127,
+      "samples": 180,
+      "sha256": "6bfe1857c1d47fddd5ed91b9a5f50aa08c9c3463453c7ca050156890d7007ea6"
+    },
+    {
+      "kind": 12,
+      "initial_x": 128,
+      "samples": 180,
+      "sha256": "3ae4ee837062e6022b4d2c1669e11ba68b3d553999d0ddc50c8805457c7d658f"
+    },
+    {
+      "kind": 12,
+      "initial_x": 176,
+      "samples": 180,
+      "sha256": "3ae4ee837062e6022b4d2c1669e11ba68b3d553999d0ddc50c8805457c7d658f"
+    },
+    {
+      "kind": 12,
+      "initial_x": 216,
+      "samples": 180,
+      "sha256": "3ae4ee837062e6022b4d2c1669e11ba68b3d553999d0ddc50c8805457c7d658f"
+    }
+  ],
+  "aiming": [
+    {
+      "source": [
+        16,
+        0
+      ],
+      "angle": 216
+    },
+    {
+      "source": [
+        60,
+        0
+      ],
+      "angle": 208
+    },
+    {
+      "source": [
+        128,
+        0
+      ],
+      "angle": 192
+    },
+    {
+      "source": [
+        192,
+        0
+      ],
+      "angle": 184
+    },
+    {
+      "source": [
+        240,
+        0
+      ],
+      "angle": 168
+    },
+    {
+      "source": [
+        16,
+        40
+      ],
+      "angle": 224
+    },
+    {
+      "source": [
+        60,
+        40
+      ],
+      "angle": 216
+    },
+    {
+      "source": [
+        128,
+        40
+      ],
+      "angle": 192
+    },
+    {
+      "source": [
+        192,
+        40
+      ],
+      "angle": 176
+    },
+    {
+      "source": [
+        240,
+        40
+      ],
+      "angle": 168
+    },
+    {
+      "source": [
+        16,
+        100
+      ],
+      "angle": 232
+    },
+    {
+      "source": [
+        60,
+        100
+      ],
+      "angle": 224
+    },
+    {
+      "source": [
+        128,
+        100
+      ],
+      "angle": 192
+    },
+    {
+      "source": [
+        192,
+        100
+      ],
+      "angle": 160
+    },
+    {
+      "source": [
+        240,
+        100
+      ],
+      "angle": 152
+    },
+    {
+      "source": [
+        16,
+        151
+      ],
+      "angle": 0
+    },
+    {
+      "source": [
+        60,
+        151
+      ],
+      "angle": 0
+    },
+    {
+      "source": [
+        128,
+        151
+      ],
+      "angle": 0
+    },
+    {
+      "source": [
+        192,
+        151
+      ],
+      "angle": 128
+    },
+    {
+      "source": [
+        240,
+        151
+      ],
+      "angle": 128
+    },
+    {
+      "source": [
+        16,
+        240
+      ],
+      "angle": 32
+    },
+    {
+      "source": [
+        60,
+        240
+      ],
+      "angle": 40
+    },
+    {
+      "source": [
+        128,
+        240
+      ],
+      "angle": 64
+    },
+    {
+      "source": [
+        192,
+        240
+      ],
+      "angle": 80
+    },
+    {
+      "source": [
+        240,
+        240
+      ],
+      "angle": 96
+    },
+    {
+      "source": [
+        136,
+        151
+      ],
+      "angle": 192
+    },
+    {
+      "source": [
+        120,
+        151
+      ],
+      "angle": 0
+    },
+    {
+      "source": [
+        136,
+        100
+      ],
+      "angle": 192
+    }
+  ],
+  "boss": {
+    "native_samples": 320,
+    "original_boss_frames": 640,
+    "three_satellites_compared": true,
+    "sha256_batches": [
+      "a99ee5c7ada0bfa28022e0c1805d357b1a2fe45f5c26ee34fb68bb83b6d78a6a",
+      "f779469fdc0ed0a909068fa55ab79f1caa7e65352b60d5c6c8c470edf3542dc9",
+      "9776c841d9d75a08684e23a284ede4ac502a14e7dff8742598cfdfc8eb30af95",
+      "96e4a47252dfc95c69473b6f6397ed12a931b2b643fc0ff92aa691d48e119aed",
+      "1f3a1ef77c9e64246f31d9bd91de3ec24121c1f93998354655c35b310608c6a8"
+    ]
+  },
+  "waves": {
+    "native_updates": 6000,
+    "births_compared": 91,
+    "next_wave": 22,
+    "sha256": "5c188c0dfb4815233d962c2f8df6526441fe53188351219faea3b01e033cdd1f"
+  },
+  "firing": [
+    {
+      "enemy_kind": 1,
+      "flags": 0,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 0,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 0,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 192,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 192,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 192,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        192
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        120
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        105,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        119
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 30464,
+          "vx": 493,
+          "vy": 284
+        }
+      ]
+    },
+    {
+      "enemy_kind": 1,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        104,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 26624,
+          "y": 10240,
+          "vx": 217,
+          "vy": 502
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 0,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 0,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 0,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 192,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 192,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 10240,
+          "vx": 311,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 192,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        192
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        120
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        105,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        119
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 16384,
+          "y": 30464,
+          "vx": 493,
+          "vy": 284
+        }
+      ]
+    },
+    {
+      "enemy_kind": 2,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        104,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 2,
+          "x": 26624,
+          "y": 10240,
+          "vx": 217,
+          "vy": 502
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 0,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 0,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 0,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 16384,
+          "y": 10240,
+          "vx": 291,
+          "vy": 708
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 16384,
+          "y": 10240,
+          "vx": 291,
+          "vy": 708
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 192,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 16384,
+          "y": 10240,
+          "vx": 291,
+          "vy": 708
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 192,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 16384,
+          "y": 10240,
+          "vx": 291,
+          "vy": 708
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 192,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        192
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        120
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        105,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        119
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 16384,
+          "y": 30464,
+          "vx": 636,
+          "vy": 426
+        }
+      ]
+    },
+    {
+      "enemy_kind": 9,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        104,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 1,
+          "x": 26624,
+          "y": 10240,
+          "vx": 138,
+          "vy": 753
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 0,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 0,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 0,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 16384,
+          "y": 10240,
+          "vx": 194,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 16384,
+          "y": 10240,
+          "vx": 194,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 192,
+      "member": 255,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 16384,
+          "y": 10240,
+          "vx": 194,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 192,
+      "member": 0,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 16384,
+          "y": 10240,
+          "vx": 194,
+          "vy": 472
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 192,
+      "member": 1,
+      "source": [
+        64,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        192
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        120
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        105,
+        40
+      ],
+      "projectiles": []
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        64,
+        119
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 16384,
+          "y": 30464,
+          "vx": 424,
+          "vy": 284
+        }
+      ]
+    },
+    {
+      "enemy_kind": 14,
+      "flags": 128,
+      "member": 255,
+      "source": [
+        104,
+        40
+      ],
+      "projectiles": [
+        {
+          "kind": 3,
+          "x": 26624,
+          "y": 10240,
+          "vx": 92,
+          "vy": 502
+        }
+      ]
+    }
+  ],
+  "scope": "actual native enemy routines vs executed Z80; fixtures, not a complete gameplay equivalence test"
+}

@@ -1,0 +1,76 @@
+{
+  "status": "deferred rendering pipeline passed",
+  "variant": "DAC6",
+  "ram_kib": 128,
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "frames_checked": 11,
+  "checks": [
+    {
+      "case": "movement-shots-scroll-0",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "930c9ffb2611b606db079413a0732876fb191d1d6ca39dcd2bb7374b0da321fd",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-1",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "318580ab0de7234ec3b5c1622b58456f95564032c5c957c353438227f75429f4",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-2",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "9b5ec73de452780149119795548d5ca7f6952d9d8a68ce3f85593da3a034e8e9",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-3",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "3c1ad26ef3ab93eec4ee44f383000dda192b0a4cafc35908c4b43cc818cf0ee1",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-4",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "ea960c56273afca04e9245bec208155c87cc525da29cdc978f879b1ef30414e8",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-5",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "5afd3bc9f4046241d28edc77c2d0fd45d93b8bef2eecddc57567f3e315b6676b",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-6",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "496ea8c6a7696ead7738a3b67855883296b04629a4c74c8edcc63fc2a510ce63",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "movement-shots-scroll-7",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "d02b9476a09eca6bdf07f2529671d4ff291413fdf37c2036293c1019fc7ccbec",
+      "fixed_refresh_deferred": false
+    },
+    {
+      "case": "fixed-reward-0",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "28f2c980160ac68b0f93286c62cf323acaf1166bacbd47ebe271fbf0df677a8f",
+      "fixed_refresh_deferred": true
+    },
+    {
+      "case": "fixed-reward-2",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "172f3c43cce065be1999fbc3263fd71bca44d911b23f7fe3fb467ff172f29fbb",
+      "fixed_refresh_deferred": true
+    },
+    {
+      "case": "fixed-reward-3",
+      "display_unchanged_during_logic": true,
+      "final_raster_sha256": "02a4ec6dc55240139904e944d66b75a5df4e2f47e6b4928d66da03f18736725f",
+      "fixed_refresh_deferred": true
+    }
+  ],
+  "scope": "controlled movement, shots, scroll and item refresh; byte comparisons before commit and after final composition; not captured video or physical hardware"
+}

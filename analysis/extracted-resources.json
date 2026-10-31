@@ -1,0 +1,154 @@
+{
+  "source_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "files": [
+    {
+      "path": "assets/stages/stage1-map.bin",
+      "bytes": 7808,
+      "sha256": "92e4b8f8f029f277606e0e596ab6bf3afbdc226f5f226d5a7dcf09d62a9e0492"
+    },
+    {
+      "path": "assets/stages/stage1-patterns.bin",
+      "bytes": 2048,
+      "sha256": "0c5d933690ee7a4b3f912076b530328c071af449169fa77f85d2674c1ca0dae5"
+    },
+    {
+      "path": "assets/stages/stage1-colors.bin",
+      "bytes": 2048,
+      "sha256": "074da6df8127060ca85f56c5b24608eb4e213c2a85bfd4e22fd690c879a0c50b"
+    },
+    {
+      "path": "assets/stages/stage2-map.bin",
+      "bytes": 7808,
+      "sha256": "6eb6f84f50a0117c81b0e13949893fb173ad7d720645ee061105ab23cb5066b2"
+    },
+    {
+      "path": "assets/stages/stage2-patterns.bin",
+      "bytes": 2048,
+      "sha256": "08d69528c72b63e700cd63db8e6d35d4e08dc8ad3833ae2b8da9b5e4080060f7"
+    },
+    {
+      "path": "assets/stages/stage2-colors.bin",
+      "bytes": 2048,
+      "sha256": "f3c7887b96471ce88acf8d642ad784179d024f20d994db230e02b0f6c94bdcc7"
+    },
+    {
+      "path": "assets/stages/stage3-map.bin",
+      "bytes": 7808,
+      "sha256": "0847a0fb1e376110a422351587fc7dcf42e742403dde79f776d22697e34901a5"
+    },
+    {
+      "path": "assets/stages/stage3-patterns.bin",
+      "bytes": 2048,
+      "sha256": "611b8a2b0e0ed3b72942ac77185b0d4956bf832849fadb07295ad73810249bd2"
+    },
+    {
+      "path": "assets/stages/stage3-colors.bin",
+      "bytes": 2048,
+      "sha256": "1494a39eaac7ce6ff8a01dd63430583b54a1e3701574b77c70e29c0f039692a8"
+    },
+    {
+      "path": "assets/stages/stage4-map.bin",
+      "bytes": 7808,
+      "sha256": "46b18c315ff1ef4368765a6df8c23faccd6e4b273e53e5cf1d43227e9daab75f"
+    },
+    {
+      "path": "assets/stages/stage4-patterns.bin",
+      "bytes": 2048,
+      "sha256": "0c5d933690ee7a4b3f912076b530328c071af449169fa77f85d2674c1ca0dae5"
+    },
+    {
+      "path": "assets/stages/stage4-colors.bin",
+      "bytes": 2048,
+      "sha256": "d549c956c3e152a519497de0b748288c6b5089982330d4f83afc98cca07c358b"
+    },
+    {
+      "path": "assets/stages/stage5-map.bin",
+      "bytes": 7808,
+      "sha256": "ef9d0e97e3a54f007c324c3f4c6bc170dcd5f03d2114ad5a038657c309fb61f4"
+    },
+    {
+      "path": "assets/stages/stage5-patterns.bin",
+      "bytes": 2048,
+      "sha256": "5e4c3bfe6beceef56669d9fea06b0da2223803af9cf76749d96b7172d52b0552"
+    },
+    {
+      "path": "assets/stages/stage5-colors.bin",
+      "bytes": 2048,
+      "sha256": "69e9694fac43c4d455094348c2f74d2908e283438b5e717ec62005d53dfc7719"
+    },
+    {
+      "path": "assets/stages/stage6-map.bin",
+      "bytes": 7808,
+      "sha256": "2584d257cc6810b5451028c2362ebb697d4e217e6cde1a47756b31ac81561007"
+    },
+    {
+      "path": "assets/stages/stage6-patterns.bin",
+      "bytes": 2048,
+      "sha256": "09c6a6211274bf75b0a1d4254206b1c6e7f479ae0fba9c4307c4a44ba51db459"
+    },
+    {
+      "path": "assets/stages/stage6-colors.bin",
+      "bytes": 2048,
+      "sha256": "9111000527a3a481e35edb43276b9a116be97591024d7b157420613d508181c3"
+    },
+    {
+      "path": "assets/stages/stage7-map.bin",
+      "bytes": 7808,
+      "sha256": "06044bc9bc55baa182f8826da2c2bbc344bd7ea79e5a7c461a87e0abbc525303"
+    },
+    {
+      "path": "assets/stages/stage7-patterns.bin",
+      "bytes": 2048,
+      "sha256": "09c6a6211274bf75b0a1d4254206b1c6e7f479ae0fba9c4307c4a44ba51db459"
+    },
+    {
+      "path": "assets/stages/stage7-colors.bin",
+      "bytes": 2048,
+      "sha256": "9111000527a3a481e35edb43276b9a116be97591024d7b157420613d508181c3"
+    },
+    {
+      "path": "assets/stages/stage8-map.bin",
+      "bytes": 7808,
+      "sha256": "69787443c09832d62e230d1b403866d3ae6fdfd0133bb70ecdb318b864f9c3f5"
+    },
+    {
+      "path": "assets/stages/stage8-patterns.bin",
+      "bytes": 2048,
+      "sha256": "8d726ed61bfc8c8de89aa5c307f6980d7c9a4985fe4dbf21158de9a19387de44"
+    },
+    {
+      "path": "assets/stages/stage8-colors.bin",
+      "bytes": 2048,
+      "sha256": "d2b476b04461df282ca87a6d06328e319cadc3d30f38b20d528031084bdfb095"
+    },
+    {
+      "path": "assets/audio-sequencer-z80.bin",
+      "start": "0x4901",
+      "end_exclusive": "0x4b2c",
+      "bytes": 555,
+      "classification": "original Z80 code or data, not converted 6809 code"
+    },
+    {
+      "path": "assets/audio-periods.bin",
+      "start": "0x4b2c",
+      "end_exclusive": "0x4b38",
+      "bytes": 12,
+      "classification": "original Z80 code or data, not converted 6809 code"
+    },
+    {
+      "path": "assets/audio-voice-pointers.bin",
+      "start": "0x4b38",
+      "end_exclusive": "0x4bb6",
+      "bytes": 126,
+      "classification": "original Z80 code or data, not converted 6809 code"
+    },
+    {
+      "path": "assets/audio-score-data.bin",
+      "start": "0x4bb6",
+      "end_exclusive": "0x53d3",
+      "bytes": 2077,
+      "classification": "original Z80 code or data, not converted 6809 code"
+    }
+  ],
+  "other_stages_emulator_verified": false
+}

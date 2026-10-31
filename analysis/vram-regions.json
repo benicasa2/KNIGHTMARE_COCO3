@@ -1,0 +1,41 @@
+{
+  "source": "reference/action-VRAM.bin",
+  "registers": [
+    2,
+    226,
+    14,
+    127,
+    7,
+    118,
+    3,
+    224
+  ],
+  "regions": [
+    {
+      "name": "color-table",
+      "start": "0x0000",
+      "bytes": 6144
+    },
+    {
+      "name": "sprite-patterns",
+      "start": "0x1800",
+      "bytes": 2048
+    },
+    {
+      "name": "background-patterns",
+      "start": "0x2000",
+      "bytes": 6144
+    },
+    {
+      "name": "name-table",
+      "start": "0x3800",
+      "bytes": 768
+    },
+    {
+      "name": "sprite-attributes",
+      "start": "0x3b00",
+      "bytes": 128
+    }
+  ],
+  "classification": "observed VRAM tables from one frame; not all ROM graphics"
+}

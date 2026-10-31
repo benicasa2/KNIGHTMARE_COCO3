@@ -1,0 +1,43 @@
+{
+  "method": "XRoar monitor cycles: 14,318,180 master ticks/s, apply_input to combat_frame_complete; includes interrupts/render/logic, excludes waiting for next tick; twelve samples with original one-in-four native scroll cadence; controlled 18-object fixture, not campaign FPS",
+  "ram_kib": 128,
+  "variant": "DAC6",
+  "cases": {
+    "idle": {
+      "samples_ms": [
+        5.343695916659799,
+        6.980216759392604,
+        24.91210475074346,
+        8.80111857791982,
+        4.038502100127251,
+        6.980216759392604,
+        24.90651744844666,
+        8.80223603837918,
+        4.038502100127251,
+        6.981334219851965,
+        24.90986982982474,
+        8.80111857791982
+      ],
+      "mean_ms": 11.291286089898762,
+      "max_ms": 24.91210475074346
+    },
+    "crowded": {
+      "samples_ms": [
+        45.32363750141428,
+        77.59142572589533,
+        61.47485225077489,
+        57.210623137856906,
+        60.15457271804098,
+        78.48818774453177,
+        62.832007978667676,
+        57.70845177250181,
+        60.65128389222652,
+        78.13898135098175,
+        61.36981096759504,
+        57.210623137856906
+      ],
+      "mean_ms": 63.179538181528656,
+      "max_ms": 78.48818774453177
+    }
+  }
+}

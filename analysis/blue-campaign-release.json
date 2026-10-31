@@ -1,0 +1,22 @@
+{
+  "status": "partial delivery for seven-stage request",
+  "game_disk_sha256": {
+    "DAC6": "1793e90737e1e8f8538776f4a54344d77054906a15a1d83e2d1762f6cbee1467",
+    "ORCH90": "9c9060411ed62492c979d4b6327be199b7ec5f6087378788ab94789d6f30f866"
+  },
+  "native_resource_loader_verified": true,
+  "native_stage_rasters_verified": 24,
+  "complete_remaining_playable_stages": 0,
+  "completed": [
+    "blue introduction in both playable builds",
+    "native resource streaming and separate map viewer"
+  ],
+  "pending": [
+    "remaining enemy AI",
+    "boss-specific 6809 handlers",
+    "dynamic art cache",
+    "game integration and stage/EXIT transitions",
+    "checkpoint restoration",
+    "full campaign validation"
+  ]
+}

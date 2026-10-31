@@ -1,0 +1,53 @@
+{
+  "status": "music M-key and reduced-enemy scenarios passed",
+  "variant": "DAC6",
+  "ram_kib": 128,
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "music_sequences": [
+    {
+      "track": "0x9d",
+      "native_frames_compared": 2305,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    },
+    {
+      "track": "0xa3",
+      "native_frames_compared": 1691,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    },
+    {
+      "track": "0x9f",
+      "native_frames_compared": 5377,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    },
+    {
+      "track": "0xa1",
+      "native_frames_compared": 1041,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    }
+  ],
+  "checks": {
+    "real_m_key": true,
+    "held_key_debounced": true,
+    "enemy_limit_off": 7,
+    "enemy_limit_on": 5,
+    "excess_enemies_erased": true,
+    "music_dac_samples": 96,
+    "music_levels": [
+      116,
+      120,
+      124,
+      128,
+      132,
+      136
+    ],
+    "mixed_sfx_samples_verified": 64,
+    "default_off_and_reset_off": true,
+    "native_spawn_cap_verified": true,
+    "intro_ignores_m": true
+  },
+  "scope": "native sequence vs full-cycle executed Z80 PSG events, real keyboard PIA, actual DAC samples; adapted square-wave sound, no physical hardware test"
+}

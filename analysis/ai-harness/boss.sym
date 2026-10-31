@@ -1,0 +1,4 @@
+boss_copy EQU $0B37
+boss_sample_loop EQU $0B10
+harness_done EQU $0B8B
+sat_copy EQU $0B6B

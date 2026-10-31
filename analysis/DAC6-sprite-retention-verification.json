@@ -1,0 +1,272 @@
+{
+  "status": "sprite retention and specialized background restore passed",
+  "variant": "DAC6",
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "checks": [
+    {
+      "stage": 1,
+      "case": "stationary-empty",
+      "retained": true,
+      "final_raster_sha256": "4ef0932f827048eb2bf3a04ce00c6403eb1fcc44870e472f24e9b6116bf811e0"
+    },
+    {
+      "stage": 1,
+      "case": "stationary-empty-again",
+      "retained": true,
+      "final_raster_sha256": "4ef0932f827048eb2bf3a04ce00c6403eb1fcc44870e472f24e9b6116bf811e0"
+    },
+    {
+      "stage": 1,
+      "case": "move-right",
+      "retained": false,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "stop-moving",
+      "retained": true,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "shield-appears",
+      "retained": false,
+      "final_raster_sha256": "76554723d7a9f5cbaa1ba19a1d73538493e67298cb5eaa3bb2e778c5a6ed6403"
+    },
+    {
+      "stage": 1,
+      "case": "shield-removed",
+      "retained": false,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "after-shield",
+      "retained": true,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "invisible-image",
+      "retained": false,
+      "final_raster_sha256": "9c89edaecba0f33ac151495fab0fea737fa83aca97447bc8c56b64dcc478f2b8"
+    },
+    {
+      "stage": 1,
+      "case": "invisibility-expires",
+      "retained": false,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "after-invisibility",
+      "retained": true,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "overlapping-enemy",
+      "retained": false,
+      "final_raster_sha256": "6dba6c157b3f4f765e13a2257d8061475b8495e678648b18984a56017a339115"
+    },
+    {
+      "stage": 1,
+      "case": "removed-enemy-old-background",
+      "retained": false,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "after-enemy-removal",
+      "retained": true,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "player-fires",
+      "retained": false,
+      "final_raster_sha256": "44121a5f44780917a61352c1a9486bb17a470008ce8f128a904b028753854db7"
+    },
+    {
+      "stage": 1,
+      "case": "erase-last-projectile",
+      "retained": false,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "after-projectile",
+      "retained": true,
+      "final_raster_sha256": "5e1a687bf9ff2eb0915c7ab3ddcc43fce7ec100a7da5e4ce5c4994491b7ad8a4"
+    },
+    {
+      "stage": 1,
+      "case": "scroll-forces-commit",
+      "retained": false,
+      "final_raster_sha256": "d96695b54db9c28ef726ae1dba678957da318037ee950998072b3d862f9cae75"
+    },
+    {
+      "stage": 1,
+      "case": "wide-enemy-overlaps-enemy",
+      "retained": false,
+      "final_raster_sha256": "0ad524d96843b7d3bde9d2997c50a8ddfe4114f10196fb7c253c74efabfad952"
+    },
+    {
+      "stage": 1,
+      "case": "erase-overlapping-wide-frames",
+      "retained": false,
+      "final_raster_sha256": "d96695b54db9c28ef726ae1dba678957da318037ee950998072b3d862f9cae75"
+    },
+    {
+      "stage": 2,
+      "case": "stationary-empty",
+      "retained": true,
+      "final_raster_sha256": "00d4ffad51367d7e64ca0292ddb2ae3a4d8f09d60107e7f5e150754518071231"
+    },
+    {
+      "stage": 2,
+      "case": "stationary-empty-again",
+      "retained": true,
+      "final_raster_sha256": "00d4ffad51367d7e64ca0292ddb2ae3a4d8f09d60107e7f5e150754518071231"
+    },
+    {
+      "stage": 2,
+      "case": "move-right",
+      "retained": false,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "stop-moving",
+      "retained": true,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "shield-appears",
+      "retained": false,
+      "final_raster_sha256": "44869fdefaf10cf5f4ee19a647306a0e4694bd8e5b7259e297a19c486af4d9ae"
+    },
+    {
+      "stage": 2,
+      "case": "shield-removed",
+      "retained": false,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "after-shield",
+      "retained": true,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "invisible-image",
+      "retained": false,
+      "final_raster_sha256": "1e2e1d5de362ee00a30707f06fbd7d72f050bedffea04aed51b3d9a6d2692c40"
+    },
+    {
+      "stage": 2,
+      "case": "invisibility-expires",
+      "retained": false,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "after-invisibility",
+      "retained": true,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "overlapping-enemy",
+      "retained": false,
+      "final_raster_sha256": "c2694d33beee644a7a1e921c649b7155635462dd77d735e6cbb9ca98e442912d"
+    },
+    {
+      "stage": 2,
+      "case": "removed-enemy-old-background",
+      "retained": false,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "after-enemy-removal",
+      "retained": true,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "player-fires",
+      "retained": false,
+      "final_raster_sha256": "a09f3b99cdc71e3da367d100f9b0d586961e299fdc470412ad3dafea68726e8d"
+    },
+    {
+      "stage": 2,
+      "case": "erase-last-projectile",
+      "retained": false,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "after-projectile",
+      "retained": true,
+      "final_raster_sha256": "fb93985a69195f9d437a307b5855f1f71b278eda2a31ac4ef3155fbd6bf11898"
+    },
+    {
+      "stage": 2,
+      "case": "scroll-forces-commit",
+      "retained": false,
+      "final_raster_sha256": "3622332f383ee4e8fa5ed773c6fb551310162382d891b5a5cd60202ac9f8a86f"
+    },
+    {
+      "stage": 2,
+      "case": "wide-enemy-overlaps-enemy",
+      "retained": false,
+      "final_raster_sha256": "cf52d6ce2df84f520abd4d6113a98a9083ce1b7e23d1c7b5a1b7ac5804578100"
+    },
+    {
+      "stage": 2,
+      "case": "erase-overlapping-wide-frames",
+      "retained": false,
+      "final_raster_sha256": "3622332f383ee4e8fa5ed773c6fb551310162382d891b5a5cd60202ac9f8a86f"
+    }
+  ],
+  "restore_widths": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32
+  ],
+  "scope": "native framebuffer/route assertions and independent final pixels; timing is measured separately; no physical-display flicker claim"
+}

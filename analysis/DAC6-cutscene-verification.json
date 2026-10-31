@@ -1,0 +1,107 @@
+{
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "status": "original exit trajectory and animation passed",
+  "cases": [
+    {
+      "x": 16,
+      "y": 32,
+      "native_updates": 73
+    },
+    {
+      "x": 60,
+      "y": 32,
+      "native_updates": 51
+    },
+    {
+      "x": 120,
+      "y": 32,
+      "native_updates": 20
+    },
+    {
+      "x": 180,
+      "y": 32,
+      "native_updates": 51
+    },
+    {
+      "x": 224,
+      "y": 32,
+      "native_updates": 73
+    },
+    {
+      "x": 16,
+      "y": 100,
+      "native_updates": 82
+    },
+    {
+      "x": 60,
+      "y": 100,
+      "native_updates": 66
+    },
+    {
+      "x": 120,
+      "y": 100,
+      "native_updates": 55
+    },
+    {
+      "x": 180,
+      "y": 100,
+      "native_updates": 66
+    },
+    {
+      "x": 224,
+      "y": 100,
+      "native_updates": 82
+    },
+    {
+      "x": 16,
+      "y": 135,
+      "native_updates": 93
+    },
+    {
+      "x": 60,
+      "y": 135,
+      "native_updates": 80
+    },
+    {
+      "x": 120,
+      "y": 135,
+      "native_updates": 72
+    },
+    {
+      "x": 180,
+      "y": 135,
+      "native_updates": 80
+    },
+    {
+      "x": 224,
+      "y": 135,
+      "native_updates": 93
+    },
+    {
+      "x": 16,
+      "y": 160,
+      "native_updates": 102
+    },
+    {
+      "x": 60,
+      "y": 160,
+      "native_updates": 90
+    },
+    {
+      "x": 120,
+      "y": 160,
+      "native_updates": 85
+    },
+    {
+      "x": 180,
+      "y": 160,
+      "native_updates": 90
+    },
+    {
+      "x": 224,
+      "y": 160,
+      "native_updates": 102
+    }
+  ]
+}

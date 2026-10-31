@@ -1,0 +1,455 @@
+                      ( stage_loader.asm):00001         ; Native 6809 resource loader laboratory, NOT the complete game campaign.
+                      ( stage_loader.asm):00002         ; Drive 0: Disk BASIC bootstrap. Drive 1: read-only CAMPAIGN.DSK resources.
+                      ( stage_loader.asm):00003         ; Physical bank 7: map, bank 12: packed tiles. $2000: original stage script.
+                      ( stage_loader.asm):00004         ; Streaming PackBits avoids retaining either the ROM or all eight stages in RAM.
+                      ( stage_loader.asm):00005                 org $0900
+0900                  ( stage_loader.asm):00006         stage_index rmb 1
+0901                  ( stage_loader.asm):00007         stage_lsn rmb 2
+0903                  ( stage_loader.asm):00008         sector_ptr rmb 2
+0905                  ( stage_loader.asm):00009         disk_track rmb 1
+0906                  ( stage_loader.asm):00010         wanted_track rmb 1
+0907                  ( stage_loader.asm):00011         disk_sector rmb 1
+0908                  ( stage_loader.asm):00012         resources_left rmb 1
+0909                  ( stage_loader.asm):00013         bytes_left rmb 2
+090B                  ( stage_loader.asm):00014         run_left rmb 1
+090C                  ( stage_loader.asm):00015         repeat_byte rmb 1
+090D                  ( stage_loader.asm):00016         loader_error rmb 1
+090E                  ( stage_loader.asm):00017         loaded_stages rmb 1
+090F                  ( stage_loader.asm):00018         auto_advance rmb 1
+0910                  ( stage_loader.asm):00019         screen_line rmb 1
+0911                  ( stage_loader.asm):00020         tile_scan rmb 1
+0912                  ( stage_loader.asm):00021         tiles_left rmb 1
+0913                  ( stage_loader.asm):00022         map_ptr rmb 2
+0915                  ( stage_loader.asm):00023         camera_y rmb 2
+0917                  ( stage_loader.asm):00024         key_value rmb 1
+                      ( stage_loader.asm):00025         
+                      ( stage_loader.asm):00026                 org $3000
+3000                  ( stage_loader.asm):00027         start
+3000 1A50             ( stage_loader.asm):00028                 orcc #$50
+3002 10CE2FFF         ( stage_loader.asm):00029                 lds #$2fff
+3006 4F               ( stage_loader.asm):00030                 clra
+3007 1F8B             ( stage_loader.asm):00031                 tfr a,dp
+3009 B7FFDF           ( stage_loader.asm):00032                 sta $ffdf
+300C B7FFD9           ( stage_loader.asm):00033                 sta $ffd9
+300F 7FFF92           ( stage_loader.asm):00034                 clr $ff92
+3012 7FFF93           ( stage_loader.asm):00035                 clr $ff93
+3015 8EFFA0           ( stage_loader.asm):00036                 ldx #$ffa0
+3018 8608             ( stage_loader.asm):00037                 lda #8
+301A                  ( stage_loader.asm):00038         map_fixed
+301A A780             ( stage_loader.asm):00039                 sta ,x+
+301C 4C               ( stage_loader.asm):00040                 inca
+301D 8110             ( stage_loader.asm):00041                 cmpa #16
+301F 25F9             ( stage_loader.asm):00042                 blo map_fixed
+                      ( stage_loader.asm):00043                 ; CoCo 3 ROM NMI vector jumps through this RAM trampoline.
+3021 863B             ( stage_loader.asm):00044                 lda #$3b
+3023 B7FEFD           ( stage_loader.asm):00045                 sta $fefd
+3026 8609             ( stage_loader.asm):00046                 lda #9
+3028 1F8B             ( stage_loader.asm):00047                 tfr a,dp
+302A 0F00             ( stage_loader.asm):00048                 clr <stage_index
+302C 0F0E             ( stage_loader.asm):00049                 clr <loaded_stages
+302E 0F0D             ( stage_loader.asm):00050                 clr <loader_error
+3030 0F0F             ( stage_loader.asm):00051                 clr <auto_advance
+3032 864C             ( stage_loader.asm):00052                 lda #$4c
+3034 B7FF90           ( stage_loader.asm):00053                 sta $ff90
+3037 7FFF91           ( stage_loader.asm):00054                 clr $ff91
+303A 8680             ( stage_loader.asm):00055                 lda #$80
+303C B7FF98           ( stage_loader.asm):00056                 sta $ff98
+303F 861A             ( stage_loader.asm):00057                 lda #$1a
+3041 B7FF99           ( stage_loader.asm):00058                 sta $ff99
+3044 7FFF9A           ( stage_loader.asm):00059                 clr $ff9a
+3047 7FFF9C           ( stage_loader.asm):00060                 clr $ff9c
+304A 7FFF9D           ( stage_loader.asm):00061                 clr $ff9d
+304D 7FFF9E           ( stage_loader.asm):00062                 clr $ff9e
+3050 7FFF9F           ( stage_loader.asm):00063                 clr $ff9f
+3053 8E32FD           ( stage_loader.asm):00064                 ldx #palette
+3056 CEFFB0           ( stage_loader.asm):00065                 ldu #$ffb0
+3059 C610             ( stage_loader.asm):00066                 ldb #16
+305B                  ( stage_loader.asm):00067         set_palette
+305B A680             ( stage_loader.asm):00068                 lda ,x+
+305D A7C0             ( stage_loader.asm):00069                 sta ,u+
+305F 5A               ( stage_loader.asm):00070                 decb
+3060 26F9             ( stage_loader.asm):00071                 bne set_palette
+3062 862A             ( stage_loader.asm):00072                 lda #$2a              ; motor, drive 1, double density, side 0
+3064 B7FF40           ( stage_loader.asm):00073                 sta $ff40
+3067 B6FF48           ( stage_loader.asm):00074                 lda $ff48
+306A 7FFF48           ( stage_loader.asm):00075                 clr $ff48             ; restore physical head, 6ms stepping
+306D BD32E1           ( stage_loader.asm):00076                 jsr disk_wait
+3070 0F05             ( stage_loader.asm):00077                 clr <disk_track
+3072                  ( stage_loader.asm):00078         next_stage
+3072 BD3182           ( stage_loader.asm):00079                 jsr load_stage
+3075 CC06E0           ( stage_loader.asm):00080                 ldd #1760
+3078 DD15             ( stage_loader.asm):00081                 std <camera_y
+307A BD3107           ( stage_loader.asm):00082                 jsr render_stage
+307D 0C0E             ( stage_loader.asm):00083                 inc <loaded_stages
+307F                  ( stage_loader.asm):00084         stage_loaded
+307F 12               ( stage_loader.asm):00085                 nop                   ; debugger observes bytes actually loaded by CPU
+3080                  ( stage_loader.asm):00086         waiting_for_space
+3080 0D0F             ( stage_loader.asm):00087                 tst <auto_advance
+3082 263A             ( stage_loader.asm):00088                 bne advance_stage
+3084 BD30CB           ( stage_loader.asm):00089                 jsr read_keys
+3087 8510             ( stage_loader.asm):00090                 bita #$10
+3089 262D             ( stage_loader.asm):00091                 bne stage_key_release
+308B 8501             ( stage_loader.asm):00092                 bita #1
+308D 2606             ( stage_loader.asm):00093                 bne preview_up
+308F 8502             ( stage_loader.asm):00094                 bita #2
+3091 260D             ( stage_loader.asm):00095                 bne preview_down
+3093 20EB             ( stage_loader.asm):00096                 bra waiting_for_space
+3095                  ( stage_loader.asm):00097         preview_up
+3095 DC15             ( stage_loader.asm):00098                 ldd <camera_y
+3097 27E7             ( stage_loader.asm):00099                 beq waiting_for_space
+3099 830008           ( stage_loader.asm):00100                 subd #8
+309C DD15             ( stage_loader.asm):00101                 std <camera_y
+309E 200D             ( stage_loader.asm):00102                 bra preview_render
+30A0                  ( stage_loader.asm):00103         preview_down
+30A0 DC15             ( stage_loader.asm):00104                 ldd <camera_y
+30A2 108306E0         ( stage_loader.asm):00105                 cmpd #1760
+30A6 27D8             ( stage_loader.asm):00106                 beq waiting_for_space
+30A8 C30008           ( stage_loader.asm):00107                 addd #8
+30AB DD15             ( stage_loader.asm):00108                 std <camera_y
+30AD                  ( stage_loader.asm):00109         preview_render
+30AD BD3107           ( stage_loader.asm):00110                 jsr render_stage
+30B0                  ( stage_loader.asm):00111         preview_release
+30B0 BD30CB           ( stage_loader.asm):00112                 jsr read_keys
+30B3 4D               ( stage_loader.asm):00113                 tsta
+30B4 26FA             ( stage_loader.asm):00114                 bne preview_release
+30B6 20C8             ( stage_loader.asm):00115                 bra waiting_for_space
+30B8                  ( stage_loader.asm):00116         stage_key_release
+30B8 BD30CB           ( stage_loader.asm):00117                 jsr read_keys
+30BB 4D               ( stage_loader.asm):00118                 tsta
+30BC 26FA             ( stage_loader.asm):00119                 bne stage_key_release
+30BE                  ( stage_loader.asm):00120         advance_stage
+30BE 0C00             ( stage_loader.asm):00121                 inc <stage_index
+30C0 9600             ( stage_loader.asm):00122                 lda <stage_index
+30C2 8108             ( stage_loader.asm):00123                 cmpa #8
+30C4 25AC             ( stage_loader.asm):00124                 blo next_stage
+30C6                  ( stage_loader.asm):00125         all_stages_loaded
+30C6 7FFF40           ( stage_loader.asm):00126                 clr $ff40
+30C9 20FB             ( stage_loader.asm):00127                 bra all_stages_loaded
+                      ( stage_loader.asm):00128         
+                      ( stage_loader.asm):00129         ; Laboratory controls: arrows inspect the map in 8-pixel steps; SPACE next.
+                      ( stage_loader.asm):00130         ; There are deliberately no invented enemies or substitute bosses here.
+30CB                  ( stage_loader.asm):00131         read_keys
+30CB 0F17             ( stage_loader.asm):00132                 clr <key_value
+30CD 86F7             ( stage_loader.asm):00133                 lda #$f7
+30CF B7FF02           ( stage_loader.asm):00134                 sta $ff02
+30D2 B6FF00           ( stage_loader.asm):00135                 lda $ff00
+30D5 8508             ( stage_loader.asm):00136                 bita #8
+30D7 2602             ( stage_loader.asm):00137                 bne key_not_up
+30D9 0C17             ( stage_loader.asm):00138                 inc <key_value
+30DB                  ( stage_loader.asm):00139         key_not_up
+30DB 86EF             ( stage_loader.asm):00140                 lda #$ef
+30DD B7FF02           ( stage_loader.asm):00141                 sta $ff02
+30E0 B6FF00           ( stage_loader.asm):00142                 lda $ff00
+30E3 8508             ( stage_loader.asm):00143                 bita #8
+30E5 2606             ( stage_loader.asm):00144                 bne key_not_down
+30E7 9617             ( stage_loader.asm):00145                 lda <key_value
+30E9 8A02             ( stage_loader.asm):00146                 ora #2
+30EB 9717             ( stage_loader.asm):00147                 sta <key_value
+30ED                  ( stage_loader.asm):00148         key_not_down
+30ED 867F             ( stage_loader.asm):00149                 lda #$7f
+30EF B7FF02           ( stage_loader.asm):00150                 sta $ff02
+30F2 B6FF00           ( stage_loader.asm):00151                 lda $ff00
+30F5 8508             ( stage_loader.asm):00152                 bita #8
+30F7 2606             ( stage_loader.asm):00153                 bne key_not_space
+30F9 9617             ( stage_loader.asm):00154                 lda <key_value
+30FB 8A10             ( stage_loader.asm):00155                 ora #$10
+30FD 9717             ( stage_loader.asm):00156                 sta <key_value
+30FF                  ( stage_loader.asm):00157         key_not_space
+30FF 86FF             ( stage_loader.asm):00158                 lda #$ff
+3101 B7FF02           ( stage_loader.asm):00159                 sta $ff02
+3104 9617             ( stage_loader.asm):00160                 lda <key_value
+3106 39               ( stage_loader.asm):00161                 rts
+                      ( stage_loader.asm):00162         
+                      ( stage_loader.asm):00163         ; Render the real loaded map/tiles into physical framebuffer banks 0..2.
+3107                  ( stage_loader.asm):00164         render_stage
+3107 860C             ( stage_loader.asm):00165                 lda #12
+3109 B7FFA5           ( stage_loader.asm):00166                 sta $ffa5
+310C 8607             ( stage_loader.asm):00167                 lda #7
+310E B7FFA6           ( stage_loader.asm):00168                 sta $ffa6
+3111 DC15             ( stage_loader.asm):00169                 ldd <camera_y
+3113 44               ( stage_loader.asm):00170                 lsra
+3114 56               ( stage_loader.asm):00171                 rorb
+3115 44               ( stage_loader.asm):00172                 lsra
+3116 56               ( stage_loader.asm):00173                 rorb
+3117 44               ( stage_loader.asm):00174                 lsra
+3118 56               ( stage_loader.asm):00175                 rorb
+3119 58               ( stage_loader.asm):00176                 lslb
+311A 49               ( stage_loader.asm):00177                 rola
+311B 58               ( stage_loader.asm):00178                 lslb
+311C 49               ( stage_loader.asm):00179                 rola
+311D 58               ( stage_loader.asm):00180                 lslb
+311E 49               ( stage_loader.asm):00181                 rola
+311F 58               ( stage_loader.asm):00182                 lslb
+3120 49               ( stage_loader.asm):00183                 rola
+3121 58               ( stage_loader.asm):00184                 lslb
+3122 49               ( stage_loader.asm):00185                 rola
+3123 C3C000           ( stage_loader.asm):00186                 addd #$c000
+3126 DD13             ( stage_loader.asm):00187                 std <map_ptr
+3128 0F10             ( stage_loader.asm):00188                 clr <screen_line
+312A 0F11             ( stage_loader.asm):00189                 clr <tile_scan
+312C                  ( stage_loader.asm):00190         render_scanline
+312C 9610             ( stage_loader.asm):00191                 lda <screen_line
+312E 44               ( stage_loader.asm):00192                 lsra
+312F 44               ( stage_loader.asm):00193                 lsra
+3130 44               ( stage_loader.asm):00194                 lsra
+3131 44               ( stage_loader.asm):00195                 lsra
+3132 44               ( stage_loader.asm):00196                 lsra
+3133 44               ( stage_loader.asm):00197                 lsra
+3134 B7FFA4           ( stage_loader.asm):00198                 sta $ffa4
+3137 9610             ( stage_loader.asm):00199                 lda <screen_line
+3139 843F             ( stage_loader.asm):00200                 anda #63
+313B 5F               ( stage_loader.asm):00201                 clrb
+313C 44               ( stage_loader.asm):00202                 lsra
+313D 56               ( stage_loader.asm):00203                 rorb
+313E C38000           ( stage_loader.asm):00204                 addd #$8000
+3141 1F03             ( stage_loader.asm):00205                 tfr d,u
+3143 9E13             ( stage_loader.asm):00206                 ldx <map_ptr
+3145 8620             ( stage_loader.asm):00207                 lda #32
+3147 9712             ( stage_loader.asm):00208                 sta <tiles_left
+3149                  ( stage_loader.asm):00209         render_tile
+3149 4F               ( stage_loader.asm):00210                 clra
+314A E680             ( stage_loader.asm):00211                 ldb ,x+
+314C 58               ( stage_loader.asm):00212                 lslb
+314D 49               ( stage_loader.asm):00213                 rola
+314E 58               ( stage_loader.asm):00214                 lslb
+314F 49               ( stage_loader.asm):00215                 rola
+3150 58               ( stage_loader.asm):00216                 lslb
+3151 49               ( stage_loader.asm):00217                 rola
+3152 58               ( stage_loader.asm):00218                 lslb
+3153 49               ( stage_loader.asm):00219                 rola
+3154 58               ( stage_loader.asm):00220                 lslb
+3155 49               ( stage_loader.asm):00221                 rola
+3156 DB11             ( stage_loader.asm):00222                 addb <tile_scan
+3158 89A0             ( stage_loader.asm):00223                 adca #$a0
+315A 1F02             ( stage_loader.asm):00224                 tfr d,y
+315C ECA4             ( stage_loader.asm):00225                 ldd ,y
+315E EDC1             ( stage_loader.asm):00226                 std ,u++
+3160 EC22             ( stage_loader.asm):00227                 ldd 2,y
+3162 EDC1             ( stage_loader.asm):00228                 std ,u++
+3164 0A12             ( stage_loader.asm):00229                 dec <tiles_left
+3166 26E1             ( stage_loader.asm):00230                 bne render_tile
+3168 9611             ( stage_loader.asm):00231                 lda <tile_scan
+316A 8B04             ( stage_loader.asm):00232                 adda #4
+316C 841F             ( stage_loader.asm):00233                 anda #31
+316E 9711             ( stage_loader.asm):00234                 sta <tile_scan
+3170 2607             ( stage_loader.asm):00235                 bne render_same_row
+3172 DC13             ( stage_loader.asm):00236                 ldd <map_ptr
+3174 C30020           ( stage_loader.asm):00237                 addd #32
+3177 DD13             ( stage_loader.asm):00238                 std <map_ptr
+3179                  ( stage_loader.asm):00239         render_same_row
+3179 0C10             ( stage_loader.asm):00240                 inc <screen_line
+317B 9610             ( stage_loader.asm):00241                 lda <screen_line
+317D 81C0             ( stage_loader.asm):00242                 cmpa #192
+317F 25AB             ( stage_loader.asm):00243                 blo render_scanline
+3181 39               ( stage_loader.asm):00244                 rts
+                      ( stage_loader.asm):00245         
+3182                  ( stage_loader.asm):00246         load_stage
+3182 9600             ( stage_loader.asm):00247                 lda <stage_index
+3184 48               ( stage_loader.asm):00248                 lsla
+3185 8E330D           ( stage_loader.asm):00249                 ldx #stage_directory
+3188 EC86             ( stage_loader.asm):00250                 ldd a,x
+318A DD01             ( stage_loader.asm):00251                 std <stage_lsn
+318C CC1100           ( stage_loader.asm):00252                 ldd #$1100
+318F DD03             ( stage_loader.asm):00253                 std <sector_ptr
+                      ( stage_loader.asm):00254                 ; Validate KMST, version 1, requested stage and resource count.
+3191 CE32F8           ( stage_loader.asm):00255                 ldu #pack_header
+3194 C605             ( stage_loader.asm):00256                 ldb #5
+3196                  ( stage_loader.asm):00257         header_loop
+3196 3404             ( stage_loader.asm):00258                 pshs b
+3198 BD3259           ( stage_loader.asm):00259                 jsr stream_byte
+319B A1C0             ( stage_loader.asm):00260                 cmpa ,u+
+319D 1026009A         ( stage_loader.asm):00261                 lbne bad_format
+31A1 3504             ( stage_loader.asm):00262                 puls b
+31A3 5A               ( stage_loader.asm):00263                 decb
+31A4 26F0             ( stage_loader.asm):00264                 bne header_loop
+31A6 BD3259           ( stage_loader.asm):00265                 jsr stream_byte
+31A9 9100             ( stage_loader.asm):00266                 cmpa <stage_index
+31AB 1026008C         ( stage_loader.asm):00267                 lbne bad_format
+31AF BD3259           ( stage_loader.asm):00268                 jsr stream_byte
+31B2 8103             ( stage_loader.asm):00269                 cmpa #3
+31B4 10260083         ( stage_loader.asm):00270                 lbne bad_format
+31B8 9708             ( stage_loader.asm):00271                 sta <resources_left
+31BA                  ( stage_loader.asm):00272         resource_loop
+31BA BD3259           ( stage_loader.asm):00273                 jsr stream_byte
+31BD 81FF             ( stage_loader.asm):00274                 cmpa #$ff
+31BF 2713             ( stage_loader.asm):00275                 beq resource_script
+31C1 8107             ( stage_loader.asm):00276                 cmpa #7
+31C3 2706             ( stage_loader.asm):00277                 beq resource_bank
+31C5 810C             ( stage_loader.asm):00278                 cmpa #12
+31C7 10260070         ( stage_loader.asm):00279                 lbne bad_format
+31CB                  ( stage_loader.asm):00280         resource_bank
+31CB B7FFA4           ( stage_loader.asm):00281                 sta $ffa4
+31CE 108E8000         ( stage_loader.asm):00282                 ldy #$8000
+31D2 2004             ( stage_loader.asm):00283                 bra resource_length
+31D4                  ( stage_loader.asm):00284         resource_script
+31D4 108E2000         ( stage_loader.asm):00285                 ldy #$2000
+31D8                  ( stage_loader.asm):00286         resource_length
+31D8 BD3259           ( stage_loader.asm):00287                 jsr stream_byte
+31DB 9709             ( stage_loader.asm):00288                 sta <bytes_left
+31DD BD3259           ( stage_loader.asm):00289                 jsr stream_byte
+31E0 970A             ( stage_loader.asm):00290                 sta <bytes_left+1
+31E2 DC09             ( stage_loader.asm):00291                 ldd <bytes_left
+31E4 2755             ( stage_loader.asm):00292                 beq bad_format
+31E6 108C2000         ( stage_loader.asm):00293                 cmpy #$2000
+31EA 2608             ( stage_loader.asm):00294                 bne bank_length
+31EC 10830800         ( stage_loader.asm):00295                 cmpd #$0800
+31F0 2249             ( stage_loader.asm):00296                 bhi bad_format
+31F2 2006             ( stage_loader.asm):00297                 bra unpack_control
+31F4                  ( stage_loader.asm):00298         bank_length
+31F4 10832000         ( stage_loader.asm):00299                 cmpd #$2000
+31F8 2241             ( stage_loader.asm):00300                 bhi bad_format
+31FA                  ( stage_loader.asm):00301         unpack_control
+31FA BD3259           ( stage_loader.asm):00302                 jsr stream_byte
+31FD 4D               ( stage_loader.asm):00303                 tsta
+31FE 2B0F             ( stage_loader.asm):00304                 bmi unpack_repeat
+3200 4C               ( stage_loader.asm):00305                 inca
+3201 970B             ( stage_loader.asm):00306                 sta <run_left
+3203                  ( stage_loader.asm):00307         unpack_literal_loop
+3203 BD3259           ( stage_loader.asm):00308                 jsr stream_byte
+3206 BD322B           ( stage_loader.asm):00309                 jsr output_byte
+3209 0A0B             ( stage_loader.asm):00310                 dec <run_left
+320B 26F6             ( stage_loader.asm):00311                 bne unpack_literal_loop
+320D 2013             ( stage_loader.asm):00312                 bra unpack_continue
+320F                  ( stage_loader.asm):00313         unpack_repeat
+320F 847F             ( stage_loader.asm):00314                 anda #127
+3211 4C               ( stage_loader.asm):00315                 inca
+3212 970B             ( stage_loader.asm):00316                 sta <run_left
+3214 BD3259           ( stage_loader.asm):00317                 jsr stream_byte
+3217 970C             ( stage_loader.asm):00318                 sta <repeat_byte
+3219                  ( stage_loader.asm):00319         unpack_repeat_loop
+3219 960C             ( stage_loader.asm):00320                 lda <repeat_byte
+321B BD322B           ( stage_loader.asm):00321                 jsr output_byte
+321E 0A0B             ( stage_loader.asm):00322                 dec <run_left
+3220 26F7             ( stage_loader.asm):00323                 bne unpack_repeat_loop
+3222                  ( stage_loader.asm):00324         unpack_continue
+3222 DC09             ( stage_loader.asm):00325                 ldd <bytes_left
+3224 26D4             ( stage_loader.asm):00326                 bne unpack_control
+3226 0A08             ( stage_loader.asm):00327                 dec <resources_left
+3228 2690             ( stage_loader.asm):00328                 bne resource_loop
+322A 39               ( stage_loader.asm):00329                 rts
+322B                  ( stage_loader.asm):00330         output_byte
+322B 3402             ( stage_loader.asm):00331                 pshs a
+322D DC09             ( stage_loader.asm):00332                 ldd <bytes_left
+322F 270A             ( stage_loader.asm):00333                 beq bad_format
+3231 830001           ( stage_loader.asm):00334                 subd #1
+3234 DD09             ( stage_loader.asm):00335                 std <bytes_left
+3236 3502             ( stage_loader.asm):00336                 puls a
+3238 A7A0             ( stage_loader.asm):00337                 sta ,y+
+323A 39               ( stage_loader.asm):00338                 rts
+                      ( stage_loader.asm):00339         
+323B                  ( stage_loader.asm):00340         bad_format
+323B 8601             ( stage_loader.asm):00341                 lda #1
+323D 2006             ( stage_loader.asm):00342                 bra disk_error
+323F                  ( stage_loader.asm):00343         disk_timeout
+323F 8602             ( stage_loader.asm):00344                 lda #2
+3241 2002             ( stage_loader.asm):00345                 bra disk_error
+3243                  ( stage_loader.asm):00346         disk_status_error
+                      ( stage_loader.asm):00347                 ; Preserve WD2793 status separately from format and timeout codes.
+3243 8A80             ( stage_loader.asm):00348                 ora #$80
+3245                  ( stage_loader.asm):00349         disk_error
+3245 970D             ( stage_loader.asm):00350                 sta <loader_error
+3247 8624             ( stage_loader.asm):00351                 lda #$24
+3249 B7FF9A           ( stage_loader.asm):00352                 sta $ff9a
+324C 86D0             ( stage_loader.asm):00353                 lda #$d0
+324E B7FF48           ( stage_loader.asm):00354                 sta $ff48
+3251 B6FF48           ( stage_loader.asm):00355                 lda $ff48
+3254 7FFF40           ( stage_loader.asm):00356                 clr $ff40
+3257                  ( stage_loader.asm):00357         loader_failed
+3257 20FE             ( stage_loader.asm):00358                 bra loader_failed
+                      ( stage_loader.asm):00359         
+                      ( stage_loader.asm):00360         ; Returns A, preserves B/X/Y/U. Sector boundaries may occur in ANY run/header.
+3259                  ( stage_loader.asm):00361         stream_byte
+3259 3454             ( stage_loader.asm):00362                 pshs b,x,u
+325B 9E03             ( stage_loader.asm):00363                 ldx <sector_ptr
+325D 8C1100           ( stage_loader.asm):00364                 cmpx #$1100
+3260 2506             ( stage_loader.asm):00365                 blo stream_available
+3262 BD326E           ( stage_loader.asm):00366                 jsr read_sector
+3265 8E1000           ( stage_loader.asm):00367                 ldx #$1000
+3268                  ( stage_loader.asm):00368         stream_available
+3268 A680             ( stage_loader.asm):00369                 lda ,x+
+326A 9F03             ( stage_loader.asm):00370                 stx <sector_ptr
+326C 35D4             ( stage_loader.asm):00371                 puls b,x,u,pc
+                      ( stage_loader.asm):00372         
+                      ( stage_loader.asm):00373         ; Sequential logical sectors; directory allows reloading any stage independently.
+326E                  ( stage_loader.asm):00374         read_sector
+326E DC01             ( stage_loader.asm):00375                 ldd <stage_lsn
+3270 0F06             ( stage_loader.asm):00376                 clr <wanted_track
+3272                  ( stage_loader.asm):00377         lsn_divide
+3272 10830012         ( stage_loader.asm):00378                 cmpd #18
+3276 2507             ( stage_loader.asm):00379                 blo lsn_remainder
+3278 830012           ( stage_loader.asm):00380                 subd #18
+327B 0C06             ( stage_loader.asm):00381                 inc <wanted_track
+327D 20F3             ( stage_loader.asm):00382                 bra lsn_divide
+327F                  ( stage_loader.asm):00383         lsn_remainder
+327F 5C               ( stage_loader.asm):00384                 incb
+3280 D707             ( stage_loader.asm):00385                 stb <disk_sector
+3282 9606             ( stage_loader.asm):00386                 lda <wanted_track
+3284 8123             ( stage_loader.asm):00387                 cmpa #35
+3286 24B3             ( stage_loader.asm):00388                 bhs bad_format
+3288 9105             ( stage_loader.asm):00389                 cmpa <disk_track
+328A 2713             ( stage_loader.asm):00390                 beq head_ready
+328C B7FF4B           ( stage_loader.asm):00391                 sta $ff4b
+328F 8610             ( stage_loader.asm):00392                 lda #$10              ; seek track specified in data register
+3291 B7FF48           ( stage_loader.asm):00393                 sta $ff48
+3294 BD32E1           ( stage_loader.asm):00394                 jsr disk_wait
+3297 8518             ( stage_loader.asm):00395                 bita #$18             ; seek error / CRC
+3299 26A8             ( stage_loader.asm):00396                 bne disk_status_error
+329B 9606             ( stage_loader.asm):00397                 lda <wanted_track
+329D 9705             ( stage_loader.asm):00398                 sta <disk_track
+329F                  ( stage_loader.asm):00399         head_ready
+329F 9605             ( stage_loader.asm):00400                 lda <disk_track
+32A1 B7FF49           ( stage_loader.asm):00401                 sta $ff49
+32A4 9607             ( stage_loader.asm):00402                 lda <disk_sector
+32A6 B7FF4A           ( stage_loader.asm):00403                 sta $ff4a
+32A9 8680             ( stage_loader.asm):00404                 lda #$80
+32AB B7FF48           ( stage_loader.asm):00405                 sta $ff48
+32AE 8E1000           ( stage_loader.asm):00406                 ldx #$1000
+32B1                  ( stage_loader.asm):00407         sector_byte
+32B1 CE0000           ( stage_loader.asm):00408                 ldu #0
+32B4                  ( stage_loader.asm):00409         wait_drq
+32B4 B6FF48           ( stage_loader.asm):00410                 lda $ff48
+32B7 8502             ( stage_loader.asm):00411                 bita #2
+32B9 260B             ( stage_loader.asm):00412                 bne got_drq
+32BB 8501             ( stage_loader.asm):00413                 bita #1
+32BD 2784             ( stage_loader.asm):00414                 beq disk_status_error
+32BF 335F             ( stage_loader.asm):00415                 leau -1,u
+32C1 26F1             ( stage_loader.asm):00416                 bne wait_drq
+32C3 16FF79           ( stage_loader.asm):00417                 lbra disk_timeout
+32C6                  ( stage_loader.asm):00418         got_drq
+32C6 B6FF4B           ( stage_loader.asm):00419                 lda $ff4b
+32C9 A780             ( stage_loader.asm):00420                 sta ,x+
+32CB 8C1100           ( stage_loader.asm):00421                 cmpx #$1100
+32CE 25E1             ( stage_loader.asm):00422                 blo sector_byte
+32D0 BD32E1           ( stage_loader.asm):00423                 jsr disk_wait
+32D3 851C             ( stage_loader.asm):00424                 bita #$1c             ; record not found, CRC, lost data
+32D5 1026FF6A         ( stage_loader.asm):00425                 lbne disk_status_error
+32D9 DC01             ( stage_loader.asm):00426                 ldd <stage_lsn
+32DB C30001           ( stage_loader.asm):00427                 addd #1
+32DE DD01             ( stage_loader.asm):00428                 std <stage_lsn
+32E0 39               ( stage_loader.asm):00429                 rts
+32E1                  ( stage_loader.asm):00430         disk_wait
+32E1 3410             ( stage_loader.asm):00431                 pshs x
+32E3 8E0000           ( stage_loader.asm):00432                 ldx #0
+                      ( stage_loader.asm):00433                 ; Allow command register execution before testing BUSY.
+32E6 12               ( stage_loader.asm):00434                 nop
+32E7 12               ( stage_loader.asm):00435                 nop
+32E8                  ( stage_loader.asm):00436         wait_busy
+32E8 B6FF48           ( stage_loader.asm):00437                 lda $ff48
+32EB 8501             ( stage_loader.asm):00438                 bita #1
+32ED 2707             ( stage_loader.asm):00439                 beq disk_wait_done
+32EF 301F             ( stage_loader.asm):00440                 leax -1,x
+32F1 26F5             ( stage_loader.asm):00441                 bne wait_busy
+32F3 16FF49           ( stage_loader.asm):00442                 lbra disk_timeout
+32F6                  ( stage_loader.asm):00443         disk_wait_done
+32F6 3590             ( stage_loader.asm):00444                 puls x,pc
+32F8 4B4D535401       ( stage_loader.asm):00445         pack_header fcb 'K','M','S','T',1
+32FD                  ( stage_loader.asm):00446         palette
+                      ( stage_loader.asm):00447                 include "../../src/palette.inc"
+32FD 000011170F0F231F (./src/palette.inc):00001                 fcb $00,$00,$11,$17,$0f,$0f,$23,$1f,$27,$27,$31,$3c,$11,$2a,$38,$3f
+     2727313C112A383F
+                      ( stage_loader.asm):00448                 include "stage_directory.inc"
+330D                  (age_directory.inc):00001         stage_directory
+330D 000000350067009C (age_directory.inc):00002                 fdb 0,53,103,156,209,241,297,339
+     00D100F101290153
+331D                  ( stage_loader.asm):00449         program_end
+                      ( stage_loader.asm):00450                 end start

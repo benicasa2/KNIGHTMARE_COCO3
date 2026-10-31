@@ -1,0 +1,59 @@
+{
+  "status": "deferred rendering and reduced erase/redraw interval verified; no measured slowdown",
+  "date": "2026-10-31",
+  "ram_kib": 128,
+  "disks": {
+    "DAC6": "91c708b824a6a60551185cacec0d771b5f65a1b0c10e25784adb827af164a461",
+    "ORCH90": "0ea209990838bd51c6ca80f3ed7947399db0265ec54e746b68183e9f1f2b8669"
+  },
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed"
+    }
+  },
+  "reproducible_build": true,
+  "comparison": {
+    "idle": {
+      "before_frame_ms": 9.841334583026613,
+      "after_frame_ms": 9.629715508535302,
+      "before_erase_redraw_ms": 9.796077434422532,
+      "after_erase_redraw_ms": 6.794858005696255,
+      "erase_redraw_reduction_percent": 30.63695084912521
+    },
+    "crowded": {
+      "before_frame_ms": 60.62283521136531,
+      "after_frame_ms": 60.411216136874,
+      "before_erase_redraw_ms": 60.57757806276123,
+      "after_erase_redraw_ms": 53.82220365996237,
+      "erase_redraw_reduction_percent": 11.151608596500795
+    }
+  },
+  "full_flicker_elimination": false,
+  "captured_video_verification": false,
+  "physical_hardware_test": false,
+  "core_headroom_bytes": {
+    "DAC6": 3919,
+    "ORCH90": 3912
+  },
+  "extra_scratch_bytes": 38,
+  "remaining_campaign_incomplete": true
+}

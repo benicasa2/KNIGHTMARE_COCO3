@@ -1,0 +1,53 @@
+{
+  "trajectories": 30,
+  "samples": 5400,
+  "satellite_thresholds": [
+    58,
+    255,
+    170
+  ],
+  "inventory": [
+    {
+      "stage_already_mounted": false,
+      "before": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ],
+      "after": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ]
+    },
+    {
+      "stage_already_mounted": true,
+      "before": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,225 @@
+[
+  {
+    "call": "0x40e7",
+    "table": "0x40ea",
+    "targets": [
+      "0x40fe",
+      "0x412e",
+      "0x4135",
+      "0x416a",
+      "0x419c",
+      "0x41e1",
+      "0x41f4",
+      "0x420b",
+      "0x422b",
+      "0x425f"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x56b5",
+    "table": "0x56b8",
+    "targets": [
+      "0x8ae6",
+      "0x8e57",
+      "0x90bf",
+      "0x9224",
+      "0x8ae6",
+      "0x8ae6",
+      "0x9435",
+      "0x9645",
+      "0x6121",
+      "0x7ee0"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x5d09",
+    "table": "0x5d0c",
+    "targets": [
+      "0x5d14",
+      "0x5d30",
+      "0x5d47",
+      "0x5d95"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x6906",
+    "table": "0x6909",
+    "targets": [
+      "0x4305",
+      "0x6919",
+      "0x691f",
+      "0x694e",
+      "0x6983",
+      "0x698a",
+      "0x69bc",
+      "0x69d5"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x85d9",
+    "table": "0x85dc",
+    "targets": [
+      "0x860f",
+      "0x8646",
+      "0x8646",
+      "0x8646",
+      "0x863f",
+      "0x8646",
+      "0x864c",
+      "0x8646",
+      "0x8646",
+      "0x8636",
+      "0x8646",
+      "0x8674",
+      "0x8646",
+      "0x8646"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x88ef",
+    "table": "0x88f2",
+    "targets": [
+      "0x8a95",
+      "0x8e34",
+      "0x9090",
+      "0x9201",
+      "0x8a95",
+      "0x8a95",
+      "0x941d",
+      "0x95e4"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x8aa3",
+    "table": "0x8aa6",
+    "targets": [
+      "0x8ab4",
+      "0x8afa",
+      "0x8b1b",
+      "0x8bb0",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x8e41",
+    "table": "0x8e44",
+    "targets": [
+      "0x8e54",
+      "0x9238",
+      "0x8e69",
+      "0x8e75",
+      "0x928f",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x90a9",
+    "table": "0x90ac",
+    "targets": [
+      "0x90bc",
+      "0x9238",
+      "0x924c",
+      "0x90e5",
+      "0x928f",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x920e",
+    "table": "0x9211",
+    "targets": [
+      "0x9221",
+      "0x9238",
+      "0x924c",
+      "0x926e",
+      "0x928f",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x9421",
+    "table": "0x9424",
+    "targets": [
+      "0x9432",
+      "0x944b",
+      "0x9454",
+      "0x928f",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2",
+      "0x4ecd"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x9546",
+    "table": "0x9549",
+    "targets": [
+      "0x7eb9",
+      "0x9557",
+      "0x7f15",
+      "0x7c74",
+      "0x7c8a",
+      "0x7ca0",
+      "0x7cef"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x957f",
+    "table": "0x9582",
+    "targets": [
+      "0x7ebc",
+      "0x9588",
+      "0x9598"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x95f4",
+    "table": "0x95f7",
+    "targets": [
+      "0x9609",
+      "0x9238",
+      "0x9662",
+      "0x9687",
+      "0x96c1",
+      "0x928f",
+      "0x92ac",
+      "0x92c3",
+      "0x92d2",
+      "0x4ecd"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  },
+  {
+    "call": "0x96ed",
+    "table": "0x96f0",
+    "targets": [
+      "0x96f8",
+      "0x97ab",
+      "0x97d6",
+      "0x97f0",
+      "0x7edd"
+    ],
+    "classification": "candidate inline jump table, targets require dynamic confirmation"
+  }
+]

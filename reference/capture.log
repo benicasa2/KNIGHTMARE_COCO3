@@ -1,0 +1,33 @@
+{VDP palette} ioports joystickports {Printer Port} {PSG regs} {VDP status regs} {VDP register latch status} {C-BIOS Main ROM romblocks} {slotted memory} keymatrix {physical VRAM} {C-BIOS Logo ROM romblocks} {Knightmare - Majyo Densetsu romblocks} {VDP palette latch status} {VDP regs} memory VRAM {C-BIOS Main ROM} {C-BIOS Logo ROM} {VDP data latch value} {Knightmare - Majyo Densetsu} {CPU regs} {VRAM access status} {Main RAM} {VRAM pointer}
+debug watchpoint <subcommand> [<arguments>]
+  Possible subcommands are:
+    list      list all active watchpoints
+    create    create a new watchpoint
+    configure configure an existing watchpoint
+    remove    remove an existing watchpoint
+  Type 'help debug watchpoint <subcommand>' for help about a specific subcommand.
+
+debug watchpoint create [<property-name> <property-value>]...
+  Create a new watchpoint with given properties. The following properties are supported:
+  -type       one of 'read_io', 'write_io', 'read_mem', 'write_mem'
+  -address    the address(es) where the watchpoint should trigger, can be a single address or a begin/end-pair
+  -condition  a Tcl expression that must evaluate to true for the watchpoint to trigger (default = no condition)
+  -command    a Tcl command that should be executed when the watchpoint triggers (default = 'debug break')
+  -enabled    set to false to (temporarily) disable this watchpoint
+  -once       if 'true' the watchpoint is automatically removed after it triggered (default = 'false', meaning recurring)
+
+debug breakpoint create [<property-name> <property-value>]...
+  Create a new breakpoint with given properties. The following properties are supported:
+  -address    the address where the breakpoint should trigger
+  -condition  a Tcl expression that must evaluate to true for the breakpoint to trigger (default = no condition)
+  -command    a Tcl command that should be executed when the breakpoint triggers (default = 'debug break')
+  -enabled    set to false to (temporarily) disable this breakpoint
+  -once       if 'true' the breakpoint is automatically removed after it triggered (default = 'false', meaning recurring)
+
+status: power=true pause=false
+title: 5.0000022349209186 16585
+start: 7.0000022349209186 16585
+play: 9.000000838095344 16585
+later: 12.000002514286033 16585
+action: 18.00000167619069 16585
+end: 30.000001396825574 16585

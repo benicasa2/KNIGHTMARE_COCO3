@@ -1,0 +1,396 @@
+{
+  "source_rom_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "status": "resource streaming laboratory; NOT playable campaign",
+  "resource_disk_used_bytes": 100352,
+  "resource_disk_capacity_bytes": 161280,
+  "resource_disk_sha256": "f84d68ce595d44595d984254db877c415426e36b8cd3f9e40813f40d23187f6f",
+  "boot_disk_sha256": "3a75b83e0d73cf5d6604b8c95d1669f308ffdca8cdc0ef8af80aa71c3194303d",
+  "ram_kib": 128,
+  "format": "KMST v1, PackBits, big-endian native words; stage scripts STGP v1",
+  "stages": [
+    {
+      "stage": 1,
+      "start_lsn": 0,
+      "packed_bytes": 13344,
+      "wave_pointer": "$705B",
+      "wave_count": 34,
+      "enemy_types": [
+        1,
+        2,
+        9,
+        14
+      ],
+      "fixed_objects": 36,
+      "tokens": 9,
+      "boss_handler": "$8A95",
+      "boss_family": "winged first guardian",
+      "boss_hp": 20,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage1-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7671,
+          "sha256": "92e4b8f8f029f277606e0e596ab6bf3afbdc226f5f226d5a7dcf09d62a9e0492"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage1-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 5331,
+          "sha256": "7fb59db79a20153dcf65f953951e7d88059a2396b4e2dcdc6ec34b6d34b7f4fd"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage1-script.bin",
+          "bytes": 323,
+          "packed_bytes": 326,
+          "sha256": "652a702e2faa467814541b7c949ef707ad52fa5a294e1f0d90a388095073f11a"
+        }
+      ]
+    },
+    {
+      "stage": 2,
+      "start_lsn": 53,
+      "packed_bytes": 12732,
+      "wave_pointer": "$709F",
+      "wave_count": 41,
+      "enemy_types": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        9,
+        11,
+        12,
+        14
+      ],
+      "fixed_objects": 42,
+      "tokens": 9,
+      "boss_handler": "$8E34",
+      "boss_family": "three-ball guardian",
+      "boss_hp": 30,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage2-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7767,
+          "sha256": "6eb6f84f50a0117c81b0e13949893fb173ad7d720645ee061105ab23cb5066b2"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage2-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 4573,
+          "sha256": "ef76b4f1f024fc3b1f02a959cc9699680de9404e67825b9fd73c36b7647f9db7"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage2-script.bin",
+          "bytes": 373,
+          "packed_bytes": 376,
+          "sha256": "db0ce4509ae255198c27bd5f75cb9c9f7c793ea0716d8aaa83bf0a491658ced5"
+        }
+      ]
+    },
+    {
+      "stage": 3,
+      "start_lsn": 103,
+      "packed_bytes": 13328,
+      "wave_pointer": "$70F1",
+      "wave_count": 41,
+      "enemy_types": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        10,
+        11,
+        12,
+        14
+      ],
+      "fixed_objects": 42,
+      "tokens": 9,
+      "boss_handler": "$9090",
+      "boss_family": "mouth guardian",
+      "boss_hp": 30,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage3-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7629,
+          "sha256": "0847a0fb1e376110a422351587fc7dcf42e742403dde79f776d22697e34901a5"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage3-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 5307,
+          "sha256": "e1cc0a51cac1fe52b3c1d7d622cf7c5e87fcadbdfdbed1e33dc8a631e19dafeb"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage3-script.bin",
+          "bytes": 373,
+          "packed_bytes": 376,
+          "sha256": "04ee7bc78f57775dc533557cc97227af004599dd65a3bfbefb8a2b2c9f111540"
+        }
+      ]
+    },
+    {
+      "stage": 4,
+      "start_lsn": 156,
+      "packed_bytes": 13334,
+      "wave_pointer": "$7143",
+      "wave_count": 38,
+      "enemy_types": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        9,
+        10,
+        11,
+        12,
+        14
+      ],
+      "fixed_objects": 46,
+      "tokens": 9,
+      "boss_handler": "$9201",
+      "boss_family": "fragment guardian",
+      "boss_hp": 45,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage4-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7593,
+          "sha256": "46b18c315ff1ef4368765a6df8c23faccd6e4b273e53e5cf1d43227e9daab75f"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage4-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 5331,
+          "sha256": "12b39e980c7d00b0320b1070f31ab61d38a3e6acc0f34b9666b8d9f5722a2899"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage4-script.bin",
+          "bytes": 391,
+          "packed_bytes": 394,
+          "sha256": "5aeb02e2872663d6c0b42f5417bc128e6633db47e4da409af01707fcee03c29f"
+        }
+      ]
+    },
+    {
+      "stage": 5,
+      "start_lsn": 209,
+      "packed_bytes": 7966,
+      "wave_pointer": "$718F",
+      "wave_count": 36,
+      "enemy_types": [
+        5,
+        7,
+        8,
+        9,
+        12,
+        14
+      ],
+      "fixed_objects": 52,
+      "tokens": 9,
+      "boss_handler": "$8A95",
+      "boss_family": "first guardian variant 5",
+      "boss_hp": 45,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage5-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 1834,
+          "sha256": "ef9d0e97e3a54f007c324c3f4c6bc170dcd5f03d2114ad5a038657c309fb61f4"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage5-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 5689,
+          "sha256": "de3da5ed421fe88a20e49a61a748a3d32669c8e6b5f6f3d98c5b600a3883e663"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage5-script.bin",
+          "bytes": 423,
+          "packed_bytes": 427,
+          "sha256": "ed06e3a1008d00d5f96490a9a8152d2b52433150b0aa756e37d7cd2af5f28c3c"
+        }
+      ]
+    },
+    {
+      "stage": 6,
+      "start_lsn": 241,
+      "packed_bytes": 14278,
+      "wave_pointer": "$71D7",
+      "wave_count": 33,
+      "enemy_types": [
+        1,
+        2,
+        3,
+        5,
+        6,
+        8,
+        9,
+        15
+      ],
+      "fixed_objects": 50,
+      "tokens": 13,
+      "boss_handler": "$8A95",
+      "boss_family": "first guardian variant 6",
+      "boss_hp": 45,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage6-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7579,
+          "sha256": "2584d257cc6810b5451028c2362ebb697d4e217e6cde1a47756b31ac81561007"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage6-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 6263,
+          "sha256": "57ab862f37b2475f8f767b3efcd0e7e46658d87bcb1a027ac56e8db4a0638f08"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage6-script.bin",
+          "bytes": 417,
+          "packed_bytes": 420,
+          "sha256": "daad5f7192435fe01eb7d0bfaaaa7be9ccc15116882a368cd6c1d2b60b8e007f"
+        }
+      ]
+    },
+    {
+      "stage": 7,
+      "start_lsn": 297,
+      "packed_bytes": 10623,
+      "wave_pointer": "$7219",
+      "wave_count": 30,
+      "enemy_types": [
+        0,
+        4,
+        8,
+        11,
+        12,
+        13
+      ],
+      "fixed_objects": 45,
+      "tokens": 13,
+      "boss_handler": "$941D",
+      "boss_family": "six-segment serpent",
+      "boss_hp": 60,
+      "final_gates_hp": null,
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage7-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 3960,
+          "sha256": "06044bc9bc55baa182f8826da2c2bbc344bd7ea79e5a7c461a87e0abbc525303"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage7-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 6263,
+          "sha256": "57ab862f37b2475f8f767b3efcd0e7e46658d87bcb1a027ac56e8db4a0638f08"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage7-script.bin",
+          "bytes": 381,
+          "packed_bytes": 384,
+          "sha256": "64a251fabfceb6535fc3f6eca5249330467a9e00705755017bd42e57b36fcaaa"
+        }
+      ]
+    },
+    {
+      "stage": 8,
+      "start_lsn": 339,
+      "packed_bytes": 13321,
+      "wave_pointer": "$7255",
+      "wave_count": 35,
+      "enemy_types": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "fixed_objects": 43,
+      "tokens": 13,
+      "boss_handler": "$95E4",
+      "boss_family": "six-gate final encounter",
+      "boss_hp": null,
+      "final_gates_hp": [
+        64,
+        20,
+        20,
+        20,
+        20,
+        20
+      ],
+      "native_gameplay_complete": false,
+      "resources": [
+        {
+          "bank": 7,
+          "path": "assets/stage8-map.bin",
+          "bytes": 7808,
+          "packed_bytes": 7827,
+          "sha256": "69787443c09832d62e230d1b403866d3ae6fdfd0133bb70ecdb318b864f9c3f5"
+        },
+        {
+          "bank": 12,
+          "path": "assets/stage8-tiles.bin",
+          "bytes": 8192,
+          "packed_bytes": 5096,
+          "sha256": "3380d1f208d73abc5524a6bc4862e5a8e02f40699e87804c4aa2d4c1a2f00eae"
+        },
+        {
+          "bank": 255,
+          "path": "assets/stage8-script.bin",
+          "bytes": 379,
+          "packed_bytes": 382,
+          "sha256": "e3f41816660d3d1959597df8feae115219136db9f13fc1e823515f30cfdb3526"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,270 @@
+{
+  "current_request": "reduce player/enemy rendering flicker in both stages without worsening processing speed",
+  "current_request_fulfilled": true,
+  "current_increment_complete": true,
+  "scope": "two playable stages with native 6809 ROM-derived exit walk, waves, items, second boss and checkpoints",
+  "original_full_game_complete": false,
+  "native_6809": true,
+  "tested_ram_kib": 128,
+  "variants": [
+    "DAC6",
+    "ORCH90"
+  ],
+  "playable_stages": [
+    1,
+    2
+  ],
+  "implemented": [
+    "blue KONAMI introduction, title, game over and new game",
+    "keyboard and analog joysticks",
+    "first and second stage maps, scrolling, waves and formations",
+    "first boss and satellites; second boss and five pieces",
+    "automatic original exit trajectory and walk animation",
+    "stage progression preserving score/equipment and adding one life",
+    "stage2 41 wave records, 42 fixed objects, nine tokens",
+    "weapons, abilities, collision gates and four-hit enemy recovery",
+    "192-pixel checkpoints, ROM wave rewind, boss-state retention in final segment",
+    "M-key optional stage/boss music in both phases, original PCM effects",
+    "seven common enemy slots or five with music",
+    "I test protection and R fresh game reset",
+    "128-byte original-format map cache and packed transparent sprite data",
+    "read-only native WD2793 stage tile loading from drive1",
+    "unchanged empty-frame retention with visual invalidation gates",
+    "unrolled 0-32-byte background restores selected once per sprite",
+    "faster boss composition and packed-sprite zero tests"
+  ],
+  "remaining": [
+    "stages3-8 enemy/boss integration and campaign progression",
+    "original second-boss death composition and specific passage audio",
+    "complete AY PSG sound equivalence",
+    "physical CoCo/Orchestra-90 testing",
+    "further performance/flicker improvements"
+  ],
+  "native_enemy_logic_kinds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    7,
+    9,
+    11,
+    12,
+    14
+  ],
+  "all_stage_item_tables_extracted": true,
+  "full_campaign_randomness_ported": false,
+  "first_stage_checkpoints_complete": true,
+  "second_stage_checkpoints_verified": true,
+  "campaign_resource_loader_integrated_into_game": true,
+  "eight_stage_native_resource_viewer": true,
+  "compressed_campaign_maps": 8,
+  "compressed_campaign_map_bytes": 3047,
+  "active_map_bytes": 128,
+  "pcm_bank": 7,
+  "framebuffer_ring_bytes": 49152,
+  "core_headroom_bytes": {
+    "DAC6": 559,
+    "ORCH90": 551
+  },
+  "music_optional": true,
+  "music_default": false,
+  "music_toggle_key": "M",
+  "music_enemy_limit": 5,
+  "normal_enemy_limit": 7,
+  "music_tracks": [
+    "0x9D first stage",
+    "0xA3 first guardian",
+    "0x9F second stage",
+    "0xA1 second guardian"
+  ],
+  "audio": "two DDS tone voices plus PCM effects; DAC6 or Orchestra-90 mixed mono to both channels",
+  "game_over_returns_to_konami_intro": true,
+  "test_invincibility_key": "I",
+  "test_mode_default": false,
+  "flicker_eliminated": false,
+  "full_double_buffer": false,
+  "performance": {
+    "idle_music_off": {
+      "music": false,
+      "enemy_slots": 7,
+      "samples_ms": [
+        24.91210475074346,
+        8.80111857791982,
+        4.038502100127251,
+        6.980216759392604,
+        24.90651744844666,
+        8.80223603837918,
+        4.038502100127251,
+        6.981334219851965,
+        24.90986982982474,
+        8.80111857791982,
+        4.038502100127251,
+        6.980216759392604
+      ],
+      "mean_ms": 11.18251993852105,
+      "max_ms": 24.91210475074346
+    },
+    "idle_music_on": {
+      "music": true,
+      "enemy_slots": 5,
+      "samples_ms": [
+        10.596318805881753,
+        4.893359351537695,
+        8.43347408679036,
+        30.302175276466702,
+        10.511950541200068,
+        4.893359351537695,
+        8.43459154724972,
+        30.192105421219736,
+        10.596318805881753,
+        4.893359351537695,
+        8.43347408679036,
+        30.193222881679095
+      ],
+      "mean_ms": 13.531142458981053,
+      "max_ms": 30.302175276466702
+    },
+    "crowded_music_off": {
+      "music": false,
+      "enemy_slots": 7,
+      "samples_ms": [
+        46.50646939764691,
+        74.96371745571015,
+        61.16699189422119,
+        61.13290935021071,
+        61.928541197275074,
+        74.96706983708823,
+        60.504896572050356,
+        59.50644565161215,
+        61.222306186959514,
+        75.46266355081441,
+        61.00272520669526,
+        60.96864266268478
+      ],
+      "mean_ms": 63.27778158024739,
+      "max_ms": 75.46266355081441
+    },
+    "crowded_music_on": {
+      "music": true,
+      "enemy_slots": 5,
+      "samples_ms": [
+        50.79025406860369,
+        60.68145532462925,
+        64.71157647131129,
+        86.68587767439716,
+        67.01577993851174,
+        60.56970927869324,
+        64.31040816640103,
+        86.65067766992732,
+        67.32922759736223,
+        61.05859822966327,
+        63.769557304070766,
+        87.26751584349407
+      ],
+      "mean_ms": 68.40338646392209,
+      "max_ms": 87.26751584349407
+    }
+  },
+  "required_disks": {
+    "drive0": "DAC6.DSK or ORCH90.DSK",
+    "drive1": "LEVELS.DSK"
+  },
+  "end_of_second_stage": "exit walk then blue KONAMI introduction",
+  "release_evidence": "analysis/flicker-two-stage-release-verification.json",
+  "stationary_frame_retention": true,
+  "specialized_background_restore": true,
+  "render_performance": {
+    "stage1-idle": {
+      "before_frame_ms": 13.673432424139568,
+      "after_frame_ms": 9.544974757033831,
+      "processing_reduction_percent": 30.193279485677714,
+      "before_player_erasure_ms": 8.014379853677864,
+      "after_player_erasure_ms": 5.112195358162373,
+      "erasure_interval_reduction_percent": 36.21221539909485,
+      "retained_fraction": 0.75
+    },
+    "stage1-crowded": {
+      "before_frame_ms": 73.28696803644038,
+      "after_frame_ms": 66.64101163695386,
+      "processing_reduction_percent": 9.06840135094955,
+      "before_player_erasure_ms": 63.480181605948985,
+      "after_player_erasure_ms": 57.25741679459261,
+      "erasure_interval_reduction_percent": 9.802689050236136,
+      "retained_fraction": 0
+    },
+    "stage1-crowded-music": {
+      "before_frame_ms": 79.44273178108763,
+      "after_frame_ms": 72.46479650346622,
+      "processing_reduction_percent": 8.783604391714285,
+      "before_player_erasure_ms": 68.86741191967135,
+      "after_player_erasure_ms": 62.41333279322745,
+      "erasure_interval_reduction_percent": 9.37174629703248,
+      "retained_fraction": 0
+    },
+    "stage1-boss": {
+      "before_frame_ms": 38.950760501683874,
+      "after_frame_ms": 23.873983983997967,
+      "processing_reduction_percent": 38.70727124065812,
+      "before_player_erasure_ms": 34.27586466995107,
+      "after_player_erasure_ms": 19.644396145320144,
+      "erasure_interval_reduction_percent": 42.68737978026278,
+      "retained_fraction": 0
+    },
+    "stage1-wide": {
+      "before_frame_ms": 28.92714018122415,
+      "after_frame_ms": 25.87200328533375,
+      "processing_reduction_percent": 10.561489579510553,
+      "before_player_erasure_ms": 24.068980834156296,
+      "after_player_erasure_ms": 21.43400907098528,
+      "erasure_interval_reduction_percent": 10.947583453270804,
+      "retained_fraction": 0
+    },
+    "stage2-idle": {
+      "before_frame_ms": 14.171819789014153,
+      "after_frame_ms": 10.042943074236158,
+      "processing_reduction_percent": 29.134414466508083,
+      "before_player_erasure_ms": 8.12319256590805,
+      "after_player_erasure_ms": 5.220589022720299,
+      "erasure_interval_reduction_percent": 35.732300073367576,
+      "retained_fraction": 0.75
+    },
+    "stage2-crowded": {
+      "before_frame_ms": 73.90226970187551,
+      "after_frame_ms": 67.16733551331244,
+      "processing_reduction_percent": 9.113298164903528,
+      "before_player_erasure_ms": 63.67634247741915,
+      "after_player_erasure_ms": 57.36622950682279,
+      "erasure_interval_reduction_percent": 9.909666172855392,
+      "retained_fraction": 0
+    },
+    "stage2-crowded-music": {
+      "before_frame_ms": 83.44272805621944,
+      "after_frame_ms": 76.63920973196313,
+      "processing_reduction_percent": 8.153518566258333,
+      "before_player_erasure_ms": 71.85638584419715,
+      "after_player_erasure_ms": 65.5535829274391,
+      "erasure_interval_reduction_percent": 8.77138871195683,
+      "retained_fraction": 0
+    },
+    "stage2-boss": {
+      "before_frame_ms": 58.340934392499605,
+      "after_frame_ms": 51.95520659748655,
+      "processing_reduction_percent": 10.945535688633079,
+      "before_player_erasure_ms": 53.28051470228758,
+      "after_player_erasure_ms": 47.34009490032951,
+      "erasure_interval_reduction_percent": 11.149328859060404,
+      "retained_fraction": 0
+    },
+    "stage2-wide": {
+      "before_frame_ms": 29.31266403970337,
+      "after_frame_ms": 26.257527143812972,
+      "processing_reduction_percent": 10.422583535062802,
+      "before_player_erasure_ms": 24.069539564385977,
+      "after_player_erasure_ms": 21.434567801214957,
+      "erasure_interval_reduction_percent": 10.947329325193255,
+      "retained_fraction": 0
+    }
+  },
+  "render_policy": "retain unchanged empty frames; logic first, specialized reverse restore, unchanged painter order"
+}

@@ -1,0 +1,52 @@
+{
+  "status": "passed",
+  "variant": "ORCH90",
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "compressed_bytes": 3047,
+  "total_tiles_compared": 62464,
+  "all_eight_maps_match_original": true,
+  "first_stage_moving_guardian_patch_matches": true,
+  "auxiliary_bank_unchanged": true,
+  "checks": [
+    {
+      "stage": 1,
+      "tiles_compared": 7808,
+      "sha256": "92e4b8f8f029f277606e0e596ab6bf3afbdc226f5f226d5a7dcf09d62a9e0492"
+    },
+    {
+      "stage": 2,
+      "tiles_compared": 7808,
+      "sha256": "6eb6f84f50a0117c81b0e13949893fb173ad7d720645ee061105ab23cb5066b2"
+    },
+    {
+      "stage": 3,
+      "tiles_compared": 7808,
+      "sha256": "0847a0fb1e376110a422351587fc7dcf42e742403dde79f776d22697e34901a5"
+    },
+    {
+      "stage": 4,
+      "tiles_compared": 7808,
+      "sha256": "46b18c315ff1ef4368765a6df8c23faccd6e4b273e53e5cf1d43227e9daab75f"
+    },
+    {
+      "stage": 5,
+      "tiles_compared": 7808,
+      "sha256": "ef9d0e97e3a54f007c324c3f4c6bc170dcd5f03d2114ad5a038657c309fb61f4"
+    },
+    {
+      "stage": 6,
+      "tiles_compared": 7808,
+      "sha256": "2584d257cc6810b5451028c2362ebb697d4e217e6cde1a47756b31ac81561007"
+    },
+    {
+      "stage": 7,
+      "tiles_compared": 7808,
+      "sha256": "06044bc9bc55baa182f8826da2c2bbc344bd7ea79e5a7c461a87e0abbc525303"
+    },
+    {
+      "stage": 8,
+      "tiles_compared": 7808,
+      "sha256": "69787443c09832d62e230d1b403866d3ae6fdfd0133bb70ecdb318b864f9c3f5"
+    }
+  ]
+}

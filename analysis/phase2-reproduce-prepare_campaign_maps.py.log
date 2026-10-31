@@ -1,0 +1,16 @@
+{
+  "source_rom_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "source_range": [
+    "99CD",
+    "A5B4 exclusive"
+  ],
+  "compressed_bytes": 3047,
+  "expanded_bytes": 62464,
+  "stages": 8,
+  "shared_dictionary_bytes": 976,
+  "dictionary_pointer_bytes": 128,
+  "stage_pointer_bytes": 32,
+  "stage_scripts_bytes": 1911,
+  "technique": "original overlapping 4x4 tile dictionary, repeated block codes, horizontal mirror, overlapping segment seams",
+  "native_decoder": "src/campaign_maps.asm"
+}

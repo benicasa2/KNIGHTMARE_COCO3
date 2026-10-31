@@ -1,0 +1,15 @@
+first boss ready 254
+boss killed, score 11234
+stage2 start 71 5274abbd933dc4e841d9076b00886e0d58ffb705c4710226af0ca4c09b7d7103
+second boss ready 55 30
+second boss killed with native arrows 30
+{
+  "tested_disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "status": "two-stage victory, original exit walk and stage2 traversal passed",
+  "stage1_exit_updates": 72,
+  "preserved_equipment": true,
+  "stage2_bonus_life": true,
+  "stage2_start_sha256": "5274abbd933dc4e841d9076b00886e0d58ffb705c4710226af0ca4c09b7d7103",
+  "scope": "controlled first boss setup and arrow fixtures; natural second-stage waves and scroll under I test protection; not unassisted playthrough"
+}

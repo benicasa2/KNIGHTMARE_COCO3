@@ -1,0 +1,3 @@
+boss2_copy_drops EQU $0B4A
+boss2_trace_loop EQU $0B12
+harness_done EQU $0B64

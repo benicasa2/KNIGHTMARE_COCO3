@@ -1,0 +1,4 @@
+harness_done EQU $0B44
+phase2_copy EQU $0B26
+phase2_copy_byte EQU $0B2F
+phase2_sample EQU $0B12

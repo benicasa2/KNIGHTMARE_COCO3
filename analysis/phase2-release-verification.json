@@ -1,0 +1,67 @@
+{
+  "status": "two-stage release scenarios passed",
+  "date": "2026-10-31",
+  "ram_kib": 128,
+  "native_6809": true,
+  "playable_stages": [
+    1,
+    2
+  ],
+  "disks": {
+    "DAC6": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+    "ORCH90": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da"
+  },
+  "levels_disk_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed",
+      "music": "music M-key and reduced-enemy scenarios passed",
+      "phase2-ai": "phase2 AI trajectories passed",
+      "phase2-boss": "phase2 boss motion and five dropped pieces passed",
+      "cutscene": "original exit trajectory and animation passed",
+      "two-stage-flow": "two-stage victory, original exit walk and stage2 traversal passed",
+      "phase2-edges": "phase2 checkpoint, projectile and hurt-sprite scenarios passed",
+      "sprite-retention": "sprite retention and specialized background restore passed"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed",
+      "flicker": "deferred rendering pipeline passed",
+      "music": "music M-key and reduced-enemy scenarios passed",
+      "phase2-ai": "phase2 AI trajectories passed",
+      "phase2-boss": "phase2 boss motion and five dropped pieces passed",
+      "cutscene": "original exit trajectory and animation passed",
+      "two-stage-flow": "two-stage victory, original exit walk and stage2 traversal passed",
+      "phase2-edges": "phase2 checkpoint, projectile and hurt-sprite scenarios passed",
+      "sprite-retention": "sprite retention and specialized background restore passed"
+    }
+  },
+  "reproducible_build": true,
+  "core_headroom_bytes": {
+    "DAC6": 559,
+    "ORCH90": 551
+  },
+  "physical_hardware_test": false,
+  "full_unassisted_playthrough": false,
+  "scope": "differential Z80/6809 routines, controlled native battles, natural stage2 scroll and waves under I; two-stage campaign, stages3-8 pending",
+  "limitations": [
+    "simplified second-boss death animation",
+    "adapted passage sound and two-voice music",
+    "RGB palette approximation",
+    "residual flicker and crowded-scene slowdown"
+  ]
+}

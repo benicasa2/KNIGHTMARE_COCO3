@@ -1,0 +1,35 @@
+{
+  "status": "compact original maps and reorganized RAM verified",
+  "date": "2026-10-31",
+  "disks": {
+    "DAC6": "5110cfa19a580e2de2ab318ca16a7591abd14552358935c70d778e4ddd2edd1e",
+    "ORCH90": "faf1720653f458238b1039a6e7f8edc0a4d887decdba2a4c63fc9cbcd3a041ee"
+  },
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed",
+      "campaign-map": "passed"
+    }
+  },
+  "reproducible_build": true,
+  "ram_kib": 128,
+  "remaining_campaign_incomplete": true,
+  "memory_audit": "memory-audit.json",
+  "new_native_map_checks": 124928
+}

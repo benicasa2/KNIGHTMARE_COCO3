@@ -1,0 +1,114 @@
+combat bank 7636 art frames 13 original waves 34 boss HP 20 map replacement [[14, 8]]
+art frames 44 bank15 7900 bank13 patches 4000 title RLE 2980 fixed objects 36 token dimensions [('weapon token 0', 9, 16), ('weapon token 2', 9, 16), ('weapon token 4', 9, 16), ('weapon token 5', 9, 17), ('weapon token 6', 9, 16), ('weapon token 8', 9, 16), ('weapon token 10', 9, 16), ('ability token 0', 9, 16), ('ability token 3', 9, 16), ('ability token 4', 9, 16), ('ability token 5', 9, 16), ('ability token 6', 9, 16)]
+{
+  "trajectories": 30,
+  "samples": 5400,
+  "satellite_thresholds": [
+    58,
+    255,
+    170
+  ],
+  "inventory": [
+    {
+      "stage_already_mounted": false,
+      "before": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ],
+      "after": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ]
+    },
+    {
+      "stage_already_mounted": true,
+      "before": [
+        9,
+        4,
+        0,
+        2,
+        12,
+        69,
+        23
+      ],
+      "after": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
+{
+  "palette": [
+    0,
+    0,
+    17,
+    23,
+    15,
+    15,
+    35,
+    31,
+    39,
+    39,
+    49,
+    60,
+    17,
+    42,
+    56,
+    63
+  ],
+  "music_enabled": false,
+  "audio": "priority event PCM; timer FIRQ disabled between effects",
+  "sample_rate": 3924.939692982456,
+  "game_clock": "GIME vertical-border IRQ, independent of audio",
+  "DAC6": {
+    "disk_sha256": "25520f357b64138bfd14c1b3b4a1bd693990584fc13972150ba0ecebe24b5b6e",
+    "binary_bytes": 20415
+  },
+  "ORCH90": {
+    "disk_sha256": "2e25a72c33d70c74042d97aba8d5d95464ce9e9acd4d7070b402546e62c799dd",
+    "binary_bytes": 20422
+  },
+  "status": "native first-stage ROM-derived AI and segment checkpoints; campaign incomplete; visual/audio adaptations remain",
+  "ram_kib": 128,
+  "framebuffer_ring_bytes": 57344,
+  "framebuffer_physical_start": 0,
+  "video": "256x192 16 colors RGB, 176-line playfield",
+  "map_bank": 7,
+  "tiles_bank": 12,
+  "player_hud_bank": 13,
+  "combat_bank": 14,
+  "items_bank": 15,
+  "introduction": true,
+  "inventory": true,
+  "nominal_game_update_hz": 29.961371702156153,
+  "nominal_scroll_pixels_per_second": 7.490342925539038,
+  "source_rom_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "enemy_logic_kinds": [
+    1,
+    2,
+    9,
+    14
+  ],
+  "first_boss_satellite_kind": 12,
+  "first_stage_checkpoints": true,
+  "game_over_returns_to_konami_intro": true,
+  "test_invincibility_key": "I",
+  "test_mode_default": false,
+  "test_mode_indicator": "blue GIME border; black when disabled"
+}

@@ -1,0 +1,27 @@
+{
+  "status": "first-stage AI/checkpoint release verified",
+  "disks": {
+    "DAC6": "2105bfb70f73de45a30809382c32328a9bcdaa31313863cecc58310c5c4d61b6",
+    "ORCH90": "1ed0bde06119e347f1e81717a4b4c44eaa33b03ec20be3487f6b71afa98daeef"
+  },
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled"
+    },
+    "reproducible_build": true
+  },
+  "full_game_complete": false
+}

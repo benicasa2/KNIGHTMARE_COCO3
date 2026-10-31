@@ -1,0 +1,81 @@
+{
+  "status": "music M-key and reduced-enemy scenarios passed",
+  "variant": "DAC6",
+  "ram_kib": 128,
+  "tested_disk_sha256": "d169fda4581a61d72e3a3a03152a68c7dab5bf75494ce2b512506b952fdb800c",
+  "music_sequences": [
+    {
+      "track": "0x9d",
+      "native_frames_compared": 2305,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    },
+    {
+      "track": "0xa3",
+      "native_frames_compared": 1691,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    }
+  ],
+  "checks": {
+    "real_m_key": true,
+    "held_key_debounced": true,
+    "enemy_limit_off": 7,
+    "enemy_limit_on": 5,
+    "excess_enemies_erased": true,
+    "music_dac_samples": 96,
+    "music_levels": [
+      120,
+      124,
+      128,
+      132
+    ],
+    "mixed_sfx_samples_verified": 64,
+    "default_off_and_reset_off": true,
+    "native_spawn_cap_verified": true,
+    "intro_ignores_m": true
+  },
+  "scope": "native sequence vs full-cycle executed Z80 PSG events, real keyboard PIA, actual DAC samples; adapted square-wave sound, no physical hardware test"
+}
+{
+  "status": "music M-key and reduced-enemy scenarios passed",
+  "variant": "ORCH90",
+  "ram_kib": 128,
+  "tested_disk_sha256": "ad4bff4dae0b4d0a9fe5917b8e4cbb8c48c77a3c6c4f364cfc421f05182d5971",
+  "music_sequences": [
+    {
+      "track": "0x9d",
+      "native_frames_compared": 2305,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    },
+    {
+      "track": "0xa3",
+      "native_frames_compared": 1691,
+      "exact_event_loop": true,
+      "dds_rate_scaling_verified": true
+    }
+  ],
+  "checks": {
+    "real_m_key": true,
+    "held_key_debounced": true,
+    "enemy_limit_off": 7,
+    "enemy_limit_on": 5,
+    "excess_enemies_erased": true,
+    "music_dac_samples": 96,
+    "music_levels": [
+      123,
+      124,
+      127,
+      128,
+      129,
+      132,
+      133
+    ],
+    "mixed_sfx_samples_verified": 64,
+    "default_off_and_reset_off": true,
+    "native_spawn_cap_verified": true,
+    "intro_ignores_m": true
+  },
+  "scope": "native sequence vs full-cycle executed Z80 PSG events, real keyboard PIA, actual DAC samples; adapted square-wave sound, no physical hardware test"
+}

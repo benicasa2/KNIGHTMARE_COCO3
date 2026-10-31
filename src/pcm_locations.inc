@@ -1,0 +1,12 @@
+pcm_shot equ $8000
+pcm_shot_end equ $8148
+pcm_hit equ $8148
+pcm_hit_end equ $8a7e
+pcm_explosion equ $8a7e
+pcm_explosion_end equ $90a2
+pcm_boss equ $90a2
+pcm_boss_end equ $93b4
+pcm_cycle equ $93b4
+pcm_cycle_end equ $94ba
+pcm_pickup equ $94ba
+pcm_pickup_end equ $9997

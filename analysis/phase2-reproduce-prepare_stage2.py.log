@@ -1,0 +1,13 @@
+{
+  "source_rom_sha256": "589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3",
+  "art_frames": 61,
+  "art_bank14_bytes": 8172,
+  "art_bank15_bytes": 7520,
+  "art_bank13_patch_bytes": 2832,
+  "stage2_waves": 41,
+  "stage2_fixed_objects": 42,
+  "stage2_tokens": 9,
+  "boss2_art": 54,
+  "graphics_format": "two packed-color alignments; transparency inferred from zero nibble",
+  "all_banks_within_128k": true
+}

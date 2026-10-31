@@ -1,0 +1,10 @@
+DAC6: 5400 native enemy samples match executed Z80
+DAC6: 640 original boss frames and three satellite traces match
+DAC6: 91 wave births match over 6000 updates
+DAC6: 56 firing condition/type/velocity cases match
+DAC6: 28 native aiming scenarios match executed Z80
+ORCH90: 5400 native enemy samples match executed Z80
+ORCH90: 640 original boss frames and three satellite traces match
+ORCH90: 91 wave births match over 6000 updates
+ORCH90: 56 firing condition/type/velocity cases match
+ORCH90: 28 native aiming scenarios match executed Z80

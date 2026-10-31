@@ -1,0 +1,31 @@
+{
+  "status": "game-over restart and I-key test mode verified",
+  "date": "2026-10-31",
+  "disks": {
+    "DAC6": "25520f357b64138bfd14c1b3b4a1bd693990584fc13972150ba0ecebe24b5b6e",
+    "ORCH90": "2e25a72c33d70c74042d97aba8d5d95464ce9e9acd4d7070b402546e62c799dd"
+  },
+  "verification": {
+    "DAC6": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed"
+    },
+    "ORCH90": {
+      "ai": "native AI differential scenarios passed",
+      "checkpoints": "native checkpoint scenarios passed",
+      "stage1-flow": "native first-stage traversal and boss defeat passed",
+      "combat": "native combat functional scenarios passed",
+      "items": "intro and item scenarios passed",
+      "controls": "controls and scrolling regression passed with combat disabled",
+      "gameover-testmode": "game-over intro and I-key test-mode scenarios passed"
+    }
+  },
+  "reproducible_build": true,
+  "ram_kib": 128,
+  "remaining_campaign_incomplete": true
+}

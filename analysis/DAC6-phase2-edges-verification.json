@@ -1,0 +1,335 @@
+{
+  "status": "phase2 checkpoint, projectile and hurt-sprite scenarios passed",
+  "variant": "DAC6",
+  "tested_disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38",
+  "tested_levels_sha256": "a018e35d6c405da01373f380c865cc834b6d15ce3383e417ced6c4dc1a4b3ce7",
+  "checks": {
+    "original_wave_rewinds": [
+      0,
+      0,
+      0,
+      2,
+      3,
+      4,
+      5,
+      5,
+      7,
+      7,
+      9,
+      10,
+      10,
+      12,
+      12,
+      14,
+      15,
+      15,
+      17,
+      18,
+      19,
+      19,
+      21,
+      21,
+      23,
+      23,
+      25,
+      25,
+      27,
+      27,
+      29,
+      29,
+      31,
+      31,
+      33,
+      33,
+      35,
+      35,
+      37,
+      37,
+      39
+    ],
+    "ten_native_segment_redraws": true,
+    "boss2_checkpoint_motion_preserved": true,
+    "burst_scenarios": [
+      {
+        "kind": 5,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 4
+      },
+      {
+        "kind": 5,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 4
+      },
+      {
+        "kind": 5,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 4
+      },
+      {
+        "kind": 5,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 0,
+        "emitted": 4
+      },
+      {
+        "kind": 5,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 5,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 0,
+        "emitted": 4
+      },
+      {
+        "kind": 5,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 5,
+        "emitted": 0
+      },
+      {
+        "kind": 5,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 6,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          40,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 6,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          120,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 6,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 0,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 5,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          216,
+          40
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 6,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 0,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 5,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          60,
+          151
+        ],
+        "occupied": 8,
+        "emitted": 0
+      },
+      {
+        "kind": 6,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 0,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 5,
+        "emitted": 1
+      },
+      {
+        "kind": 6,
+        "origin": [
+          192,
+          151
+        ],
+        "occupied": 8,
+        "emitted": 0
+      }
+    ],
+    "hurt_state_original_samples": 60,
+    "wide_hurt_frames_draw_and_erase": true,
+    "phase2_last_life_returns_blue_konami": true,
+    "r_reloads_first_stage": true,
+    "wave_births": {
+      "native_updates": 6000,
+      "births_compared": 90,
+      "next_wave": 21,
+      "sha256": "a37ece270a3284ce43acc2e90bdf423812242b6e0f69403d37bb36b217e00244"
+    }
+  }
+}
