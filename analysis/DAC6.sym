@@ -1087,6 +1087,7 @@ shot_temp EQU $0CC7
 shot_total EQU $0CC6
 shots_fired EQU $0C4D
 SMALL_BULLET_ART EQU $0023
+SOUND_SSC SET $0000
 sound_stop EQU $30F6
 sound_stop_no_music EQU $3106
 span_blocks EQU $0C3C

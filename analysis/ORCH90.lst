@@ -1,15 +1,18 @@
                       (ardware_probe.asm):00001         ; Knightmare / CoCo 3: native first-stage combat prototype.
-                      (ardware_probe.asm):00002         ; 6809 only, 128 KiB, RGB palette, 256x192x16, two selectable DAC backends.
-                      (ardware_probe.asm):00003         ; Original art; M toggles native two-voice music; event PCM effects.
-                      (ardware_probe.asm):00004         ; LWASM: --format=decb --define=ORCH90=0 (or 1).
-                      (ardware_probe.asm):00005                 org $0c00
-0C00                  (ardware_probe.asm):00006         state_begin
-0C00                  (ardware_probe.asm):00007         frame_due rmb 1
-0C01                  (ardware_probe.asm):00008         frames_played rmb 2
-0C03                  (ardware_probe.asm):00009         sfx_ptr rmb 2
-0C05                  (ardware_probe.asm):00010         sfx_end rmb 2
-0C07                  (ardware_probe.asm):00011         sfx_priority rmb 1
-                      (ardware_probe.asm):00012                 include "game_state.inc"
+                      (ardware_probe.asm):00002         ; 6809 only, 128 KiB, RGB palette, 256x192x16, DAC6/ORCH90/factory SSC.
+                      (ardware_probe.asm):00003         ; Original art; M toggles two-voice music; PCM or native AY event effects.
+                      (ardware_probe.asm):00004         ; LWASM: --format=decb --define=ORCH90=0 (or 1), SOUND_SSC=0 (or 1).
+                      (ardware_probe.asm):00005                 ifndef SOUND_SSC
+0000                  (ardware_probe.asm):00006         SOUND_SSC equ 0
+                      (ardware_probe.asm):00007                 endc
+                      (ardware_probe.asm):00008                 org $0c00
+0C00                  (ardware_probe.asm):00009         state_begin
+0C00                  (ardware_probe.asm):00010         frame_due rmb 1
+0C01                  (ardware_probe.asm):00011         frames_played rmb 2
+0C03                  (ardware_probe.asm):00012         sfx_ptr rmb 2
+0C05                  (ardware_probe.asm):00013         sfx_end rmb 2
+0C07                  (ardware_probe.asm):00014         sfx_priority rmb 1
+                      (ardware_probe.asm):00015                 include "game_state.inc"
                       (   game_state.inc):00001         ; All direct-page state must remain within $0c00-$0cff.
 0C08                  (   game_state.inc):00002         game_ticks rmb 2
 0C0A                  (   game_state.inc):00003         camera_y rmb 2
@@ -54,7 +57,7 @@
                       (   game_state.inc):00042         
                       (   game_state.inc):00043         ; Zero-based map selector. Gameplay beyond stage 1 is still under development.
 0C40                  (   game_state.inc):00044         campaign_stage rmb 1
-                      (ardware_probe.asm):00013                 include "combat_state.inc"
+                      (ardware_probe.asm):00016                 include "combat_state.inc"
 0C41                  ( combat_state.inc):00001         combat_enabled rmb 1
 0C42                  ( combat_state.inc):00002         combat_status rmb 1
 0C43                  ( combat_state.inc):00003         player_lives rmb 1
@@ -118,7 +121,7 @@
 0C90                  ( combat_state.inc):00061         terrain_y rmb 1
 0C91                  ( combat_state.inc):00062         blit_fn rmb 2
 0C93                  ( combat_state.inc):00063         combat_frames rmb 2
-                      (ardware_probe.asm):00014                 include "items_state.inc"
+                      (ardware_probe.asm):00017                 include "items_state.inc"
 0C95                  (  items_state.inc):00001         scene_mode rmb 1
 0C96                  (  items_state.inc):00002         intro_clock rmb 1
 0C97                  (  items_state.inc):00003         intro_y rmb 1
@@ -195,136 +198,154 @@
                       (  items_state.inc):00074         ; Rendering is committed only after logic; fixed-object redraws are queued.
 0CED                  (  items_state.inc):00075         render_deferred rmb 1
 0CEE                  (  items_state.inc):00076         render_refresh_pending rmb 1
-0CEF                  (ardware_probe.asm):00015         music_enabled rmb 1
-0CF0                  (ardware_probe.asm):00016         music_previous_key rmb 1
-0CF1                  (ardware_probe.asm):00017         music_key_edge rmb 1
-0CF2                  (ardware_probe.asm):00018         music_bits rmb 1
-0CF3                  (ardware_probe.asm):00019         music_phase0 rmb 2
-0CF5                  (ardware_probe.asm):00020         music_phase1 rmb 2
-0CF7                  (ardware_probe.asm):00021         music_step0 rmb 2
-0CF9                  (ardware_probe.asm):00022         music_step1 rmb 2
-0CFB                  (ardware_probe.asm):00023         enemy_limit_end rmb 2
-0CFD                  (ardware_probe.asm):00024         music_half_rate rmb 1
-0CFE                  (ardware_probe.asm):00025         state_end
-                      (ardware_probe.asm):00026         
-                      (ardware_probe.asm):00027                 org $3000
-3000                  (ardware_probe.asm):00028         start
-3000 1A50             (ardware_probe.asm):00029                 orcc #$50
-3002 10CE2FFF         (ardware_probe.asm):00030                 lds #$2fff
-3006 4F               (ardware_probe.asm):00031                 clra
-3007 1F8B             (ardware_probe.asm):00032                 tfr a,dp
-3009 B7FFDF           (ardware_probe.asm):00033                 sta $ffdf
-300C B7FFD9           (ardware_probe.asm):00034                 sta $ffd9
-300F 864C             (ardware_probe.asm):00035                 lda #$4c
-3011 B7FF90           (ardware_probe.asm):00036                 sta $ff90
-3014 7FFF91           (ardware_probe.asm):00037                 clr $ff91
-3017 7FFF92           (ardware_probe.asm):00038                 clr $ff92
-301A 7FFF93           (ardware_probe.asm):00039                 clr $ff93
-301D 8EFFA0           (ardware_probe.asm):00040                 ldx #$ffa0
-3020 8638             (ardware_probe.asm):00041                 lda #$38
-3022                  (ardware_probe.asm):00042         map_default
-3022 A780             (ardware_probe.asm):00043                 sta ,x+
-3024 4C               (ardware_probe.asm):00044                 inca
-3025 8140             (ardware_probe.asm):00045                 cmpa #$40
-3027 25F9             (ardware_probe.asm):00046                 blo map_default
-3029 8606             (ardware_probe.asm):00047                 lda #6
-302B B7FFA7           (ardware_probe.asm):00048                 sta $ffa7
-302E 8680             (ardware_probe.asm):00049                 lda #$80
-3030 B7FF98           (ardware_probe.asm):00050                 sta $ff98
-3033 861A             (ardware_probe.asm):00051                 lda #$1a
-3035 B7FF99           (ardware_probe.asm):00052                 sta $ff99
-3038 86C0             (ardware_probe.asm):00053                 lda #$c0
-303A B7FF9D           (ardware_probe.asm):00054                 sta $ff9d
-303D 7FFF9E           (ardware_probe.asm):00055                 clr $ff9e
-3040 7FFF9C           (ardware_probe.asm):00056                 clr $ff9c
-3043 7FFF9F           (ardware_probe.asm):00057                 clr $ff9f
-3046 7FFF9A           (ardware_probe.asm):00058                 clr $ff9a
-3049 8E7DC9           (ardware_probe.asm):00059                 ldx #palette
-304C CEFFB0           (ardware_probe.asm):00060                 ldu #$ffb0
-304F C610             (ardware_probe.asm):00061                 ldb #16
-3051                  (ardware_probe.asm):00062         copy_palette
-3051 A680             (ardware_probe.asm):00063                 lda ,x+
-3053 A7C0             (ardware_probe.asm):00064                 sta ,u+
-3055 5A               (ardware_probe.asm):00065                 decb
-3056 26F9             (ardware_probe.asm):00066                 bne copy_palette
-3058 8E0C00           (ardware_probe.asm):00067                 ldx #state_begin
-305B                  (ardware_probe.asm):00068         clear_state
-305B 6F80             (ardware_probe.asm):00069                 clr ,x+
-305D 8C0CFE           (ardware_probe.asm):00070                 cmpx #state_end
-3060 25F9             (ardware_probe.asm):00071                 blo clear_state
-3062 860C             (ardware_probe.asm):00072                 lda #$0c
-3064 1F8B             (ardware_probe.asm):00073                 tfr a,dp
-3066 BDE00D           (ardware_probe.asm):00074                 jsr intro_init
-3069 BD30F6           (ardware_probe.asm):00075                 jsr sound_stop
-                      (ardware_probe.asm):00076                 ; PIA interrupts off; GIME vertical IRQ clocks gameplay independently.
-306C B6FF01           (ardware_probe.asm):00077                 lda $ff01
-306F 84F6             (ardware_probe.asm):00078                 anda #$f6
-3071 B7FF01           (ardware_probe.asm):00079                 sta $ff01
-3074 B6FF03           (ardware_probe.asm):00080                 lda $ff03
-3077 84F6             (ardware_probe.asm):00081                 anda #$f6
-3079 B7FF03           (ardware_probe.asm):00082                 sta $ff03
-307C B6FF21           (ardware_probe.asm):00083                 lda $ff21
-307F 84F7             (ardware_probe.asm):00084                 anda #$f7
-3081 B7FF21           (ardware_probe.asm):00085                 sta $ff21
-3084 B6FF23           (ardware_probe.asm):00086                 lda $ff23
-                      (ardware_probe.asm):00087                 ifne ORCH90
-3087 84F7             (ardware_probe.asm):00088                 anda #$f7
-                      (ardware_probe.asm):00089                 else
-                      (ardware_probe.asm):00090                 ora #$08
-                      (ardware_probe.asm):00091                 endc
-3089 B7FF23           (ardware_probe.asm):00092                 sta $ff23
-                      (ardware_probe.asm):00093                 ; PIA1 PA bits 7..2 output, low two input/control bits preserved.
-308C B6FF21           (ardware_probe.asm):00094                 lda $ff21
-308F 84FB             (ardware_probe.asm):00095                 anda #$fb
-3091 B7FF21           (ardware_probe.asm):00096                 sta $ff21
-3094 86FC             (ardware_probe.asm):00097                 lda #$fc
-3096 B7FF20           (ardware_probe.asm):00098                 sta $ff20
-3099 B6FF21           (ardware_probe.asm):00099                 lda $ff21
-309C 8A04             (ardware_probe.asm):00100                 ora #$04
-309E B7FF21           (ardware_probe.asm):00101                 sta $ff21
-                      (ardware_probe.asm):00102                 ; $FFF6 is always ROM on the CoCo 3 and vectors through RAM $FEF4.
-30A1 867E             (ardware_probe.asm):00103                 lda #$7e
-30A3 B7FEF4           (ardware_probe.asm):00104                 sta $fef4
-30A6 CC3171           (ardware_probe.asm):00105                 ldd #audio_firq
-30A9 FDFEF5           (ardware_probe.asm):00106                 std $fef5
-30AC 867E             (ardware_probe.asm):00107                 lda #$7e
-30AE B7FEF7           (ardware_probe.asm):00108                 sta $fef7
-30B1 CC30E4           (ardware_probe.asm):00109                 ldd #video_irq
-30B4 FDFEF8           (ardware_probe.asm):00110                 std $fef8
-30B7 867C             (ardware_probe.asm):00111                 lda #$7c
-30B9 B7FF90           (ardware_probe.asm):00112                 sta $ff90
-30BC 8620             (ardware_probe.asm):00113                 lda #$20
-30BE B7FF91           (ardware_probe.asm):00114                 sta $ff91
-30C1 7FFF93           (ardware_probe.asm):00115                 clr $ff93
-30C4 8608             (ardware_probe.asm):00116                 lda #8
-30C6 B7FF92           (ardware_probe.asm):00117                 sta $ff92
-                      (ardware_probe.asm):00118                 ; PCM timer = 910+2 ticks. FIRQ enabled only while an effect plays.
-30C9 C68E             (ardware_probe.asm):00119                 ldb #$8e
-30CB F7FF95           (ardware_probe.asm):00120                 stb $ff95
-30CE 8603             (ardware_probe.asm):00121                 lda #$03
-30D0 B7FF94           (ardware_probe.asm):00122                 sta $ff94
-30D3 1CAF             (ardware_probe.asm):00123                 andcc #$af
-30D5                  (ardware_probe.asm):00124         main_loop
-30D5 0D00             (ardware_probe.asm):00125                 tst <frame_due
-30D7 27FC             (ardware_probe.asm):00126                 beq main_loop
-30D9 1A10             (ardware_probe.asm):00127                 orcc #$10
-30DB 0F00             (ardware_probe.asm):00128                 clr <frame_due
-30DD 1CEF             (ardware_probe.asm):00129                 andcc #$ef
-30DF BD4DBD           (ardware_probe.asm):00130                 jsr game_tick
-30E2 20F1             (ardware_probe.asm):00131                 bra main_loop
-                      (ardware_probe.asm):00132         
-                      (ardware_probe.asm):00133         ; A full IRQ automatically saves/restores all 6809 registers.
-30E4                  (ardware_probe.asm):00134         video_irq
-30E4 B6FF92           (ardware_probe.asm):00135                 lda $ff92
-30E7 8601             (ardware_probe.asm):00136                 lda #1
-30E9 9700             (ardware_probe.asm):00137                 sta <frame_due
-30EB DC01             (ardware_probe.asm):00138                 ldd <frames_played
-30ED C30001           (ardware_probe.asm):00139                 addd #1
-30F0 DD01             (ardware_probe.asm):00140                 std <frames_played
-30F2 BD3229           (ardware_probe.asm):00141                 jsr music_tick
-30F5 3B               (ardware_probe.asm):00142                 rti
-                      (ardware_probe.asm):00143         
-                      (ardware_probe.asm):00144                 include "audio_sfx.asm"
+0CEF                  (ardware_probe.asm):00018         music_enabled rmb 1
+0CF0                  (ardware_probe.asm):00019         music_previous_key rmb 1
+0CF1                  (ardware_probe.asm):00020         music_key_edge rmb 1
+0CF2                  (ardware_probe.asm):00021         music_bits rmb 1
+0CF3                  (ardware_probe.asm):00022         music_phase0 rmb 2
+0CF5                  (ardware_probe.asm):00023         music_phase1 rmb 2
+0CF7                  (ardware_probe.asm):00024         music_step0 rmb 2
+0CF9                  (ardware_probe.asm):00025         music_step1 rmb 2
+0CFB                  (ardware_probe.asm):00026         enemy_limit_end rmb 2
+0CFD                  (ardware_probe.asm):00027         music_half_rate rmb 1
+0CFE                  (ardware_probe.asm):00028         state_end
+                      (ardware_probe.asm):00029         
+                      (ardware_probe.asm):00030                 org $3000
+3000                  (ardware_probe.asm):00031         start
+3000 1A50             (ardware_probe.asm):00032                 orcc #$50
+3002 10CE2FFF         (ardware_probe.asm):00033                 lds #$2fff
+3006 4F               (ardware_probe.asm):00034                 clra
+3007 1F8B             (ardware_probe.asm):00035                 tfr a,dp
+3009 B7FFDF           (ardware_probe.asm):00036                 sta $ffdf
+                      (ardware_probe.asm):00037                 ifne SOUND_SSC
+                      (ardware_probe.asm):00038                 sta $ffd8
+                      (ardware_probe.asm):00039                 else
+300C B7FFD9           (ardware_probe.asm):00040                 sta $ffd9
+                      (ardware_probe.asm):00041                 endc
+300F 864C             (ardware_probe.asm):00042                 lda #$4c
+3011 B7FF90           (ardware_probe.asm):00043                 sta $ff90
+3014 7FFF91           (ardware_probe.asm):00044                 clr $ff91
+3017 7FFF92           (ardware_probe.asm):00045                 clr $ff92
+301A 7FFF93           (ardware_probe.asm):00046                 clr $ff93
+301D 8EFFA0           (ardware_probe.asm):00047                 ldx #$ffa0
+3020 8638             (ardware_probe.asm):00048                 lda #$38
+3022                  (ardware_probe.asm):00049         map_default
+3022 A780             (ardware_probe.asm):00050                 sta ,x+
+3024 4C               (ardware_probe.asm):00051                 inca
+3025 8140             (ardware_probe.asm):00052                 cmpa #$40
+3027 25F9             (ardware_probe.asm):00053                 blo map_default
+3029 8606             (ardware_probe.asm):00054                 lda #6
+302B B7FFA7           (ardware_probe.asm):00055                 sta $ffa7
+302E 8680             (ardware_probe.asm):00056                 lda #$80
+3030 B7FF98           (ardware_probe.asm):00057                 sta $ff98
+3033 861A             (ardware_probe.asm):00058                 lda #$1a
+3035 B7FF99           (ardware_probe.asm):00059                 sta $ff99
+3038 86C0             (ardware_probe.asm):00060                 lda #$c0
+303A B7FF9D           (ardware_probe.asm):00061                 sta $ff9d
+303D 7FFF9E           (ardware_probe.asm):00062                 clr $ff9e
+3040 7FFF9C           (ardware_probe.asm):00063                 clr $ff9c
+3043 7FFF9F           (ardware_probe.asm):00064                 clr $ff9f
+3046 7FFF9A           (ardware_probe.asm):00065                 clr $ff9a
+3049 8E7DC9           (ardware_probe.asm):00066                 ldx #palette
+304C CEFFB0           (ardware_probe.asm):00067                 ldu #$ffb0
+304F C610             (ardware_probe.asm):00068                 ldb #16
+3051                  (ardware_probe.asm):00069         copy_palette
+3051 A680             (ardware_probe.asm):00070                 lda ,x+
+3053 A7C0             (ardware_probe.asm):00071                 sta ,u+
+3055 5A               (ardware_probe.asm):00072                 decb
+3056 26F9             (ardware_probe.asm):00073                 bne copy_palette
+3058 8E0C00           (ardware_probe.asm):00074                 ldx #state_begin
+305B                  (ardware_probe.asm):00075         clear_state
+305B 6F80             (ardware_probe.asm):00076                 clr ,x+
+305D 8C0CFE           (ardware_probe.asm):00077                 cmpx #state_end
+3060 25F9             (ardware_probe.asm):00078                 blo clear_state
+3062 860C             (ardware_probe.asm):00079                 lda #$0c
+3064 1F8B             (ardware_probe.asm):00080                 tfr a,dp
+                      (ardware_probe.asm):00081                 ifne SOUND_SSC
+                      (ardware_probe.asm):00082                 jsr ssc_init
+                      (ardware_probe.asm):00083                 endc
+3066 BDE00D           (ardware_probe.asm):00084                 jsr intro_init
+3069 BD30F6           (ardware_probe.asm):00085                 jsr sound_stop
+                      (ardware_probe.asm):00086                 ; PIA interrupts off; GIME vertical IRQ clocks gameplay independently.
+306C B6FF01           (ardware_probe.asm):00087                 lda $ff01
+306F 84F6             (ardware_probe.asm):00088                 anda #$f6
+3071 B7FF01           (ardware_probe.asm):00089                 sta $ff01
+3074 B6FF03           (ardware_probe.asm):00090                 lda $ff03
+3077 84F6             (ardware_probe.asm):00091                 anda #$f6
+3079 B7FF03           (ardware_probe.asm):00092                 sta $ff03
+307C B6FF21           (ardware_probe.asm):00093                 lda $ff21
+307F 84F7             (ardware_probe.asm):00094                 anda #$f7
+3081 B7FF21           (ardware_probe.asm):00095                 sta $ff21
+3084 B6FF23           (ardware_probe.asm):00096                 lda $ff23
+                      (ardware_probe.asm):00097                 ifne ORCH90
+3087 84F7             (ardware_probe.asm):00098                 anda #$f7
+                      (ardware_probe.asm):00099                 else
+                      (ardware_probe.asm):00100                 ora #$08
+                      (ardware_probe.asm):00101                 endc
+3089 B7FF23           (ardware_probe.asm):00102                 sta $ff23
+                      (ardware_probe.asm):00103                 ; PIA1 PA bits 7..2 output, low two input/control bits preserved.
+308C B6FF21           (ardware_probe.asm):00104                 lda $ff21
+308F 84FB             (ardware_probe.asm):00105                 anda #$fb
+3091 B7FF21           (ardware_probe.asm):00106                 sta $ff21
+3094 86FC             (ardware_probe.asm):00107                 lda #$fc
+3096 B7FF20           (ardware_probe.asm):00108                 sta $ff20
+3099 B6FF21           (ardware_probe.asm):00109                 lda $ff21
+309C 8A04             (ardware_probe.asm):00110                 ora #$04
+309E B7FF21           (ardware_probe.asm):00111                 sta $ff21
+                      (ardware_probe.asm):00112                 ; $FFF6 is always ROM on the CoCo 3 and vectors through RAM $FEF4.
+30A1 867E             (ardware_probe.asm):00113                 lda #$7e
+30A3 B7FEF4           (ardware_probe.asm):00114                 sta $fef4
+30A6 CC3171           (ardware_probe.asm):00115                 ldd #audio_firq
+30A9 FDFEF5           (ardware_probe.asm):00116                 std $fef5
+30AC 867E             (ardware_probe.asm):00117                 lda #$7e
+30AE B7FEF7           (ardware_probe.asm):00118                 sta $fef7
+30B1 CC30E4           (ardware_probe.asm):00119                 ldd #video_irq
+30B4 FDFEF8           (ardware_probe.asm):00120                 std $fef8
+30B7 867C             (ardware_probe.asm):00121                 lda #$7c
+30B9 B7FF90           (ardware_probe.asm):00122                 sta $ff90
+30BC 8620             (ardware_probe.asm):00123                 lda #$20
+30BE B7FF91           (ardware_probe.asm):00124                 sta $ff91
+30C1 7FFF93           (ardware_probe.asm):00125                 clr $ff93
+30C4 8608             (ardware_probe.asm):00126                 lda #8
+30C6 B7FF92           (ardware_probe.asm):00127                 sta $ff92
+                      (ardware_probe.asm):00128                 ; PCM: 910+2 ticks. SSC byte transport: 3578+2 ticks.
+                      (ardware_probe.asm):00129                 ifne SOUND_SSC
+                      (ardware_probe.asm):00130                 ldb #$fa
+                      (ardware_probe.asm):00131                 else
+30C9 C68E             (ardware_probe.asm):00132                 ldb #$8e
+                      (ardware_probe.asm):00133                 endc
+30CB F7FF95           (ardware_probe.asm):00134                 stb $ff95
+                      (ardware_probe.asm):00135                 ifne SOUND_SSC
+                      (ardware_probe.asm):00136                 lda #$0d
+                      (ardware_probe.asm):00137                 else
+30CE 8603             (ardware_probe.asm):00138                 lda #$03
+                      (ardware_probe.asm):00139                 endc
+30D0 B7FF94           (ardware_probe.asm):00140                 sta $ff94
+30D3 1CAF             (ardware_probe.asm):00141                 andcc #$af
+30D5                  (ardware_probe.asm):00142         main_loop
+30D5 0D00             (ardware_probe.asm):00143                 tst <frame_due
+30D7 27FC             (ardware_probe.asm):00144                 beq main_loop
+30D9 1A10             (ardware_probe.asm):00145                 orcc #$10
+30DB 0F00             (ardware_probe.asm):00146                 clr <frame_due
+30DD 1CEF             (ardware_probe.asm):00147                 andcc #$ef
+30DF BD4DBD           (ardware_probe.asm):00148                 jsr game_tick
+30E2 20F1             (ardware_probe.asm):00149                 bra main_loop
+                      (ardware_probe.asm):00150         
+                      (ardware_probe.asm):00151         ; A full IRQ automatically saves/restores all 6809 registers.
+30E4                  (ardware_probe.asm):00152         video_irq
+30E4 B6FF92           (ardware_probe.asm):00153                 lda $ff92
+30E7 8601             (ardware_probe.asm):00154                 lda #1
+30E9 9700             (ardware_probe.asm):00155                 sta <frame_due
+30EB DC01             (ardware_probe.asm):00156                 ldd <frames_played
+30ED C30001           (ardware_probe.asm):00157                 addd #1
+30F0 DD01             (ardware_probe.asm):00158                 std <frames_played
+30F2 BD3229           (ardware_probe.asm):00159                 jsr music_tick
+30F5 3B               (ardware_probe.asm):00160                 rti
+                      (ardware_probe.asm):00161         
+                      (ardware_probe.asm):00162                 ifne SOUND_SSC
+                      (ardware_probe.asm):00163                 include "audio_ssc.asm"
+                      (ardware_probe.asm):00164                 else
+                      (ardware_probe.asm):00165                 include "audio_sfx.asm"
                       (    audio_sfx.asm):00001         ; Original PSG effects rendered offline to unsigned 8-bit PCM at 3924.94 Hz.
                       (    audio_sfx.asm):00002         ; One priority PCM effect; optional native music is mixed in music_firq.
 30F6                  (    audio_sfx.asm):00003         sound_stop
@@ -463,7 +484,7 @@
      94BA             (pcm_locations.inc):00010         pcm_cycle_end equ $94ba
      94BA             (pcm_locations.inc):00011         pcm_pickup equ $94ba
      9997             (pcm_locations.inc):00012         pcm_pickup_end equ $9997
-                      (ardware_probe.asm):00145                 include "music.asm"
+                      (ardware_probe.asm):00166                 include "music.asm"
                       (        music.asm):00001         ; Two original PSG tone voices, compact events and 16-bit phase DDS.
                       (        music.asm):00002         ; Native runtime only. Buffers $0500/$0600 are owned by the game, no BIOS use.
      0D80             (        music.asm):00003         MUSIC_VOICE0 equ $0d80
@@ -1912,8 +1933,9 @@
 43A1 04               (   music_data.inc):00786                 fcb 4
 43A2 8000             (   music_data.inc):00787                 fdb 32768
 43A4 00               (   music_data.inc):00788                 fcb 0
-                      (ardware_probe.asm):00146         
-                      (ardware_probe.asm):00147                 include "campaign_maps.asm"
+                      (ardware_probe.asm):00167                 endc
+                      (ardware_probe.asm):00168         
+                      (ardware_probe.asm):00169                 include "campaign_maps.asm"
                       (campaign_maps.asm):00001         ; Original 4x4 dictionary/repetition/mirror decoder, one 128-byte band.
                       (campaign_maps.asm):00002         ; The active map is cached in CPU $0400..$047f, not expanded over bank 7.
      0400             (campaign_maps.asm):00003         MAP_CACHE equ $0400
@@ -2127,7 +2149,7 @@
 4513 26EE             (campaign_maps.asm):00211                 bne campaign_patch_row
 4515                  (campaign_maps.asm):00212         campaign_patch_done
 4515 39               (campaign_maps.asm):00213                 rts
-                      (ardware_probe.asm):00148                 include "level_disk.asm"
+                      (ardware_probe.asm):00170                 include "level_disk.asm"
                       (   level_disk.asm):00001         ; Read-only WD2793 tile-bank loader. Drive 1: LEVELS.DSK.
                       (   level_disk.asm):00002         ; Only runs between scenes; video/audio IRQs are masked during disk access.
      0B00             (   level_disk.asm):00003         FD_LSN equ $0b00
@@ -2142,128 +2164,154 @@
 4516 3477             (   level_disk.asm):00012                 pshs cc,d,x,y,u
 4518 1A50             (   level_disk.asm):00013                 orcc #$50
 451A 7FFF93           (   level_disk.asm):00014                 clr $ff93
-451D 7F0B09           (   level_disk.asm):00015                 clr FD_ERROR
-4520 B6FFA4           (   level_disk.asm):00016                 lda $ffa4
-4523 B70B08           (   level_disk.asm):00017                 sta FD_OLD
-4526 860C             (   level_disk.asm):00018                 lda #12
-4528 B7FFA4           (   level_disk.asm):00019                 sta $ffa4
-452B 863B             (   level_disk.asm):00020                 lda #$3b
-452D B7FEFD           (   level_disk.asm):00021                 sta $fefd
-4530 862A             (   level_disk.asm):00022                 lda #$2a
-4532 B7FF40           (   level_disk.asm):00023                 sta $ff40
-4535 B6FF48           (   level_disk.asm):00024                 lda $ff48
-4538 7FFF48           (   level_disk.asm):00025                 clr $ff48
-453B BD4583           (   level_disk.asm):00026                 jsr level_disk_wait
-453E 251E             (   level_disk.asm):00027                 bcs level_load_finish
-4540 7F0B02           (   level_disk.asm):00028                 clr FD_TRACK
-4543 9640             (   level_disk.asm):00029                 lda <campaign_stage
-4545 C620             (   level_disk.asm):00030                 ldb #32
-4547 3D               (   level_disk.asm):00031                 mul
-4548 FD0B00           (   level_disk.asm):00032                 std FD_LSN
-454B 108E8000         (   level_disk.asm):00033                 ldy #$8000
-454F 8620             (   level_disk.asm):00034                 lda #32
-4551 B70B05           (   level_disk.asm):00035                 sta FD_LEFT
-4554                  (   level_disk.asm):00036         level_load_sector
-4554 BD459F           (   level_disk.asm):00037                 jsr level_read_sector
-4557 2505             (   level_disk.asm):00038                 bcs level_load_finish
-4559 7A0B05           (   level_disk.asm):00039                 dec FD_LEFT
-455C 26F6             (   level_disk.asm):00040                 bne level_load_sector
-455E                  (   level_disk.asm):00041         level_load_finish
-455E 86D0             (   level_disk.asm):00042                 lda #$d0
-4560 B7FF48           (   level_disk.asm):00043                 sta $ff48
-4563 B6FF48           (   level_disk.asm):00044                 lda $ff48
-4566 7FFF40           (   level_disk.asm):00045                 clr $ff40
-4569 B60B08           (   level_disk.asm):00046                 lda FD_OLD
-456C B7FFA4           (   level_disk.asm):00047                 sta $ffa4
-456F 7D0B09           (   level_disk.asm):00048                 tst FD_ERROR
-4572 2705             (   level_disk.asm):00049                 beq level_load_ok
-4574 8624             (   level_disk.asm):00050                 lda #$24
-4576 B7FF9A           (   level_disk.asm):00051                 sta $ff9a
-4579                  (   level_disk.asm):00052         level_load_ok
-4579 35F7             (   level_disk.asm):00053                 puls cc,d,x,y,u,pc
-457B                  (   level_disk.asm):00054         level_disk_fail
-457B 8601             (   level_disk.asm):00055                 lda #1
-457D B70B09           (   level_disk.asm):00056                 sta FD_ERROR
-4580 1A01             (   level_disk.asm):00057                 orcc #1
-4582 39               (   level_disk.asm):00058                 rts
-4583                  (   level_disk.asm):00059         level_disk_wait
-4583 3410             (   level_disk.asm):00060                 pshs x
-4585 8E0000           (   level_disk.asm):00061                 ldx #0
-4588 12               (   level_disk.asm):00062                 nop
-4589 12               (   level_disk.asm):00063                 nop
-458A                  (   level_disk.asm):00064         level_wait_busy
-458A B6FF48           (   level_disk.asm):00065                 lda $ff48
-458D 8501             (   level_disk.asm):00066                 bita #1
-458F 2709             (   level_disk.asm):00067                 beq level_disk_ready
-4591 301F             (   level_disk.asm):00068                 leax -1,x
-4593 26F5             (   level_disk.asm):00069                 bne level_wait_busy
-4595 3510             (   level_disk.asm):00070                 puls x
-4597 16FFE1           (   level_disk.asm):00071                 lbra level_disk_fail
-459A                  (   level_disk.asm):00072         level_disk_ready
-459A 3510             (   level_disk.asm):00073                 puls x
-459C 1CFE             (   level_disk.asm):00074                 andcc #$fe
-459E 39               (   level_disk.asm):00075                 rts
-459F                  (   level_disk.asm):00076         level_read_sector
-459F FC0B00           (   level_disk.asm):00077                 ldd FD_LSN
-45A2 7F0B03           (   level_disk.asm):00078                 clr FD_WANTED
-45A5                  (   level_disk.asm):00079         level_lsn_track
-45A5 10830012         (   level_disk.asm):00080                 cmpd #18
-45A9 2508             (   level_disk.asm):00081                 blo level_lsn_sector
-45AB 830012           (   level_disk.asm):00082                 subd #18
-45AE 7C0B03           (   level_disk.asm):00083                 inc FD_WANTED
-45B1 20F2             (   level_disk.asm):00084                 bra level_lsn_track
-45B3                  (   level_disk.asm):00085         level_lsn_sector
-45B3 5C               (   level_disk.asm):00086                 incb
-45B4 F70B04           (   level_disk.asm):00087                 stb FD_SECTOR
-45B7 B60B03           (   level_disk.asm):00088                 lda FD_WANTED
-45BA B10B02           (   level_disk.asm):00089                 cmpa FD_TRACK
-45BD 2719             (   level_disk.asm):00090                 beq level_head_ready
-45BF B7FF4B           (   level_disk.asm):00091                 sta $ff4b
-45C2 8610             (   level_disk.asm):00092                 lda #$10
-45C4 B7FF48           (   level_disk.asm):00093                 sta $ff48
-45C7 BD4583           (   level_disk.asm):00094                 jsr level_disk_wait
-45CA 255D             (   level_disk.asm):00095                 bcs level_read_done
-45CC 8518             (   level_disk.asm):00096                 bita #$18
-45CE 1026FFA9         (   level_disk.asm):00097                 lbne level_disk_fail
-45D2 B60B03           (   level_disk.asm):00098                 lda FD_WANTED
-45D5 B70B02           (   level_disk.asm):00099                 sta FD_TRACK
-45D8                  (   level_disk.asm):00100         level_head_ready
-45D8 B60B02           (   level_disk.asm):00101                 lda FD_TRACK
-45DB B7FF49           (   level_disk.asm):00102                 sta $ff49
-45DE B60B04           (   level_disk.asm):00103                 lda FD_SECTOR
-45E1 B7FF4A           (   level_disk.asm):00104                 sta $ff4a
-45E4 8680             (   level_disk.asm):00105                 lda #$80
-45E6 B7FF48           (   level_disk.asm):00106                 sta $ff48
-45E9 1F20             (   level_disk.asm):00107                 tfr y,d
-45EB C30100           (   level_disk.asm):00108                 addd #256
-45EE FD0B06           (   level_disk.asm):00109                 std FD_END
-45F1                  (   level_disk.asm):00110         level_sector_byte
-45F1 CE0000           (   level_disk.asm):00111                 ldu #0
-45F4                  (   level_disk.asm):00112         level_wait_drq
-45F4 B6FF48           (   level_disk.asm):00113                 lda $ff48
-45F7 8502             (   level_disk.asm):00114                 bita #2
-45F9 260D             (   level_disk.asm):00115                 bne level_got_drq
-45FB 8501             (   level_disk.asm):00116                 bita #1
-45FD 1027FF7A         (   level_disk.asm):00117                 lbeq level_disk_fail
-4601 335F             (   level_disk.asm):00118                 leau -1,u
-4603 26EF             (   level_disk.asm):00119                 bne level_wait_drq
-4605 16FF73           (   level_disk.asm):00120                 lbra level_disk_fail
-4608                  (   level_disk.asm):00121         level_got_drq
-4608 B6FF4B           (   level_disk.asm):00122                 lda $ff4b
-460B A7A0             (   level_disk.asm):00123                 sta ,y+
-460D 10BC0B06         (   level_disk.asm):00124                 cmpy FD_END
-4611 25DE             (   level_disk.asm):00125                 blo level_sector_byte
-4613 BD4583           (   level_disk.asm):00126                 jsr level_disk_wait
-4616 2511             (   level_disk.asm):00127                 bcs level_read_done
-4618 851C             (   level_disk.asm):00128                 bita #$1c
-461A 1026FF5D         (   level_disk.asm):00129                 lbne level_disk_fail
-461E FC0B00           (   level_disk.asm):00130                 ldd FD_LSN
-4621 C30001           (   level_disk.asm):00131                 addd #1
-4624 FD0B00           (   level_disk.asm):00132                 std FD_LSN
-4627 1CFE             (   level_disk.asm):00133                 andcc #$fe
-4629                  (   level_disk.asm):00134         level_read_done
-4629 39               (   level_disk.asm):00135                 rts
-                      (ardware_probe.asm):00149                 include "phases.asm"
+                      (   level_disk.asm):00015                 ifne SOUND_SSC
+                      (   level_disk.asm):00016                 jsr ssc_hw_reset
+                      (   level_disk.asm):00017                 endc
+451D 7F0B09           (   level_disk.asm):00018                 clr FD_ERROR
+4520 B6FFA4           (   level_disk.asm):00019                 lda $ffa4
+4523 B70B08           (   level_disk.asm):00020                 sta FD_OLD
+4526 860C             (   level_disk.asm):00021                 lda #12
+4528 B7FFA4           (   level_disk.asm):00022                 sta $ffa4
+452B 863B             (   level_disk.asm):00023                 lda #$3b
+452D B7FEFD           (   level_disk.asm):00024                 sta $fefd
+4530 862A             (   level_disk.asm):00025                 lda #$2a
+4532 B7FF40           (   level_disk.asm):00026                 sta $ff40
+4535 B6FF48           (   level_disk.asm):00027                 lda $ff48
+4538 7FFF48           (   level_disk.asm):00028                 clr $ff48
+453B BD4583           (   level_disk.asm):00029                 jsr level_disk_wait
+453E 251E             (   level_disk.asm):00030                 bcs level_load_finish
+4540 7F0B02           (   level_disk.asm):00031                 clr FD_TRACK
+4543 9640             (   level_disk.asm):00032                 lda <campaign_stage
+4545 C620             (   level_disk.asm):00033                 ldb #32
+4547 3D               (   level_disk.asm):00034                 mul
+4548 FD0B00           (   level_disk.asm):00035                 std FD_LSN
+454B 108E8000         (   level_disk.asm):00036                 ldy #$8000
+454F 8620             (   level_disk.asm):00037                 lda #32
+4551 B70B05           (   level_disk.asm):00038                 sta FD_LEFT
+4554                  (   level_disk.asm):00039         level_load_sector
+4554 BD459F           (   level_disk.asm):00040                 jsr level_read_sector
+4557 2505             (   level_disk.asm):00041                 bcs level_load_finish
+4559 7A0B05           (   level_disk.asm):00042                 dec FD_LEFT
+455C 26F6             (   level_disk.asm):00043                 bne level_load_sector
+455E                  (   level_disk.asm):00044         level_load_finish
+455E 86D0             (   level_disk.asm):00045                 lda #$d0
+4560 B7FF48           (   level_disk.asm):00046                 sta $ff48
+4563 B6FF48           (   level_disk.asm):00047                 lda $ff48
+4566 7FFF40           (   level_disk.asm):00048                 clr $ff40
+4569 B60B08           (   level_disk.asm):00049                 lda FD_OLD
+456C B7FFA4           (   level_disk.asm):00050                 sta $ffa4
+                      (   level_disk.asm):00051                 ifne SOUND_SSC
+                      (   level_disk.asm):00052                 jsr ssc_init
+                      (   level_disk.asm):00053                 endc
+456F 7D0B09           (   level_disk.asm):00054                 tst FD_ERROR
+4572 2705             (   level_disk.asm):00055                 beq level_load_ok
+4574 8624             (   level_disk.asm):00056                 lda #$24
+4576 B7FF9A           (   level_disk.asm):00057                 sta $ff9a
+4579                  (   level_disk.asm):00058         level_load_ok
+4579 35F7             (   level_disk.asm):00059                 puls cc,d,x,y,u,pc
+457B                  (   level_disk.asm):00060         level_disk_fail
+457B 8601             (   level_disk.asm):00061                 lda #1
+457D B70B09           (   level_disk.asm):00062                 sta FD_ERROR
+4580 1A01             (   level_disk.asm):00063                 orcc #1
+4582 39               (   level_disk.asm):00064                 rts
+4583                  (   level_disk.asm):00065         level_disk_wait
+4583 3410             (   level_disk.asm):00066                 pshs x
+4585 8E0000           (   level_disk.asm):00067                 ldx #0
+4588 12               (   level_disk.asm):00068                 nop
+4589 12               (   level_disk.asm):00069                 nop
+458A                  (   level_disk.asm):00070         level_wait_busy
+458A B6FF48           (   level_disk.asm):00071                 lda $ff48
+458D 8501             (   level_disk.asm):00072                 bita #1
+458F 2709             (   level_disk.asm):00073                 beq level_disk_ready
+4591 301F             (   level_disk.asm):00074                 leax -1,x
+4593 26F5             (   level_disk.asm):00075                 bne level_wait_busy
+4595 3510             (   level_disk.asm):00076                 puls x
+4597 16FFE1           (   level_disk.asm):00077                 lbra level_disk_fail
+459A                  (   level_disk.asm):00078         level_disk_ready
+459A 3510             (   level_disk.asm):00079                 puls x
+459C 1CFE             (   level_disk.asm):00080                 andcc #$fe
+459E 39               (   level_disk.asm):00081                 rts
+459F                  (   level_disk.asm):00082         level_read_sector
+459F FC0B00           (   level_disk.asm):00083                 ldd FD_LSN
+45A2 7F0B03           (   level_disk.asm):00084                 clr FD_WANTED
+45A5                  (   level_disk.asm):00085         level_lsn_track
+45A5 10830012         (   level_disk.asm):00086                 cmpd #18
+45A9 2508             (   level_disk.asm):00087                 blo level_lsn_sector
+45AB 830012           (   level_disk.asm):00088                 subd #18
+45AE 7C0B03           (   level_disk.asm):00089                 inc FD_WANTED
+45B1 20F2             (   level_disk.asm):00090                 bra level_lsn_track
+45B3                  (   level_disk.asm):00091         level_lsn_sector
+45B3 5C               (   level_disk.asm):00092                 incb
+45B4 F70B04           (   level_disk.asm):00093                 stb FD_SECTOR
+45B7 B60B03           (   level_disk.asm):00094                 lda FD_WANTED
+45BA B10B02           (   level_disk.asm):00095                 cmpa FD_TRACK
+45BD 2719             (   level_disk.asm):00096                 beq level_head_ready
+45BF B7FF4B           (   level_disk.asm):00097                 sta $ff4b
+45C2 8610             (   level_disk.asm):00098                 lda #$10
+45C4 B7FF48           (   level_disk.asm):00099                 sta $ff48
+45C7 BD4583           (   level_disk.asm):00100                 jsr level_disk_wait
+45CA 255D             (   level_disk.asm):00101                 bcs level_read_done
+45CC 8518             (   level_disk.asm):00102                 bita #$18
+45CE 1026FFA9         (   level_disk.asm):00103                 lbne level_disk_fail
+45D2 B60B03           (   level_disk.asm):00104                 lda FD_WANTED
+45D5 B70B02           (   level_disk.asm):00105                 sta FD_TRACK
+45D8                  (   level_disk.asm):00106         level_head_ready
+45D8 B60B02           (   level_disk.asm):00107                 lda FD_TRACK
+45DB B7FF49           (   level_disk.asm):00108                 sta $ff49
+45DE B60B04           (   level_disk.asm):00109                 lda FD_SECTOR
+45E1 B7FF4A           (   level_disk.asm):00110                 sta $ff4a
+45E4 8680             (   level_disk.asm):00111                 lda #$80
+45E6 B7FF48           (   level_disk.asm):00112                 sta $ff48
+                      (   level_disk.asm):00113                 ifne SOUND_SSC
+                      (   level_disk.asm):00114                 ; Slow-E-clock path: ready byte 26 cycles, empty poll 18 cycles.
+                      (   level_disk.asm):00115                 ; Keep both below the double-density 32 us deadline. X supplies a
+                      (   level_disk.asm):00116                 ; bounded sector timeout; LEAX sets Z (LEAU does not).
+                      (   level_disk.asm):00117                 clrb
+                      (   level_disk.asm):00118                 ldx #0
+45E9                  (   level_disk.asm):00119         level_ssc_sector_byte
+                      (   level_disk.asm):00120                 lda $ff48
+                      (   level_disk.asm):00121                 bita #2
+                      (   level_disk.asm):00122                 bne level_ssc_read_byte
+                      (   level_disk.asm):00123                 leax -1,x
+                      (   level_disk.asm):00124                 bne level_ssc_sector_byte
+                      (   level_disk.asm):00125                 lbra level_disk_fail
+45E9                  (   level_disk.asm):00126         level_ssc_read_byte
+                      (   level_disk.asm):00127                 lda $ff4b
+                      (   level_disk.asm):00128                 sta ,y+
+                      (   level_disk.asm):00129                 decb
+                      (   level_disk.asm):00130                 bne level_ssc_sector_byte
+                      (   level_disk.asm):00131                 else
+45E9 1F20             (   level_disk.asm):00132                 tfr y,d
+45EB C30100           (   level_disk.asm):00133                 addd #256
+45EE FD0B06           (   level_disk.asm):00134                 std FD_END
+45F1                  (   level_disk.asm):00135         level_sector_byte
+45F1 CE0000           (   level_disk.asm):00136                 ldu #0
+45F4                  (   level_disk.asm):00137         level_wait_drq
+45F4 B6FF48           (   level_disk.asm):00138                 lda $ff48
+45F7 8502             (   level_disk.asm):00139                 bita #2
+45F9 260D             (   level_disk.asm):00140                 bne level_got_drq
+45FB 8501             (   level_disk.asm):00141                 bita #1
+45FD 1027FF7A         (   level_disk.asm):00142                 lbeq level_disk_fail
+4601 335F             (   level_disk.asm):00143                 leau -1,u
+4603 26EF             (   level_disk.asm):00144                 bne level_wait_drq
+4605 16FF73           (   level_disk.asm):00145                 lbra level_disk_fail
+4608                  (   level_disk.asm):00146         level_got_drq
+4608 B6FF4B           (   level_disk.asm):00147                 lda $ff4b
+460B A7A0             (   level_disk.asm):00148                 sta ,y+
+460D 10BC0B06         (   level_disk.asm):00149                 cmpy FD_END
+4611 25DE             (   level_disk.asm):00150                 blo level_sector_byte
+                      (   level_disk.asm):00151                 endc
+4613 BD4583           (   level_disk.asm):00152                 jsr level_disk_wait
+4616 2511             (   level_disk.asm):00153                 bcs level_read_done
+4618 851C             (   level_disk.asm):00154                 bita #$1c
+461A 1026FF5D         (   level_disk.asm):00155                 lbne level_disk_fail
+461E FC0B00           (   level_disk.asm):00156                 ldd FD_LSN
+4621 C30001           (   level_disk.asm):00157                 addd #1
+4624 FD0B00           (   level_disk.asm):00158                 std FD_LSN
+4627 1CFE             (   level_disk.asm):00159                 andcc #$fe
+4629                  (   level_disk.asm):00160         level_read_done
+4629 39               (   level_disk.asm):00161                 rts
+                      (ardware_probe.asm):00171                 include "phases.asm"
                       (       phases.asm):00001         ; Campaign state lives outside the crowded direct page.
      0DB0             (       phases.asm):00002         PHASE_WAVE_COUNT equ $0db0
      0DB1             (       phases.asm):00003         PHASE_FIXED_COUNT equ $0db1
@@ -2435,7 +2483,7 @@
 47D8 00E0             (  phase2_data.inc):00118                 fdb 224
 47DA 00               (  phase2_data.inc):00119                 fcb 0
      0009             (  phase2_data.inc):00120         PHASE2_TOKEN_COUNT equ 9
-                      (ardware_probe.asm):00150                 include "cutscene.asm"
+                      (ardware_probe.asm):00172                 include "cutscene.asm"
                       (     cutscene.asm):00001         ; Original $5D95..$5DF7: vector to (120,32), then Y velocity $FF50.
 47DB                  (     cutscene.asm):00002         cutscene_tick
 47DB 0FDD             (     cutscene.asm):00003                 clr <ai_substep
@@ -2890,10 +2938,10 @@
 4D33 01A8011C         (  phase2_math.inc):00197                 fdb $01a8,$011c
 4D37 01D800C2         (  phase2_math.inc):00198                 fdb $01d8,$00c2
 4D3B 01F6005C         (  phase2_math.inc):00199                 fdb $01f6,$005c
-                      (ardware_probe.asm):00151                 include "gameplay.asm"
+                      (ardware_probe.asm):00173                 include "gameplay.asm"
                       (     gameplay.asm):00001         ; Native 6809 controls and scrolling of the original stage tilemaps.
                       (     gameplay.asm):00002         ; RAM: 192-line ring + 192-line mirror, physical banks 0..5 (48 KiB).
-                      (     gameplay.asm):00003         ; Bank 6 holds permanent auxiliary code/data; bank 7 holds PCM effects.
+                      (     gameplay.asm):00003         ; Bank 6 holds auxiliary code/data; bank 7 holds PCM or SSC score/effects.
                       (     gameplay.asm):00004         ; CPU $8000 is a framebuffer window; $a000 tiles; $c000 sprites/HUD.
      0D00             (     gameplay.asm):00005         TILE_ROW        equ $0d00
      0E00             (     gameplay.asm):00006         SAVED_PLAYER    equ $0e00
@@ -3454,292 +3502,295 @@
 512B B7FF20           (     gameplay.asm):00561                 sta $ff20
 512E 9623             (     gameplay.asm):00562                 lda <saved_sound
 5130 B7FF23           (     gameplay.asm):00563                 sta $ff23
-5133 3581             (     gameplay.asm):00564                 puls cc,pc
-                      (     gameplay.asm):00565         
-5135                  (     gameplay.asm):00566         key_definitions
-                      (     gameplay.asm):00567                 ; column, row bit, input mask: arrows, WASD, space, pause, restart.
-5135 0308010408020508 (     gameplay.asm):00568                 fcb 3,8,1,4,8,2,5,8,4,6,8,8
+                      (     gameplay.asm):00564                 ifne SOUND_SSC
+                      (     gameplay.asm):00565                 jsr ssc_audio_route
+                      (     gameplay.asm):00566                 endc
+5133 3581             (     gameplay.asm):00567                 puls cc,pc
+                      (     gameplay.asm):00568         
+5135                  (     gameplay.asm):00569         key_definitions
+                      (     gameplay.asm):00570                 ; column, row bit, input mask: arrows, WASD, space, pause, restart.
+5135 0308010408020508 (     gameplay.asm):00571                 fcb 3,8,1,4,8,2,5,8,4,6,8,8
      04060808
-5141 0704010304020101 (     gameplay.asm):00569                 fcb 7,4,1,3,4,2,1,1,4,4,1,8
+5141 0704010304020101 (     gameplay.asm):00572                 fcb 7,4,1,3,4,2,1,1,4,4,1,8
      04040108
-514D 0708100004200204 (     gameplay.asm):00570                 fcb 7,8,$10,0,4,$20,2,4,$40,1,2,$80,$ff
+514D 0708100004200204 (     gameplay.asm):00573                 fcb 7,8,$10,0,4,$20,2,4,$40,1,2,$80,$ff
      40010280FF
-                      (     gameplay.asm):00571         
-                      (     gameplay.asm):00572         ; Map a physical raster line (0..383) and byte-column into the $8000 window.
-515A                  (     gameplay.asm):00573         framebuffer_pointer
-515A 9639             (     gameplay.asm):00574                 lda <span_row+1
-515C 44               (     gameplay.asm):00575                 lsra
-515D 44               (     gameplay.asm):00576                 lsra
-515E 44               (     gameplay.asm):00577                 lsra
-515F 44               (     gameplay.asm):00578                 lsra
-5160 44               (     gameplay.asm):00579                 lsra
-5161 44               (     gameplay.asm):00580                 lsra
-5162 0D38             (     gameplay.asm):00581                 tst <span_row
-5164 2702             (     gameplay.asm):00582                 beq framebuffer_bank_ready
-5166 8B04             (     gameplay.asm):00583                 adda #4
-5168                  (     gameplay.asm):00584         framebuffer_bank_ready
-5168 973D             (     gameplay.asm):00585                 sta <row_bank
-516A B7FFA4           (     gameplay.asm):00586                 sta $ffa4
-516D 9639             (     gameplay.asm):00587                 lda <span_row+1
-516F 44               (     gameplay.asm):00588                 lsra
-5170 841F             (     gameplay.asm):00589                 anda #$1f
-5172 8A80             (     gameplay.asm):00590                 ora #$80
-5174 D63A             (     gameplay.asm):00591                 ldb <span_x
-5176 2402             (     gameplay.asm):00592                 bcc framebuffer_even
-5178 CA80             (     gameplay.asm):00593                 orb #$80
-517A                  (     gameplay.asm):00594         framebuffer_even
-517A 1F03             (     gameplay.asm):00595                 tfr d,u
-517C 39               (     gameplay.asm):00596                 rts
-                      (     gameplay.asm):00597         
-                      (     gameplay.asm):00598         ; X=source. A single physical copy; mirrored background rows are explicit.
-517D                  (     gameplay.asm):00599         write_span
-517D BD515A           (     gameplay.asm):00600                 jsr framebuffer_pointer
-5180                  (     gameplay.asm):00601         write_span_current
-5180 D63B             (     gameplay.asm):00602                 ldb <span_n
-5182 C180             (     gameplay.asm):00603                 cmpb #128
-5184 2716             (     gameplay.asm):00604                 beq write_full_scanline
-5186                  (     gameplay.asm):00605         write_span_loop
-5186 54               (     gameplay.asm):00606                 lsrb
-5187 D73C             (     gameplay.asm):00607                 stb <span_blocks
-5189 2408             (     gameplay.asm):00608                 bcc write_span_pairs
-518B A680             (     gameplay.asm):00609                 lda ,x+
-518D A7C0             (     gameplay.asm):00610                 sta ,u+
-518F 0D3C             (     gameplay.asm):00611                 tst <span_blocks
-5191 2708             (     gameplay.asm):00612                 beq write_span_done
-5193                  (     gameplay.asm):00613         write_span_pairs
-5193 EC81             (     gameplay.asm):00614                 ldd ,x++
-5195 EDC1             (     gameplay.asm):00615                 std ,u++
-5197 0A3C             (     gameplay.asm):00616                 dec <span_blocks
-5199 26F8             (     gameplay.asm):00617                 bne write_span_pairs
-519B                  (     gameplay.asm):00618         write_span_done
-519B 39               (     gameplay.asm):00619                 rts
-519C                  (     gameplay.asm):00620         write_full_scanline
-519C 8608             (     gameplay.asm):00621                 lda #8
-519E 973C             (     gameplay.asm):00622                 sta <span_blocks
-51A0                  (     gameplay.asm):00623         write_full_block
-51A0 EC84             (     gameplay.asm):00624                 ldd ,x
-51A2 EDC4             (     gameplay.asm):00625                 std ,u
-51A4 EC02             (     gameplay.asm):00626                 ldd 2,x
-51A6 ED42             (     gameplay.asm):00627                 std 2,u
-51A8 EC04             (     gameplay.asm):00628                 ldd 4,x
-51AA ED44             (     gameplay.asm):00629                 std 4,u
-51AC EC06             (     gameplay.asm):00630                 ldd 6,x
-51AE ED46             (     gameplay.asm):00631                 std 6,u
-51B0 EC08             (     gameplay.asm):00632                 ldd 8,x
-51B2 ED48             (     gameplay.asm):00633                 std 8,u
-51B4 EC0A             (     gameplay.asm):00634                 ldd 10,x
-51B6 ED4A             (     gameplay.asm):00635                 std 10,u
-51B8 EC0C             (     gameplay.asm):00636                 ldd 12,x
-51BA ED4C             (     gameplay.asm):00637                 std 12,u
-51BC EC0E             (     gameplay.asm):00638                 ldd 14,x
-51BE ED4E             (     gameplay.asm):00639                 std 14,u
-51C0 308810           (     gameplay.asm):00640                 leax 16,x
-51C3 33C810           (     gameplay.asm):00641                 leau 16,u
-51C6 0A3C             (     gameplay.asm):00642                 dec <span_blocks
-51C8 26D6             (     gameplay.asm):00643                 bne write_full_block
-51CA 39               (     gameplay.asm):00644                 rts
-                      (     gameplay.asm):00645         
-                      (     gameplay.asm):00646         ; U is just beyond the copied span. Advance to its next raster line and
-                      (     gameplay.asm):00647         ; switch the MMU only at an 8 KiB boundary, rather than recomputing per row.
-51CB                  (     gameplay.asm):00648         advance_span
-51CB C680             (     gameplay.asm):00649                 ldb #128
-51CD D03B             (     gameplay.asm):00650                 subb <span_n
-51CF 33C5             (     gameplay.asm):00651                 leau b,u
-51D1 1183A000         (     gameplay.asm):00652                 cmpu #$a000
-51D5 250B             (     gameplay.asm):00653                 blo advance_span_done
-51D7 33C9E000         (     gameplay.asm):00654                 leau -$2000,u
-51DB 0C3D             (     gameplay.asm):00655                 inc <row_bank
-51DD 963D             (     gameplay.asm):00656                 lda <row_bank
-51DF B7FFA4           (     gameplay.asm):00657                 sta $ffa4
-51E2                  (     gameplay.asm):00658         advance_span_done
-51E2 39               (     gameplay.asm):00659                 rts
-                      (     gameplay.asm):00660         
-51E3                  (     gameplay.asm):00661         render_world_line
-51E3 DC33             (     gameplay.asm):00662                 ldd <world_line
-51E5 BD43AE           (     gameplay.asm):00663                 jsr campaign_map_row
-51E8 CE0D00           (     gameplay.asm):00664                 ldu #TILE_ROW
-51EB C620             (     gameplay.asm):00665                 ldb #32
-51ED                  (     gameplay.asm):00666         copy_map_row
-51ED A680             (     gameplay.asm):00667                 lda ,x+
-51EF A7C0             (     gameplay.asm):00668                 sta ,u+
-51F1 5A               (     gameplay.asm):00669                 decb
-51F2 26F9             (     gameplay.asm):00670                 bne copy_map_row
-51F4 BD6E7D           (     gameplay.asm):00671                 jsr items_overlay_line
-51F7 860D             (     gameplay.asm):00672                 lda #$0d
-51F9 B7FFA6           (     gameplay.asm):00673                 sta $ffa6
-51FC 9634             (     gameplay.asm):00674                 lda <world_line+1
-51FE 8407             (     gameplay.asm):00675                 anda #7
-5200 48               (     gameplay.asm):00676                 lsla
-5201 48               (     gameplay.asm):00677                 lsla
-5202 9736             (     gameplay.asm):00678                 sta <tile_line
-5204 8620             (     gameplay.asm):00679                 lda #32
-5206 9737             (     gameplay.asm):00680                 sta <tiles_left
-5208 8E0D00           (     gameplay.asm):00681                 ldx #TILE_ROW
-520B 108E1000         (     gameplay.asm):00682                 ldy #SCANLINE
-520F                  (     gameplay.asm):00683         render_tile_line
-520F A680             (     gameplay.asm):00684                 lda ,x+
-5211 C620             (     gameplay.asm):00685                 ldb #32
-5213 3D               (     gameplay.asm):00686                 mul
-5214 C3A000           (     gameplay.asm):00687                 addd #$a000
-5217 DB36             (     gameplay.asm):00688                 addb <tile_line
-5219 8900             (     gameplay.asm):00689                 adca #0
-521B 1F03             (     gameplay.asm):00690                 tfr d,u
-521D ECC1             (     gameplay.asm):00691                 ldd ,u++
-521F EDA1             (     gameplay.asm):00692                 std ,y++
-5221 ECC4             (     gameplay.asm):00693                 ldd ,u
-5223 EDA1             (     gameplay.asm):00694                 std ,y++
-5225 0A37             (     gameplay.asm):00695                 dec <tiles_left
-5227 26E6             (     gameplay.asm):00696                 bne render_tile_line
-5229 0F3A             (     gameplay.asm):00697                 clr <span_x
-522B 0F38             (     gameplay.asm):00698                 clr <span_row
-522D 9635             (     gameplay.asm):00699                 lda <target_line
-522F 9739             (     gameplay.asm):00700                 sta <span_row+1
-5231 8680             (     gameplay.asm):00701                 lda #128
-5233 973B             (     gameplay.asm):00702                 sta <span_n
-5235 8E1000           (     gameplay.asm):00703                 ldx #SCANLINE
-5238 BD517D           (     gameplay.asm):00704                 jsr write_span
-523B 9635             (     gameplay.asm):00705                 lda <target_line
-523D 81C0             (     gameplay.asm):00706                 cmpa #192
-523F 240E             (     gameplay.asm):00707                 bhs no_mirror_line
-5241 4F               (     gameplay.asm):00708                 clra
-5242 D635             (     gameplay.asm):00709                 ldb <target_line
-5244 C300C0           (     gameplay.asm):00710                 addd #192
-5247 DD38             (     gameplay.asm):00711                 std <span_row
-5249 8E1000           (     gameplay.asm):00712                 ldx #SCANLINE
-524C BD517D           (     gameplay.asm):00713                 jsr write_span
-524F                  (     gameplay.asm):00714         no_mirror_line
-524F 39               (     gameplay.asm):00715                 rts
-                      (     gameplay.asm):00716         
-5250                  (     gameplay.asm):00717         draw_hud
-5250 4F               (     gameplay.asm):00718                 clra
-5251 D60E             (     gameplay.asm):00719                 ldb <ring_head
-5253 C300B0           (     gameplay.asm):00720                 addd #VIEW_HEIGHT
-5256 DD38             (     gameplay.asm):00721                 std <span_row
-5258 0F3A             (     gameplay.asm):00722                 clr <span_x
-525A 8680             (     gameplay.asm):00723                 lda #128
-525C 973B             (     gameplay.asm):00724                 sta <span_n
-525E 8610             (     gameplay.asm):00725                 lda #16
-5260 9732             (     gameplay.asm):00726                 sta <object_lines
-5262 8ED000           (     gameplay.asm):00727                 ldx #$d000
-5265 BD515A           (     gameplay.asm):00728                 jsr framebuffer_pointer
-5268                  (     gameplay.asm):00729         hud_row_loop
-5268 BD5180           (     gameplay.asm):00730                 jsr write_span_current
-526B BD51CB           (     gameplay.asm):00731                 jsr advance_span
-526E 0A32             (     gameplay.asm):00732                 dec <object_lines
-5270 26F6             (     gameplay.asm):00733                 bne hud_row_loop
-5272 39               (     gameplay.asm):00734                 rts
-                      (     gameplay.asm):00735         
-5273                  (     gameplay.asm):00736         erase_player
-5273 0D2A             (     gameplay.asm):00737                 tst <sprite_valid
-5275 2726             (     gameplay.asm):00738                 beq erase_return
-5277 DC2B             (     gameplay.asm):00739                 ldd <sprite_screen_row
-5279 DD38             (     gameplay.asm):00740                 std <span_row
-527B 962D             (     gameplay.asm):00741                 lda <sprite_xbyte
-527D 973A             (     gameplay.asm):00742                 sta <span_x
-527F 8609             (     gameplay.asm):00743                 lda #9
-5281 973B             (     gameplay.asm):00744                 sta <span_n
-5283 8610             (     gameplay.asm):00745                 lda #16
-5285 9732             (     gameplay.asm):00746                 sta <object_lines
-5287 8E0E00           (     gameplay.asm):00747                 ldx #SAVED_PLAYER
-528A BD7CDB           (     gameplay.asm):00748                 jsr restore_span_select
-528D BD515A           (     gameplay.asm):00749                 jsr framebuffer_pointer
-5290                  (     gameplay.asm):00750         erase_row_loop
-5290 AD9F0C91         (     gameplay.asm):00751                 jsr [blit_fn]
-5294 BD51CB           (     gameplay.asm):00752                 jsr advance_span
-5297 0A32             (     gameplay.asm):00753                 dec <object_lines
-5299 26F5             (     gameplay.asm):00754                 bne erase_row_loop
-529B 0F2A             (     gameplay.asm):00755                 clr <sprite_valid
-529D                  (     gameplay.asm):00756         erase_return
-529D 7E7996           (     gameplay.asm):00757                 jmp erase_shield
-                      (     gameplay.asm):00758         
-52A0                  (     gameplay.asm):00759         draw_player
-52A0 0D41             (     gameplay.asm):00760                 tst <combat_enabled
-52A2 2715             (     gameplay.asm):00761                 beq player_visible
-52A4 9642             (     gameplay.asm):00762                 lda <combat_status
-52A6 8101             (     gameplay.asm):00763                 cmpa #1
-52A8 270E             (     gameplay.asm):00764                 beq player_not_visible
-52AA 8102             (     gameplay.asm):00765                 cmpa #2
-52AC 270A             (     gameplay.asm):00766                 beq player_not_visible
-52AE 0D44             (     gameplay.asm):00767                 tst <player_invul
-52B0 2707             (     gameplay.asm):00768                 beq player_visible
-52B2 9609             (     gameplay.asm):00769                 lda <game_ticks+1
-52B4 8502             (     gameplay.asm):00770                 bita #2
-52B6 2701             (     gameplay.asm):00771                 beq player_visible
-52B8                  (     gameplay.asm):00772         player_not_visible
-52B8 39               (     gameplay.asm):00773                 rts
-52B9                  (     gameplay.asm):00774         player_visible
-52B9 BD79BF           (     gameplay.asm):00775                 jsr draw_shield
-52BC 4F               (     gameplay.asm):00776                 clra
-52BD D60E             (     gameplay.asm):00777                 ldb <ring_head
-52BF DB25             (     gameplay.asm):00778                 addb <player_y
-52C1 8900             (     gameplay.asm):00779                 adca #0
-52C3 DD2B             (     gameplay.asm):00780                 std <sprite_screen_row
-52C5 DD38             (     gameplay.asm):00781                 std <span_row
-52C7 9624             (     gameplay.asm):00782                 lda <player_x
-52C9 44               (     gameplay.asm):00783                 lsra
-52CA 972D             (     gameplay.asm):00784                 sta <sprite_xbyte
-52CC 973A             (     gameplay.asm):00785                 sta <span_x
-52CE D627             (     gameplay.asm):00786                 ldb <player_frame
-52D0 58               (     gameplay.asm):00787                 lslb
-52D1 9624             (     gameplay.asm):00788                 lda <player_x
-52D3 8401             (     gameplay.asm):00789                 anda #1
-52D5 D737             (     gameplay.asm):00790                 stb <tiles_left
-52D7 9B37             (     gameplay.asm):00791                 adda <tiles_left
-52D9 48               (     gameplay.asm):00792                 lsla
-52DA 8E531E           (     gameplay.asm):00793                 ldx #player_pointers
-52DD 3402             (     gameplay.asm):00794                 pshs a
-52DF 969C             (     gameplay.asm):00795                 lda <ability_kind
-52E1 8102             (     gameplay.asm):00796                 cmpa #2
-52E3 2611             (     gameplay.asm):00797                 bne player_mask_ready
-52E5 DC9D             (     gameplay.asm):00798                 ldd <ability_timer
-52E7 108300B4         (     gameplay.asm):00799                 cmpd #180
-52EB 2406             (     gameplay.asm):00800                 bhs player_invisible_mask
-52ED 9609             (     gameplay.asm):00801                 lda <game_ticks+1
-52EF 8504             (     gameplay.asm):00802                 bita #4
-52F1 2603             (     gameplay.asm):00803                 bne player_mask_ready
-52F3                  (     gameplay.asm):00804         player_invisible_mask
-52F3 8E768C           (     gameplay.asm):00805                 ldx #invisibility_pointers
-52F6                  (     gameplay.asm):00806         player_mask_ready
-52F6 3502             (     gameplay.asm):00807                 puls a
-52F8 AE86             (     gameplay.asm):00808                 ldx a,x
-52FA 9F2E             (     gameplay.asm):00809                 stx <sprite_pointer
-52FC 108E0E00         (     gameplay.asm):00810                 ldy #SAVED_PLAYER
-5300 8610             (     gameplay.asm):00811                 lda #16
-5302 9732             (     gameplay.asm):00812                 sta <object_lines
-5304 8609             (     gameplay.asm):00813                 lda #9
-5306 973B             (     gameplay.asm):00814                 sta <span_n
-5308 BD515A           (     gameplay.asm):00815                 jsr framebuffer_pointer
-530B                  (     gameplay.asm):00816         draw_player_row
-530B 9E2E             (     gameplay.asm):00817                 ldx <sprite_pointer
-                      (     gameplay.asm):00818                 ; Same nine mask/color pairs, using the existing unrolled compositor.
-530D BD7A2E           (     gameplay.asm):00819                 jsr masked_row_9
-5310 9F2E             (     gameplay.asm):00820                 stx <sprite_pointer
-5312 BD51CB           (     gameplay.asm):00821                 jsr advance_span
-5315 0A32             (     gameplay.asm):00822                 dec <object_lines
-5317 26F2             (     gameplay.asm):00823                 bne draw_player_row
-5319 8601             (     gameplay.asm):00824                 lda #1
-531B 972A             (     gameplay.asm):00825                 sta <sprite_valid
-531D 39               (     gameplay.asm):00826                 rts
-                      (     gameplay.asm):00827         
-531E                  (     gameplay.asm):00828         player_pointers
-531E C000C120C240C360 (     gameplay.asm):00829                 fdb $c000,$c120,$c240,$c360
+                      (     gameplay.asm):00574         
+                      (     gameplay.asm):00575         ; Map a physical raster line (0..383) and byte-column into the $8000 window.
+515A                  (     gameplay.asm):00576         framebuffer_pointer
+515A 9639             (     gameplay.asm):00577                 lda <span_row+1
+515C 44               (     gameplay.asm):00578                 lsra
+515D 44               (     gameplay.asm):00579                 lsra
+515E 44               (     gameplay.asm):00580                 lsra
+515F 44               (     gameplay.asm):00581                 lsra
+5160 44               (     gameplay.asm):00582                 lsra
+5161 44               (     gameplay.asm):00583                 lsra
+5162 0D38             (     gameplay.asm):00584                 tst <span_row
+5164 2702             (     gameplay.asm):00585                 beq framebuffer_bank_ready
+5166 8B04             (     gameplay.asm):00586                 adda #4
+5168                  (     gameplay.asm):00587         framebuffer_bank_ready
+5168 973D             (     gameplay.asm):00588                 sta <row_bank
+516A B7FFA4           (     gameplay.asm):00589                 sta $ffa4
+516D 9639             (     gameplay.asm):00590                 lda <span_row+1
+516F 44               (     gameplay.asm):00591                 lsra
+5170 841F             (     gameplay.asm):00592                 anda #$1f
+5172 8A80             (     gameplay.asm):00593                 ora #$80
+5174 D63A             (     gameplay.asm):00594                 ldb <span_x
+5176 2402             (     gameplay.asm):00595                 bcc framebuffer_even
+5178 CA80             (     gameplay.asm):00596                 orb #$80
+517A                  (     gameplay.asm):00597         framebuffer_even
+517A 1F03             (     gameplay.asm):00598                 tfr d,u
+517C 39               (     gameplay.asm):00599                 rts
+                      (     gameplay.asm):00600         
+                      (     gameplay.asm):00601         ; X=source. A single physical copy; mirrored background rows are explicit.
+517D                  (     gameplay.asm):00602         write_span
+517D BD515A           (     gameplay.asm):00603                 jsr framebuffer_pointer
+5180                  (     gameplay.asm):00604         write_span_current
+5180 D63B             (     gameplay.asm):00605                 ldb <span_n
+5182 C180             (     gameplay.asm):00606                 cmpb #128
+5184 2716             (     gameplay.asm):00607                 beq write_full_scanline
+5186                  (     gameplay.asm):00608         write_span_loop
+5186 54               (     gameplay.asm):00609                 lsrb
+5187 D73C             (     gameplay.asm):00610                 stb <span_blocks
+5189 2408             (     gameplay.asm):00611                 bcc write_span_pairs
+518B A680             (     gameplay.asm):00612                 lda ,x+
+518D A7C0             (     gameplay.asm):00613                 sta ,u+
+518F 0D3C             (     gameplay.asm):00614                 tst <span_blocks
+5191 2708             (     gameplay.asm):00615                 beq write_span_done
+5193                  (     gameplay.asm):00616         write_span_pairs
+5193 EC81             (     gameplay.asm):00617                 ldd ,x++
+5195 EDC1             (     gameplay.asm):00618                 std ,u++
+5197 0A3C             (     gameplay.asm):00619                 dec <span_blocks
+5199 26F8             (     gameplay.asm):00620                 bne write_span_pairs
+519B                  (     gameplay.asm):00621         write_span_done
+519B 39               (     gameplay.asm):00622                 rts
+519C                  (     gameplay.asm):00623         write_full_scanline
+519C 8608             (     gameplay.asm):00624                 lda #8
+519E 973C             (     gameplay.asm):00625                 sta <span_blocks
+51A0                  (     gameplay.asm):00626         write_full_block
+51A0 EC84             (     gameplay.asm):00627                 ldd ,x
+51A2 EDC4             (     gameplay.asm):00628                 std ,u
+51A4 EC02             (     gameplay.asm):00629                 ldd 2,x
+51A6 ED42             (     gameplay.asm):00630                 std 2,u
+51A8 EC04             (     gameplay.asm):00631                 ldd 4,x
+51AA ED44             (     gameplay.asm):00632                 std 4,u
+51AC EC06             (     gameplay.asm):00633                 ldd 6,x
+51AE ED46             (     gameplay.asm):00634                 std 6,u
+51B0 EC08             (     gameplay.asm):00635                 ldd 8,x
+51B2 ED48             (     gameplay.asm):00636                 std 8,u
+51B4 EC0A             (     gameplay.asm):00637                 ldd 10,x
+51B6 ED4A             (     gameplay.asm):00638                 std 10,u
+51B8 EC0C             (     gameplay.asm):00639                 ldd 12,x
+51BA ED4C             (     gameplay.asm):00640                 std 12,u
+51BC EC0E             (     gameplay.asm):00641                 ldd 14,x
+51BE ED4E             (     gameplay.asm):00642                 std 14,u
+51C0 308810           (     gameplay.asm):00643                 leax 16,x
+51C3 33C810           (     gameplay.asm):00644                 leau 16,u
+51C6 0A3C             (     gameplay.asm):00645                 dec <span_blocks
+51C8 26D6             (     gameplay.asm):00646                 bne write_full_block
+51CA 39               (     gameplay.asm):00647                 rts
+                      (     gameplay.asm):00648         
+                      (     gameplay.asm):00649         ; U is just beyond the copied span. Advance to its next raster line and
+                      (     gameplay.asm):00650         ; switch the MMU only at an 8 KiB boundary, rather than recomputing per row.
+51CB                  (     gameplay.asm):00651         advance_span
+51CB C680             (     gameplay.asm):00652                 ldb #128
+51CD D03B             (     gameplay.asm):00653                 subb <span_n
+51CF 33C5             (     gameplay.asm):00654                 leau b,u
+51D1 1183A000         (     gameplay.asm):00655                 cmpu #$a000
+51D5 250B             (     gameplay.asm):00656                 blo advance_span_done
+51D7 33C9E000         (     gameplay.asm):00657                 leau -$2000,u
+51DB 0C3D             (     gameplay.asm):00658                 inc <row_bank
+51DD 963D             (     gameplay.asm):00659                 lda <row_bank
+51DF B7FFA4           (     gameplay.asm):00660                 sta $ffa4
+51E2                  (     gameplay.asm):00661         advance_span_done
+51E2 39               (     gameplay.asm):00662                 rts
+                      (     gameplay.asm):00663         
+51E3                  (     gameplay.asm):00664         render_world_line
+51E3 DC33             (     gameplay.asm):00665                 ldd <world_line
+51E5 BD43AE           (     gameplay.asm):00666                 jsr campaign_map_row
+51E8 CE0D00           (     gameplay.asm):00667                 ldu #TILE_ROW
+51EB C620             (     gameplay.asm):00668                 ldb #32
+51ED                  (     gameplay.asm):00669         copy_map_row
+51ED A680             (     gameplay.asm):00670                 lda ,x+
+51EF A7C0             (     gameplay.asm):00671                 sta ,u+
+51F1 5A               (     gameplay.asm):00672                 decb
+51F2 26F9             (     gameplay.asm):00673                 bne copy_map_row
+51F4 BD6E7D           (     gameplay.asm):00674                 jsr items_overlay_line
+51F7 860D             (     gameplay.asm):00675                 lda #$0d
+51F9 B7FFA6           (     gameplay.asm):00676                 sta $ffa6
+51FC 9634             (     gameplay.asm):00677                 lda <world_line+1
+51FE 8407             (     gameplay.asm):00678                 anda #7
+5200 48               (     gameplay.asm):00679                 lsla
+5201 48               (     gameplay.asm):00680                 lsla
+5202 9736             (     gameplay.asm):00681                 sta <tile_line
+5204 8620             (     gameplay.asm):00682                 lda #32
+5206 9737             (     gameplay.asm):00683                 sta <tiles_left
+5208 8E0D00           (     gameplay.asm):00684                 ldx #TILE_ROW
+520B 108E1000         (     gameplay.asm):00685                 ldy #SCANLINE
+520F                  (     gameplay.asm):00686         render_tile_line
+520F A680             (     gameplay.asm):00687                 lda ,x+
+5211 C620             (     gameplay.asm):00688                 ldb #32
+5213 3D               (     gameplay.asm):00689                 mul
+5214 C3A000           (     gameplay.asm):00690                 addd #$a000
+5217 DB36             (     gameplay.asm):00691                 addb <tile_line
+5219 8900             (     gameplay.asm):00692                 adca #0
+521B 1F03             (     gameplay.asm):00693                 tfr d,u
+521D ECC1             (     gameplay.asm):00694                 ldd ,u++
+521F EDA1             (     gameplay.asm):00695                 std ,y++
+5221 ECC4             (     gameplay.asm):00696                 ldd ,u
+5223 EDA1             (     gameplay.asm):00697                 std ,y++
+5225 0A37             (     gameplay.asm):00698                 dec <tiles_left
+5227 26E6             (     gameplay.asm):00699                 bne render_tile_line
+5229 0F3A             (     gameplay.asm):00700                 clr <span_x
+522B 0F38             (     gameplay.asm):00701                 clr <span_row
+522D 9635             (     gameplay.asm):00702                 lda <target_line
+522F 9739             (     gameplay.asm):00703                 sta <span_row+1
+5231 8680             (     gameplay.asm):00704                 lda #128
+5233 973B             (     gameplay.asm):00705                 sta <span_n
+5235 8E1000           (     gameplay.asm):00706                 ldx #SCANLINE
+5238 BD517D           (     gameplay.asm):00707                 jsr write_span
+523B 9635             (     gameplay.asm):00708                 lda <target_line
+523D 81C0             (     gameplay.asm):00709                 cmpa #192
+523F 240E             (     gameplay.asm):00710                 bhs no_mirror_line
+5241 4F               (     gameplay.asm):00711                 clra
+5242 D635             (     gameplay.asm):00712                 ldb <target_line
+5244 C300C0           (     gameplay.asm):00713                 addd #192
+5247 DD38             (     gameplay.asm):00714                 std <span_row
+5249 8E1000           (     gameplay.asm):00715                 ldx #SCANLINE
+524C BD517D           (     gameplay.asm):00716                 jsr write_span
+524F                  (     gameplay.asm):00717         no_mirror_line
+524F 39               (     gameplay.asm):00718                 rts
+                      (     gameplay.asm):00719         
+5250                  (     gameplay.asm):00720         draw_hud
+5250 4F               (     gameplay.asm):00721                 clra
+5251 D60E             (     gameplay.asm):00722                 ldb <ring_head
+5253 C300B0           (     gameplay.asm):00723                 addd #VIEW_HEIGHT
+5256 DD38             (     gameplay.asm):00724                 std <span_row
+5258 0F3A             (     gameplay.asm):00725                 clr <span_x
+525A 8680             (     gameplay.asm):00726                 lda #128
+525C 973B             (     gameplay.asm):00727                 sta <span_n
+525E 8610             (     gameplay.asm):00728                 lda #16
+5260 9732             (     gameplay.asm):00729                 sta <object_lines
+5262 8ED000           (     gameplay.asm):00730                 ldx #$d000
+5265 BD515A           (     gameplay.asm):00731                 jsr framebuffer_pointer
+5268                  (     gameplay.asm):00732         hud_row_loop
+5268 BD5180           (     gameplay.asm):00733                 jsr write_span_current
+526B BD51CB           (     gameplay.asm):00734                 jsr advance_span
+526E 0A32             (     gameplay.asm):00735                 dec <object_lines
+5270 26F6             (     gameplay.asm):00736                 bne hud_row_loop
+5272 39               (     gameplay.asm):00737                 rts
+                      (     gameplay.asm):00738         
+5273                  (     gameplay.asm):00739         erase_player
+5273 0D2A             (     gameplay.asm):00740                 tst <sprite_valid
+5275 2726             (     gameplay.asm):00741                 beq erase_return
+5277 DC2B             (     gameplay.asm):00742                 ldd <sprite_screen_row
+5279 DD38             (     gameplay.asm):00743                 std <span_row
+527B 962D             (     gameplay.asm):00744                 lda <sprite_xbyte
+527D 973A             (     gameplay.asm):00745                 sta <span_x
+527F 8609             (     gameplay.asm):00746                 lda #9
+5281 973B             (     gameplay.asm):00747                 sta <span_n
+5283 8610             (     gameplay.asm):00748                 lda #16
+5285 9732             (     gameplay.asm):00749                 sta <object_lines
+5287 8E0E00           (     gameplay.asm):00750                 ldx #SAVED_PLAYER
+528A BD7CDB           (     gameplay.asm):00751                 jsr restore_span_select
+528D BD515A           (     gameplay.asm):00752                 jsr framebuffer_pointer
+5290                  (     gameplay.asm):00753         erase_row_loop
+5290 AD9F0C91         (     gameplay.asm):00754                 jsr [blit_fn]
+5294 BD51CB           (     gameplay.asm):00755                 jsr advance_span
+5297 0A32             (     gameplay.asm):00756                 dec <object_lines
+5299 26F5             (     gameplay.asm):00757                 bne erase_row_loop
+529B 0F2A             (     gameplay.asm):00758                 clr <sprite_valid
+529D                  (     gameplay.asm):00759         erase_return
+529D 7E7996           (     gameplay.asm):00760                 jmp erase_shield
+                      (     gameplay.asm):00761         
+52A0                  (     gameplay.asm):00762         draw_player
+52A0 0D41             (     gameplay.asm):00763                 tst <combat_enabled
+52A2 2715             (     gameplay.asm):00764                 beq player_visible
+52A4 9642             (     gameplay.asm):00765                 lda <combat_status
+52A6 8101             (     gameplay.asm):00766                 cmpa #1
+52A8 270E             (     gameplay.asm):00767                 beq player_not_visible
+52AA 8102             (     gameplay.asm):00768                 cmpa #2
+52AC 270A             (     gameplay.asm):00769                 beq player_not_visible
+52AE 0D44             (     gameplay.asm):00770                 tst <player_invul
+52B0 2707             (     gameplay.asm):00771                 beq player_visible
+52B2 9609             (     gameplay.asm):00772                 lda <game_ticks+1
+52B4 8502             (     gameplay.asm):00773                 bita #2
+52B6 2701             (     gameplay.asm):00774                 beq player_visible
+52B8                  (     gameplay.asm):00775         player_not_visible
+52B8 39               (     gameplay.asm):00776                 rts
+52B9                  (     gameplay.asm):00777         player_visible
+52B9 BD79BF           (     gameplay.asm):00778                 jsr draw_shield
+52BC 4F               (     gameplay.asm):00779                 clra
+52BD D60E             (     gameplay.asm):00780                 ldb <ring_head
+52BF DB25             (     gameplay.asm):00781                 addb <player_y
+52C1 8900             (     gameplay.asm):00782                 adca #0
+52C3 DD2B             (     gameplay.asm):00783                 std <sprite_screen_row
+52C5 DD38             (     gameplay.asm):00784                 std <span_row
+52C7 9624             (     gameplay.asm):00785                 lda <player_x
+52C9 44               (     gameplay.asm):00786                 lsra
+52CA 972D             (     gameplay.asm):00787                 sta <sprite_xbyte
+52CC 973A             (     gameplay.asm):00788                 sta <span_x
+52CE D627             (     gameplay.asm):00789                 ldb <player_frame
+52D0 58               (     gameplay.asm):00790                 lslb
+52D1 9624             (     gameplay.asm):00791                 lda <player_x
+52D3 8401             (     gameplay.asm):00792                 anda #1
+52D5 D737             (     gameplay.asm):00793                 stb <tiles_left
+52D7 9B37             (     gameplay.asm):00794                 adda <tiles_left
+52D9 48               (     gameplay.asm):00795                 lsla
+52DA 8E531E           (     gameplay.asm):00796                 ldx #player_pointers
+52DD 3402             (     gameplay.asm):00797                 pshs a
+52DF 969C             (     gameplay.asm):00798                 lda <ability_kind
+52E1 8102             (     gameplay.asm):00799                 cmpa #2
+52E3 2611             (     gameplay.asm):00800                 bne player_mask_ready
+52E5 DC9D             (     gameplay.asm):00801                 ldd <ability_timer
+52E7 108300B4         (     gameplay.asm):00802                 cmpd #180
+52EB 2406             (     gameplay.asm):00803                 bhs player_invisible_mask
+52ED 9609             (     gameplay.asm):00804                 lda <game_ticks+1
+52EF 8504             (     gameplay.asm):00805                 bita #4
+52F1 2603             (     gameplay.asm):00806                 bne player_mask_ready
+52F3                  (     gameplay.asm):00807         player_invisible_mask
+52F3 8E768C           (     gameplay.asm):00808                 ldx #invisibility_pointers
+52F6                  (     gameplay.asm):00809         player_mask_ready
+52F6 3502             (     gameplay.asm):00810                 puls a
+52F8 AE86             (     gameplay.asm):00811                 ldx a,x
+52FA 9F2E             (     gameplay.asm):00812                 stx <sprite_pointer
+52FC 108E0E00         (     gameplay.asm):00813                 ldy #SAVED_PLAYER
+5300 8610             (     gameplay.asm):00814                 lda #16
+5302 9732             (     gameplay.asm):00815                 sta <object_lines
+5304 8609             (     gameplay.asm):00816                 lda #9
+5306 973B             (     gameplay.asm):00817                 sta <span_n
+5308 BD515A           (     gameplay.asm):00818                 jsr framebuffer_pointer
+530B                  (     gameplay.asm):00819         draw_player_row
+530B 9E2E             (     gameplay.asm):00820                 ldx <sprite_pointer
+                      (     gameplay.asm):00821                 ; Same nine mask/color pairs, using the existing unrolled compositor.
+530D BD7A2E           (     gameplay.asm):00822                 jsr masked_row_9
+5310 9F2E             (     gameplay.asm):00823                 stx <sprite_pointer
+5312 BD51CB           (     gameplay.asm):00824                 jsr advance_span
+5315 0A32             (     gameplay.asm):00825                 dec <object_lines
+5317 26F2             (     gameplay.asm):00826                 bne draw_player_row
+5319 8601             (     gameplay.asm):00827                 lda #1
+531B 972A             (     gameplay.asm):00828                 sta <sprite_valid
+531D 39               (     gameplay.asm):00829                 rts
                       (     gameplay.asm):00830         
-5326                  (     gameplay.asm):00831         publish_head
-5326 4F               (     gameplay.asm):00832                 clra
-5327 D60E             (     gameplay.asm):00833                 ldb <ring_head
-5329 58               (     gameplay.asm):00834                 lslb
-532A 49               (     gameplay.asm):00835                 rola
-532B 58               (     gameplay.asm):00836                 lslb
-532C 49               (     gameplay.asm):00837                 rola
-532D 58               (     gameplay.asm):00838                 lslb
-532E 49               (     gameplay.asm):00839                 rola
-532F 58               (     gameplay.asm):00840                 lslb
-5330 49               (     gameplay.asm):00841                 rola
-5331 C3C000           (     gameplay.asm):00842                 addd #$c000
-5334 FDFF9D           (     gameplay.asm):00843                 std $ff9d
-5337                  (     gameplay.asm):00844         frame_complete
-5337 39               (     gameplay.asm):00845                 rts
-                      (ardware_probe.asm):00152                 include "combat.asm"
+531E                  (     gameplay.asm):00831         player_pointers
+531E C000C120C240C360 (     gameplay.asm):00832                 fdb $c000,$c120,$c240,$c360
+                      (     gameplay.asm):00833         
+5326                  (     gameplay.asm):00834         publish_head
+5326 4F               (     gameplay.asm):00835                 clra
+5327 D60E             (     gameplay.asm):00836                 ldb <ring_head
+5329 58               (     gameplay.asm):00837                 lslb
+532A 49               (     gameplay.asm):00838                 rola
+532B 58               (     gameplay.asm):00839                 lslb
+532C 49               (     gameplay.asm):00840                 rola
+532D 58               (     gameplay.asm):00841                 lslb
+532E 49               (     gameplay.asm):00842                 rola
+532F 58               (     gameplay.asm):00843                 lslb
+5330 49               (     gameplay.asm):00844                 rola
+5331 C3C000           (     gameplay.asm):00845                 addd #$c000
+5334 FDFF9D           (     gameplay.asm):00846                 std $ff9d
+5337                  (     gameplay.asm):00847         frame_complete
+5337 39               (     gameplay.asm):00848                 rts
+                      (ardware_probe.asm):00174                 include "combat.asm"
                       (       combat.asm):00001         ; Native first-stage combat, ROM-derived enemy/boss AI and segment checkpoints.
                       (       combat.asm):00002         ; Logic/evidence: analysis/IA-E-CHECKPOINTS.md. Renderer/audio adaptations remain.
      2700             (       combat.asm):00003         ENTITIES equ $2700
@@ -6978,7 +7029,7 @@
      000A             (  combat_data.inc):00035         EXPLOSION_ART equ 10
      0014             (  combat_data.inc):00036         BOSS_HITS equ 20
      0022             (  combat_data.inc):00037         WAVE_COUNT equ 34
-                      (ardware_probe.asm):00153                 include "items.asm"
+                      (ardware_probe.asm):00175                 include "items.asm"
      2940             (        items.asm):00001         TOKEN_SLOT equ ENTITIES+18*32
      2980             (        items.asm):00002         FIXED_STATES equ $2980
                       (        items.asm):00003         
@@ -8162,7 +8213,7 @@
 77F0 00E0             (   items_data.inc):00255                 fdb 224
 77F2 00               (   items_data.inc):00256                 fcb 0
      0009             (   items_data.inc):00257         TOKEN_COUNT equ 9
-                      (ardware_probe.asm):00154                 include "weapons.asm"
+                      (ardware_probe.asm):00176                 include "weapons.asm"
 77F3                  (      weapons.asm):00001         items_fire_player
 77F3 0D46             (      weapons.asm):00002                 tst <fire_clock
 77F5 2702             (      weapons.asm):00003                 beq weapon_fire_ready
@@ -8461,7 +8512,7 @@
 7A17 97CA             (      weapons.asm):00296                 sta <shield_drawn
 7A19                  (      weapons.asm):00297         draw_shield_done
 7A19 39               (      weapons.asm):00298                 rts
-                      (ardware_probe.asm):00155                 include "masked_rows.inc"
+                      (ardware_probe.asm):00177                 include "masked_rows.inc"
                       (  masked_rows.inc):00001         ; Unrolled masked rows, sharing fall-through code; width-indexed entry.
 7A1A                  (  masked_rows.inc):00002         masked_row_table
 7A1A 7A887A7E7A747A6A (  masked_rows.inc):00003                 fdb masked_row_0,masked_row_1,masked_row_2,masked_row_3,masked_row_4,masked_row_5,masked_row_6,masked_row_7,masked_row_8,masked_row_9
@@ -8523,7 +8574,7 @@
 7A86 A7C0             (  masked_rows.inc):00057                 sta ,u+
 7A88                  (  masked_rows.inc):00058         masked_row_0
 7A88 39               (  masked_rows.inc):00059                 rts
-                      (ardware_probe.asm):00156                 include "raw_rows.inc"
+                      (ardware_probe.asm):00178                 include "raw_rows.inc"
                       (     raw_rows.inc):00001         ; Packed-color sprites; zero nibbles are transparent.
 7A89                  (     raw_rows.inc):00002         raw_row_table
 7A89 7C0D7BE97BC57BA1 (     raw_rows.inc):00003                 fdb raw_row_0,raw_row_1,raw_row_2,raw_row_3,raw_row_4,raw_row_5,raw_row_6,raw_row_7,raw_row_8,raw_row_9,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row,raw_wide_row
@@ -8884,7 +8935,7 @@
 7CD6 0A3C             (     raw_rows.inc):00351                 dec <span_blocks
 7CD8 26B4             (     raw_rows.inc):00352                 bne raw_boss_next
 7CDA 39               (     raw_rows.inc):00353                 rts
-                      (ardware_probe.asm):00157                 include "restore_spans.inc"
+                      (ardware_probe.asm):00179                 include "restore_spans.inc"
                       (restore_spans.inc):00001         ; Unrolled background restore; selected once per sprite, widths 0..32.
 7CDB                  (restore_spans.inc):00002         restore_span_select
 7CDB 963B             (restore_spans.inc):00003                 lda <span_n
@@ -9017,16 +9068,16 @@
 7DC6 EDC1             (restore_spans.inc):00122                 std ,u++
 7DC8                  (restore_spans.inc):00123         restore_span_0
 7DC8 39               (restore_spans.inc):00124                 rts
-7DC9                  (ardware_probe.asm):00158         palette
-                      (ardware_probe.asm):00159                 include "palette.inc"
+7DC9                  (ardware_probe.asm):00180         palette
+                      (ardware_probe.asm):00181                 include "palette.inc"
 7DC9 000011170F0F231F (      palette.inc):00001                 fcb $00,$00,$11,$17,$0f,$0f,$23,$1f,$27,$27,$31,$3c,$11,$2a,$38,$3f
      2727313C112A383F
-7DD9                  (ardware_probe.asm):00160         program_end
-                      (ardware_probe.asm):00161         
-                      (ardware_probe.asm):00162         ; Permanent bank 6 at E000. Interrupt trampolines FEF4..FFFF are reserved.
-                      (ardware_probe.asm):00163                 org $e000
-E000                  (ardware_probe.asm):00164         aux_begin
-                      (ardware_probe.asm):00165                 include "intro.asm"
+7DD9                  (ardware_probe.asm):00182         program_end
+                      (ardware_probe.asm):00183         
+                      (ardware_probe.asm):00184         ; Permanent bank 6 at E000. Interrupt trampolines FEF4..FFFF are reserved.
+                      (ardware_probe.asm):00185                 org $e000
+E000                  (ardware_probe.asm):00186         aux_begin
+                      (ardware_probe.asm):00187                 include "intro.asm"
                       (        intro.asm):00001         ; Original KONAMI logo and title pixels; music remains disabled.
                       (        intro.asm):00002         ; Called only after the combat frame has finished its erase/update phase.
                       (        intro.asm):00003         ; Rebuilding the intro here must bypass the combat draw/HUD path entirely.
@@ -9167,8 +9218,8 @@ E0FC 26E5             (        intro.asm):00137                 bne intro_rle_ru
 E0FE 8CECA8           (        intro.asm):00138                 cmpx #intro_title_end
 E101 25DA             (        intro.asm):00139                 blo intro_rle_packet
 E103 39               (        intro.asm):00140                 rts
-E104                  (ardware_probe.asm):00166         intro_title_rle
-E104 FF00FF00FF00FF00 (ardware_probe.asm):00167                 includebin "../assets/title.rle"
+E104                  (ardware_probe.asm):00188         intro_title_rle
+E104 FF00FF00FF00FF00 (ardware_probe.asm):00189                 includebin "../assets/title.rle"
      FF00FF00FF00FF00
      FF00FF00FF00FF00
      FF00FF00FF00FF00
@@ -9541,9 +9592,9 @@ E104 FF00FF00FF00FF00 (ardware_probe.asm):00167                 includebin "../a
      FF00FF00FF00FF00
      FF00FF00FF00FF00
      FF004100
-ECA8                  (ardware_probe.asm):00168         intro_title_end
-ECA8                  (ardware_probe.asm):00169         intro_logo_data
-ECA8 0000000000000000 (ardware_probe.asm):00170                 includebin "../assets/intro-logo.4bpp"
+ECA8                  (ardware_probe.asm):00190         intro_title_end
+ECA8                  (ardware_probe.asm):00191         intro_logo_data
+ECA8 0000000000000000 (ardware_probe.asm):00192                 includebin "../assets/intro-logo.4bpp"
      0000000000000000
      0000000000000000
      0000000000000000
@@ -9687,8 +9738,8 @@ ECA8 0000000000000000 (ardware_probe.asm):00170                 includebin "../a
      FF0000FFFF0FFFF0
      FFFF000FFFF000FF
      FF0FFFF000FFF000
-F128                  (ardware_probe.asm):00171         campaign_blob
-F128 3D9E259F2D9F57A0 (ardware_probe.asm):00172                 includebin "../assets/campaign-maps.rom.bin"
+F128                  (ardware_probe.asm):00193         campaign_blob
+F128 3D9E259F2D9F57A0 (ardware_probe.asm):00194                 includebin "../assets/campaign-maps.rom.bin"
      5EA035A13CA1FFA1
      06A2E2A2E9A2CCA3
      D3A3C3A4CAA4ADA5
@@ -10069,6 +10120,6 @@ F128 3D9E259F2D9F57A0 (ardware_probe.asm):00172                 includebin "../a
      8383838383838181
      8183030383838383
      81810101010101
-FD0F                  (ardware_probe.asm):00173         campaign_blob_end
-FD0F                  (ardware_probe.asm):00174         aux_end
-                      (ardware_probe.asm):00175                 end start
+FD0F                  (ardware_probe.asm):00195         campaign_blob_end
+FD0F                  (ardware_probe.asm):00196         aux_end
+                      (ardware_probe.asm):00197                 end start

@@ -1,5 +1,7 @@
 # Knightmare CoCo 3 — fases 1 e 2, menos cintilação
 
+**v0.3.0: Tandy Speech/Sound Cartridge original.** Use `bin/SSC.DSK` no drive 0 e `bin/LEVELS.DSK` no drive 1, com CoCo 3 de 128 KiB e SSC conectado. `RUN"START"` carrega o jogo; M liga/desliga a música. Esta variante roda a **0,895 MHz**, com perda de fluidez (aproximadamente 15–19 atualizações/s nos trechos medidos com música). Para emular, use MAME com suporte a SSC, validado na versão 0.289. XRoar 1.12 não emula esse cartucho. Leia [docs/SSC.md](docs/SSC.md) para instalação, execução e testes. O manual PDF v0.2.1 acompanha este suplemento; DAC6 e Orchestra-90 continuam com os mesmos discos da v0.2.1.
+
 Revisão de renderização de **31/10/2026**: restauração rápida dos sprites e retenção de quadros parados. As mudanças reduzem o intervalo de apagamento e o tempo de processamento nos cenários testados. Detalhes e comparação: [CINTILACAO-DUAS-FASES.md](analysis/CINTILACAO-DUAS-FASES.md). Ainda pode haver cintilação residual; o piscar intencional após dano foi mantido.
 
 Revisão da campanha de **31/10/2026: saída automática pela passagem e segunda fase jogável**, em Assembly 6809, usando CoCo 3 de 128 KiB. Inclui variantes DAC6 e Orchestra-90 CC.

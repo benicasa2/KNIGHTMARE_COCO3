@@ -19,9 +19,9 @@ if (-not (Test-Path -LiteralPath '.git')) {
     if ($LASTEXITCODE -ne 0) { throw 'Local repository initialization failed.' }
     & git add .
     if ($LASTEXITCODE -ne 0) { throw 'Local staging failed.' }
-    & git -c user.name=benicasa2 -c user.email=benicasa2@users.noreply.github.com commit -m 'Prepare Knightmare CoCo3 v0.2.1 with illustrated manual'
+    & git -c user.name=benicasa2 -c user.email=benicasa2@users.noreply.github.com commit -m "Prepare Knightmare CoCo3 $Tag with factory SSC audio"
     if ($LASTEXITCODE -ne 0) { throw 'Local commit failed.' }
-    & git -c user.name=benicasa2 -c user.email=benicasa2@users.noreply.github.com tag -a $Tag -m 'Two stages, reduced flicker and illustrated manual'
+    & git -c user.name=benicasa2 -c user.email=benicasa2@users.noreply.github.com tag -a $Tag -m 'Two stages and factory Tandy Speech/Sound audio'
     if ($LASTEXITCODE -ne 0) { throw 'Local tag creation failed.' }
 }
 & gh repo view $Repo --json nameWithOwner 2>$null
@@ -46,10 +46,11 @@ if ($LASTEXITCODE -eq 0) { throw 'Release already exists; existing assets will n
 $Assets = @(
     "release/KNIGHTMARE_COCO3_v${Version}_Jogo.zip",
     "release/KNIGHTMARE_COCO3_v${Version}_Fontes.zip",
-    "release/KNIGHTMARE_COCO3_Manual_v${Version}.pdf",
+    'release/KNIGHTMARE_COCO3_Manual_v0.2.1.pdf',
+    'release/SSC.md',
     'release/SHA256SUMS.txt'
 )
-& gh release create $Tag @Assets --repo $Repo --verify-tag --title "$Tag Duas fases e menos cintilacao" --notes-file "docs/release-notes-$Tag.md"
+& gh release create $Tag @Assets --repo $Repo --verify-tag --title "$Tag Tandy Speech-Sound Cartridge original" --notes-file "docs/release-notes-$Tag.md"
 if ($LASTEXITCODE -ne 0) { throw 'GitHub Release creation failed.' }
 & gh release view $Tag --repo $Repo --json url,tagName,isDraft,isPrerelease
 if ($LASTEXITCODE -ne 0) { throw 'Release was sent but remote verification failed.' }

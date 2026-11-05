@@ -1,7 +1,10 @@
 ; Knightmare / CoCo 3: native first-stage combat prototype.
-; 6809 only, 128 KiB, RGB palette, 256x192x16, two selectable DAC backends.
-; Original art; M toggles native two-voice music; event PCM effects.
-; LWASM: --format=decb --define=ORCH90=0 (or 1).
+; 6809 only, 128 KiB, RGB palette, 256x192x16, DAC6/ORCH90/factory SSC.
+; Original art; M toggles two-voice music; PCM or native AY event effects.
+; LWASM: --format=decb --define=ORCH90=0 (or 1), SOUND_SSC=0 (or 1).
+        ifndef SOUND_SSC
+SOUND_SSC equ 0
+        endc
         org $0c00
 state_begin
 frame_due rmb 1
@@ -31,7 +34,11 @@ start
         clra
         tfr a,dp
         sta $ffdf
+        ifne SOUND_SSC
+        sta $ffd8
+        else
         sta $ffd9
+        endc
         lda #$4c
         sta $ff90
         clr $ff91
@@ -71,6 +78,9 @@ clear_state
         blo clear_state
         lda #$0c
         tfr a,dp
+        ifne SOUND_SSC
+        jsr ssc_init
+        endc
         jsr intro_init
         jsr sound_stop
         ; PIA interrupts off; GIME vertical IRQ clocks gameplay independently.
@@ -115,10 +125,18 @@ clear_state
         clr $ff93
         lda #8
         sta $ff92
-        ; PCM timer = 910+2 ticks. FIRQ enabled only while an effect plays.
+        ; PCM: 910+2 ticks. SSC byte transport: 3578+2 ticks.
+        ifne SOUND_SSC
+        ldb #$fa
+        else
         ldb #$8e
+        endc
         stb $ff95
+        ifne SOUND_SSC
+        lda #$0d
+        else
         lda #$03
+        endc
         sta $ff94
         andcc #$af
 main_loop
@@ -141,8 +159,12 @@ video_irq
         jsr music_tick
         rti
 
+        ifne SOUND_SSC
+        include "audio_ssc.asm"
+        else
         include "audio_sfx.asm"
         include "music.asm"
+        endc
 
         include "campaign_maps.asm"
         include "level_disk.asm"

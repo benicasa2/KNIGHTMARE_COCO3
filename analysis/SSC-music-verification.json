@@ -1,0 +1,69 @@
+{
+  "status": "native SSC music and actual cartridge protocol passed",
+  "variant": "SSC",
+  "tested_disk_sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e",
+  "cpu_mhz": 0.895,
+  "music": [
+    {
+      "original_id": "0x9d",
+      "frames_compared": 2305,
+      "full_cycle_and_loop": true
+    },
+    {
+      "original_id": "0xa3",
+      "frames_compared": 1691,
+      "full_cycle_and_loop": true
+    },
+    {
+      "original_id": "0x9f",
+      "frames_compared": 5377,
+      "full_cycle_and_loop": true
+    },
+    {
+      "original_id": "0xa1",
+      "frames_compared": 1041,
+      "full_cycle_and_loop": true
+    }
+  ],
+  "effects": [
+    {
+      "name": "shot",
+      "frames": 5,
+      "music_off_and_on": true
+    },
+    {
+      "name": "hit",
+      "frames": 36,
+      "music_off_and_on": true
+    },
+    {
+      "name": "explosion",
+      "frames": 24,
+      "music_off_and_on": true
+    },
+    {
+      "name": "boss",
+      "frames": 12,
+      "music_off_and_on": true
+    },
+    {
+      "name": "cycle",
+      "frames": 4,
+      "music_off_and_on": true
+    },
+    {
+      "name": "pickup",
+      "frames": 19,
+      "music_off_and_on": true
+    }
+  ],
+  "audio": {
+    "rate": 48000,
+    "channels": 4,
+    "non_silent_samples": 11593821,
+    "peak": 30459
+  },
+  "scope": "real disk boot then isolated native four-track playback and six effects with music off/on; actual TMS7040/AY8913, target comparison each decoded frame and settled hardware-register checks; not physical hardware",
+  "speech_tested": false,
+  "speech_rom_warning": "The supplied SP0256 image has a checksum warning; speech is never invoked. The TMS7040 ROM and AY music path are used."
+}

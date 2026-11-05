@@ -1,0 +1,77 @@
+{
+  "bank": 7,
+  "bytes": 4442,
+  "ay_clock_hz": 1789772.5,
+  "music": [
+    {
+      "original_id": 157,
+      "frames": 1153,
+      "loop_frame": 1,
+      "psg_sha256": "a073c9c99d47ad85ce1ee6a33b7321106ff0d0ebc1b04669dcc6f0b1bdd12c69"
+    },
+    {
+      "original_id": 163,
+      "frames": 851,
+      "loop_frame": 11,
+      "psg_sha256": "bcb88e1375c74187d7a3701efaaa59b322a808dc7237e3b57554da17b7ce0d65"
+    },
+    {
+      "original_id": 159,
+      "frames": 2689,
+      "loop_frame": 1,
+      "psg_sha256": "7d6370cb787167161509081fe38bfd27148cfadb4dfa1bd0deeb144d3c923fe4"
+    },
+    {
+      "original_id": 161,
+      "frames": 529,
+      "loop_frame": 17,
+      "psg_sha256": "22fbd8dab8d6f73f8e21d11462a66349d1d838166efa4f53f96a30ae3d46e26a"
+    }
+  ],
+  "effects": [
+    {
+      "name": "shot",
+      "original_id": 3,
+      "frames": 5,
+      "bytes": 30,
+      "source_sha256": "39f2d9f2f7b5b01f4b61555fdd8877907fa309e986c950fc4ed24b51b309ee60"
+    },
+    {
+      "name": "hit",
+      "original_id": 11,
+      "frames": 36,
+      "bytes": 120,
+      "source_sha256": "b97a06e1360b88a872f179749ea3b6c0e8b4ef0e0469e3844ab2e1f70ee5ba55"
+    },
+    {
+      "name": "explosion",
+      "original_id": 77,
+      "frames": 24,
+      "bytes": 90,
+      "source_sha256": "2af5fed8320fd0b39e0f1ca8dda1508ac16e2a1ec83e2312a5ac296293dbaf41"
+    },
+    {
+      "name": "boss",
+      "original_id": 71,
+      "frames": 12,
+      "bytes": 72,
+      "source_sha256": "5457428c6f528402cc83b6c16fda042ff07aed1826837657e7959887ed7b77d7"
+    },
+    {
+      "name": "cycle",
+      "original_id": 14,
+      "frames": 4,
+      "bytes": 24,
+      "source_sha256": "b6aa66270fe0b9bdd250b04e718fa9ad93c77ea51b72db44fccd109153d92dce"
+    },
+    {
+      "name": "pickup",
+      "original_id": 18,
+      "frames": 19,
+      "bytes": 78,
+      "source_sha256": "b15dbe41f464091077674f5dd7acb248ebf157f84d5cf9c4cbdfde4ef15aa8ef"
+    }
+  ],
+  "format": "original 12-bit periods and 4-bit volumes; existing lossless two-voice LZ; channel-C effect RLE",
+  "sha256": "3f7b90444d03bff4380e08d0a6f87a1f1bae14aa6ac610b0b6d8a07f24a81784"
+}

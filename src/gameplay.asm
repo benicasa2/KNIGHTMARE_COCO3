@@ -1,6 +1,6 @@
 ; Native 6809 controls and scrolling of the original stage tilemaps.
 ; RAM: 192-line ring + 192-line mirror, physical banks 0..5 (48 KiB).
-; Bank 6 holds permanent auxiliary code/data; bank 7 holds PCM effects.
+; Bank 6 holds auxiliary code/data; bank 7 holds PCM or SSC score/effects.
 ; CPU $8000 is a framebuffer window; $a000 tiles; $c000 sprites/HUD.
 TILE_ROW        equ $0d00
 SAVED_PLAYER    equ $0e00
@@ -561,6 +561,9 @@ joystick_restore
         sta $ff20
         lda <saved_sound
         sta $ff23
+        ifne SOUND_SSC
+        jsr ssc_audio_route
+        endc
         puls cc,pc
 
 key_definitions

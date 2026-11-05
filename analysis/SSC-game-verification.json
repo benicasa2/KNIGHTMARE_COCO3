@@ -1,0 +1,33 @@
+{
+  "scope": "MAME 0.289, actual disk boot and continuous native main loop, real keyboard matrix; controlled stage-exit and game-over state fixtures; normal rates are 600 video frames of natural play per case, not a worst-case guarantee; no physical hardware",
+  "results": {
+    "DAC6-normal": {
+      "passed": true,
+      "updates_per_second": {
+        "stage1_music": 25.666908423,
+        "stage1_silent": 26.96523453,
+        "stage2_music": 19.075406649
+      },
+      "disk_sha256": "e3d6a9caf64255a78e14a734cdeff0d4fe62b891f101f15ffab7a497d62b1c38"
+    },
+    "SSC-normal": {
+      "passed": true,
+      "updates_per_second": {
+        "stage1_music": 19.375020366,
+        "stage1_silent": 14.581200894,
+        "stage2_music": 14.98068585
+      },
+      "disk_sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e"
+    },
+    "SSC-absent": {
+      "passed": true,
+      "updates_per_second": {},
+      "disk_sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e"
+    },
+    "SSC-busy": {
+      "passed": true,
+      "updates_per_second": {},
+      "disk_sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e"
+    }
+  }
+}

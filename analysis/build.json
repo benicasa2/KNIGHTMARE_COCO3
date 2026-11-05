@@ -35,6 +35,14 @@
     "disk_sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da",
     "binary_bytes": 19939
   },
+  "SSC": {
+    "disk_sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e",
+    "binary_bytes": 15969,
+    "audio": "original AY music A/B and effects C through factory Tandy S/SC",
+    "cpu_mhz": 0.895,
+    "transport_hz": 999.8729050279329,
+    "bank7_bytes": 4442
+  },
   "status": "two playable stages with original exit walk, ROM-derived AI and segment checkpoints; stages 3-8 pending; visual/audio adaptations remain",
   "playable_stages": 2,
   "ram_kib": 128,

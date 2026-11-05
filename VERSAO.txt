@@ -1,3 +1,11 @@
+Knightmare CoCo 3 v0.3.0 - 05/11/2026 - TANDY SPEECH/SOUND CARTRIDGE
+SSC original sem modificacao: 128 KiB, CPU 0,895 MHz, musica A/B e efeitos C no AY.
+SSC.DSK no drive 0 e LEVELS.DSK no drive 1. M liga/desliga musica.
+SSC no MAME 0.289; XRoar 1.12 nao suporta este cartucho.
+Menor fluidez: cerca de 15-19 atualizacoes/s nos trechos medidos com musica.
+Leia docs/SSC.md. DAC6/Orchestra-90 mantem os discos da v0.2.1.
+Manual ilustrado v0.2.1 e suplemento SSC desta versao incluidos.
+
 Knightmare CoCo 3 - 31/10/2026 - FASES 1 E 2 - MENOS CINTILACAO
 128 KiB, Assembly 6809 nativo, DAC6 e Orchestra-90 CC.
 Apos o primeiro chefe, caminhada automatica pela passagem para a fase 2.

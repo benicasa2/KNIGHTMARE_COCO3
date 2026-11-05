@@ -4,8 +4,8 @@
     "sha256": "5c6061bad0ceeba48687c21046cff6731a4fea79efbae1adfd1d0779b67be6c9"
   },
   ".github/workflows/release.yml": {
-    "bytes": 942,
-    "sha256": "74f95bd5d7dd67cdbe156b3debfb7f6205591c44d6ee92ce49b1184ddb6aa3c6"
+    "bytes": 950,
+    "sha256": "1ab2874c83249bf7d8e5b32d10dfc3f598c066ea2ad8470d6ccd70a847d4125f"
   },
   ".gitignore": {
     "bytes": 39,
@@ -456,8 +456,8 @@
     "sha256": "3f6851e127453f24b10283a0773a047808a05aed168c87fc6f3e92810aa377f8"
   },
   "analysis/build.json": {
-    "bytes": 2294,
-    "sha256": "cf2035d3948a777d045e21831784dcd67e19b97a401b9b589b05534442f13297"
+    "bytes": 2588,
+    "sha256": "1b79529a5f0342ec5b2c8108c2f6d632857173810b77ff4626ca076bf2ebf599"
   },
   "analysis/campaign-map-compression.json": {
     "bytes": 522,
@@ -876,12 +876,12 @@
     "sha256": "ba49a2c384620a01851a0f587c18ed974f7acb700d4af8b0e440c673b2298c90"
   },
   "analysis/DAC6.lst": {
-    "bytes": 710284,
-    "sha256": "704e52925eec255d2394289b6515d7123fa6bdc8f5d1d5b145583970b8a77ca9"
+    "bytes": 714332,
+    "sha256": "0e9c0f86e4558b426abf2c760a385135f76b2ecd4cd8abb2c97b933f467957f4"
   },
   "analysis/DAC6.sym": {
-    "bytes": 32485,
-    "sha256": "ae88b724933cd1dbd627661cd5f082c933387f19345b27d2837a764faac12e6e"
+    "bytes": 32506,
+    "sha256": "6d32826a147e4cd62be5c8a8bd2d89e6ab83670e9b2e85ac40156fac4d023069"
   },
   "analysis/decompiled-auto.c": {
     "bytes": 217222,
@@ -1412,12 +1412,12 @@
     "sha256": "ba49a2c384620a01851a0f587c18ed974f7acb700d4af8b0e440c673b2298c90"
   },
   "analysis/ORCH90.lst": {
-    "bytes": 710284,
-    "sha256": "2e1168fef92a3737736f1c36c393182a74879754cf6591e55424268442341404"
+    "bytes": 714332,
+    "sha256": "eebc64900e655bce657eb1b44f8271d61f88c418c0185ddeaf1b4608719aa523"
   },
   "analysis/ORCH90.sym": {
-    "bytes": 32485,
-    "sha256": "7d2bf612fdb4b6fd901915b8a7031865b9280cc3d23b04a196ae8653251173d3"
+    "bytes": 32506,
+    "sha256": "d815cc29138e4e30ca881ea8e177b07c16d4a82e34be52f3b10af47bcd6e5da9"
   },
   "analysis/original-konami.png": {
     "bytes": 661,
@@ -1602,6 +1602,26 @@
   "analysis/sprite-commit-timing.json": {
     "bytes": 25781,
     "sha256": "9edb38acfa9ccd89366a579a6629b06f7004636658ed3eec517897f714a9335c"
+  },
+  "analysis/ssc-assets.json": {
+    "bytes": 2110,
+    "sha256": "23f92b18071b2ef77f4164f677c2a14d45903e12c3abcb639bed6de530f44d90"
+  },
+  "analysis/SSC-game-verification.json": {
+    "bytes": 1195,
+    "sha256": "ab2c873c21e74f0ad1f922b5b385870cc191230b205a631e395e266280415693"
+  },
+  "analysis/SSC-music-verification.json": {
+    "bytes": 1695,
+    "sha256": "b1e17141105d3c782f198f82a71458a4efa3711dca8fc3b4900dd0dcffe64ac5"
+  },
+  "analysis/SSC.lst": {
+    "bytes": 649136,
+    "sha256": "75bf7679da1f0fe1b0588a42544c30be87d878edf5008fdca633a44bf367bcce"
+  },
+  "analysis/SSC.sym": {
+    "bytes": 32410,
+    "sha256": "b27a44e45dc6d6e6780112aaf8ae153df37f604e457a6b66a11dcaade71781c8"
   },
   "analysis/stage1-tables-check.json": {
     "bytes": 232,
@@ -1983,6 +2003,14 @@
     "bytes": 4319,
     "sha256": "9977d27d1a606d95e03064558177b9b9f2bad0eb5825650a2d6116193ebe833e"
   },
+  "assets/SSC-aux-bank6.bin": {
+    "bytes": 7439,
+    "sha256": "e620440c5bbec93e7890f5d3229665d30726c84bd870da58b2ec265a7f784f32"
+  },
+  "assets/ssc-bank7.bin": {
+    "bytes": 4442,
+    "sha256": "3f7b90444d03bff4380e08d0a6f87a1f1bae14aa6ac610b0b6d8a07f24a81784"
+  },
   "assets/stage1-combat-map.bin": {
     "bytes": 7808,
     "sha256": "c41d9b2146aeab033b5d3821e941c91e02008c57410b35af64e72466372a7d7f"
@@ -2250,6 +2278,62 @@
   "bin/ORCH90.DSK": {
     "bytes": 161280,
     "sha256": "5f85b36533425a99bba8334a5ccda6206a55868aa0e899d428ae61d6b85159da"
+  },
+  "bin/SSC-DAT0.BIN": {
+    "bytes": 4151,
+    "sha256": "d6e45bc273fa9ad91511c8c014d989d1b4049c7fd56ecdad48221915b76e3754"
+  },
+  "bin/SSC-DAT1.BIN": {
+    "bytes": 3398,
+    "sha256": "ce2e3c6c2f80b8f9aafc61357598efd170784db31770a90d8bd0bfcca17d100a"
+  },
+  "bin/SSC-DAT10.BIN": {
+    "bytes": 4151,
+    "sha256": "e04c19ca56e3a4aff5b843592bf82dc80f839e3b064996ce19566170778e1cf4"
+  },
+  "bin/SSC-DAT11.BIN": {
+    "bytes": 3479,
+    "sha256": "1c17929765cd6b15b0d16765540307b67ae7c9a872e1c88b53e03d3336f0718f"
+  },
+  "bin/SSC-DAT2.BIN": {
+    "bytes": 4151,
+    "sha256": "1a42498c20c700847eabbb3e2f48c2e431efe73a711d6f52011134e85e2be6d9"
+  },
+  "bin/SSC-DAT3.BIN": {
+    "bytes": 401,
+    "sha256": "06927f6dd29ddcb2b78e2ffa69948fec05a04a83f1d6d0c2d5c158b37c1f1ee1"
+  },
+  "bin/SSC-DAT4.BIN": {
+    "bytes": 4151,
+    "sha256": "67029cdf8e2c704f4de85c2c3b2cf2a25bdd719fe156795ed1888ed1e923740b"
+  },
+  "bin/SSC-DAT5.BIN": {
+    "bytes": 4151,
+    "sha256": "4cf938f073b7c212e402f6247cf735b00905baa243a73f66ffa938eec640556a"
+  },
+  "bin/SSC-DAT6.BIN": {
+    "bytes": 4151,
+    "sha256": "78b4146f6d6169c12708dd81f8593456bb62a650a61b7350650bdda0a369b738"
+  },
+  "bin/SSC-DAT7.BIN": {
+    "bytes": 4151,
+    "sha256": "23bffe2d22d5c190ddd68995bd1d22f92300f3bd094098f25fefe95e5ba730de"
+  },
+  "bin/SSC-DAT8.BIN": {
+    "bytes": 4151,
+    "sha256": "82f4e104d218c3bd842f8ae62a20c5e2612144e4a4aa6c1793c93f395d89ccf6"
+  },
+  "bin/SSC-DAT9.BIN": {
+    "bytes": 4131,
+    "sha256": "92cc7ddc38d1872a5fe0188ce05e03c01af27bbe4182e6e263918eafea0f981c"
+  },
+  "bin/SSC.BIN": {
+    "bytes": 15969,
+    "sha256": "807e790e82e4b1b8faa4176a55ed82d1d87e3f92799854cadee384773a68ef09"
+  },
+  "bin/SSC.DSK": {
+    "bytes": 161280,
+    "sha256": "414956bcd34beb66de7c3dd42eee4f0e70148312ce1050d19eecb5824d47639e"
   },
   "campaign/analysis/loader-verification.json": {
     "bytes": 5965,
@@ -2659,6 +2743,14 @@
     "bytes": 1495,
     "sha256": "14024e4c6ecc49cf564404de36735bfe145d4f95220be0233497b04f7a526b63"
   },
+  "docs/release-notes-v0.3.0.md": {
+    "bytes": 1559,
+    "sha256": "748b54d637e4b0479721901c3520c8cca2efc98464d982af9cdf1765ea584dc6"
+  },
+  "docs/SSC.md": {
+    "bytes": 6631,
+    "sha256": "e328dcb245e1d339069ea42953f5fb228765a0118d75e8b416161a238141ea86"
+  },
   "EXECUTAR-DAC6.cmd": {
     "bytes": 85,
     "sha256": "fff82ce9707bed4639de8ca8cd55995ee8c882efd3d0ae2ee399662c0f4d6489"
@@ -2667,17 +2759,21 @@
     "bytes": 87,
     "sha256": "62835aa7276433ba01435f507c9e988183c635f582a1c6dfd654faee785ffca3"
   },
+  "EXECUTAR-SSC.cmd": {
+    "bytes": 77,
+    "sha256": "ab0ce88f7ef9804f75c5480f721992ff6db1739883a683efe34a650afe6c1b64"
+  },
   "LEIA-ME.md": {
-    "bytes": 4931,
-    "sha256": "1a17e183384e6b2b0ca922c99d659010beec0eb781b1e20c42399f82e51cb8ea"
+    "bytes": 5556,
+    "sha256": "26c21267aaf32d442604a5157a2af3a31c0fe50c1f0b615a65ff3cf030020254"
   },
   "PUBLICACAO.md": {
-    "bytes": 1397,
-    "sha256": "41a1f33bc0237ac15d0dfa85344104f1063daddf9784d2703be18cf8d86796fb"
+    "bytes": 1449,
+    "sha256": "bd5ba10f5de08eaf2f72cd77a55d33aac7f0bec5b440360b2a4bc3c0e1d321d3"
   },
   "README.md": {
-    "bytes": 4015,
-    "sha256": "09cbd2f5db0d0df152e2ad4ea991760ad3bc4221811af40a41ff5ad6c7ef0344"
+    "bytes": 4776,
+    "sha256": "ab7970c0405808b40fe3a003cead96b15f7210195e449407767cbbfebb15194b"
   },
   "reference/action-PSG_regs.bin": {
     "bytes": 16,
@@ -2903,6 +2999,10 @@
     "bytes": 2448,
     "sha256": "d88096da96b84d7910627460b11cbbc0b4391c9a368c3e7260f08820f6642dcc"
   },
+  "src/audio_ssc.asm": {
+    "bytes": 9308,
+    "sha256": "acac97de0c8df7289299f6effbd42088bf4a1a0c1cd696e08646d947dbfcdf5d"
+  },
   "src/boss2.asm": {
     "bytes": 10310,
     "sha256": "759fc7902ca491efb0b9781dfdb9b9416a3f2241dd512d48f58ea6574bb1c808"
@@ -2944,12 +3044,12 @@
     "sha256": "c4311d519da43553f6f0f136ebb675f80a3772880cc40610d2c063133c00250c"
   },
   "src/gameplay.asm": {
-    "bytes": 18874,
-    "sha256": "8e164e8357ee4ee3399bd23f5edc527b1a4628ff4ceab4577dec84a75cb3fcf1"
+    "bytes": 18941,
+    "sha256": "0ff0573812b650e414e3b062997f4eb388ad22ee2178614eba2e4b09ff11c759"
   },
   "src/hardware_probe.asm": {
-    "bytes": 3866,
-    "sha256": "27fcd3704467fb2f9127be85abce86e250820290e274cf71b685c91b6f213b04"
+    "bytes": 4265,
+    "sha256": "60b0f6341be958d95acf543ed294f9cc25ec75b12237db3d275f566eadbd13c3"
   },
   "src/intro.asm": {
     "bytes": 3202,
@@ -2968,8 +3068,8 @@
     "sha256": "80b873399497fa30d428ba736f7c549ea0a86e2f6866b7bd37603dc38e2a2e24"
   },
   "src/level_disk.asm": {
-    "bytes": 2749,
-    "sha256": "6a51c89e4e498b55ce532941dc54a02b20c1deacc16f428a374e776d88db0063"
+    "bytes": 3424,
+    "sha256": "c961eb6c94daad2782f34b548b65847e9f937cff58aad31ee9a51ad8a42ab160"
   },
   "src/masked_rows.inc": {
     "bytes": 1093,
@@ -3010,6 +3110,10 @@
   "src/restore_spans.inc": {
     "bytes": 2783,
     "sha256": "50ee139146d69f2fb15e6a8e34632a04bdc5124ed4271155c1d4ed67b9fcd157"
+  },
+  "src/ssc_data.inc": {
+    "bytes": 461,
+    "sha256": "4a3af7b44643a21fd1b0da9c01414ed983f09181eb0936cf49a47497887c7607"
   },
   "src/weapons.asm": {
     "bytes": 6381,
@@ -3080,8 +3184,8 @@
     "sha256": "6439730075e93fdff3b6e378a2ebd3542399169e08257febb47e2ade0fb1dea6"
   },
   "tools/build.py": {
-    "bytes": 8392,
-    "sha256": "c7b4260d8c823db697cbd5e9a9554f5bc7b71885940be6bc7658139591f12a1b"
+    "bytes": 8746,
+    "sha256": "416c55d5c481bab0be8981b7f71325f4edbd380d647008b87319bf9a9e894625"
   },
   "tools/build_manual.py": {
     "bytes": 22593,
@@ -3116,8 +3220,8 @@
     "sha256": "2b1ede74c14e9d5c7153ccbd01bbecdfd683a40b255cf920c00b28acc5318d8f"
   },
   "tools/package_release.py": {
-    "bytes": 2808,
-    "sha256": "9109031e91852cfb9ef8a17ddd3049d77a186672701ff528af6f7bc9fb90d38c"
+    "bytes": 3531,
+    "sha256": "cf14efb050ba1be67ca96684197a71a876ed3019c53dd563d6b6ae075cee0e6b"
   },
   "tools/prepare_ai.py": {
     "bytes": 8073,
@@ -3151,13 +3255,17 @@
     "bytes": 2074,
     "sha256": "900f8e9aa2d28832005ab8f19ea23265f6b46a9eb6a6e2ba1e0c355ebe38200c"
   },
+  "tools/prepare_ssc.py": {
+    "bytes": 2636,
+    "sha256": "143c9bf27dfecaad50ecfeae57ecb8a656909c29b39c9d7d3f86a0dc10e90510"
+  },
   "tools/prepare_stage2.py": {
     "bytes": 8001,
     "sha256": "2b735ae6f1aa78244f30fd7df10f93cae78cd6d8b9b6a0bdf68f65bc26e840b9"
   },
   "tools/publish_github.ps1": {
-    "bytes": 3128,
-    "sha256": "242bd643f1554de5a18aae60b940bf37bd28afc99eb2fccf79c86b0432f820e8"
+    "bytes": 3148,
+    "sha256": "ece567bad3c795d6606cd35b1f01b952c3602f8bcdc78cc6630af10afd5583f0"
   },
   "tools/render_msx.py": {
     "bytes": 2396,
@@ -3170,6 +3278,10 @@
   "tools/run_demo.py": {
     "bytes": 1539,
     "sha256": "1856b91bf8eda002aadaa55add58b53676a52052790f82904a19c98e6b63f183"
+  },
+  "tools/run_ssc.py": {
+    "bytes": 1731,
+    "sha256": "f6058704ea8233f8c67abfd72a3e6e853eea24e03dd5c33716381edd045df3df"
   },
   "tools/verify_ai.py": {
     "bytes": 13577,
@@ -3235,6 +3347,14 @@
     "bytes": 5044,
     "sha256": "feb7413ab0f26ed228e401b4a8c7b6d45ae7c466fa241b21631d3bae194fb2d6"
   },
+  "tools/verify_ssc_game.py": {
+    "bytes": 6950,
+    "sha256": "c4aff52f7cd2166d3d0a5ba33a9d07b35050d1c07475fc7d38798fd5ed09a429"
+  },
+  "tools/verify_ssc_mame.py": {
+    "bytes": 8960,
+    "sha256": "aa6fc5ad6a28f11c85027d913002808f87f236badd7c90334d95c670417a8c9d"
+  },
   "tools/verify_stage1_flow.py": {
     "bytes": 3211,
     "sha256": "32fe0551cf59eb34d0779fc96e06606eca73087d18f25d135137618514fa7ff5"
@@ -3244,12 +3364,12 @@
     "sha256": "5cfbe1498dea754693faf2e53196b7028b040d7873dfa6ae3837fc5fc5d5b489"
   },
   "VERSAO.txt": {
-    "bytes": 1049,
-    "sha256": "57dde35d7c48f8b88095fc67b71444415291ad6c8aeb42b4ec53980061f0b130"
+    "bytes": 1541,
+    "sha256": "597782794d696b95fb04274fe9f254774cf81c7f26425c1568deedf2f0870c4f"
   },
   "VERSION": {
     "bytes": 6,
-    "sha256": "71015c979ccb0fc8a0be7ca0ae83046ab045cdc2c8faa09fb2f0f7e440f9b4a6"
+    "sha256": "d915cc95d6ca8f47ae297713ed46d4e5c5d99ddd29fc3c61e263bdf305f2b5b0"
   },
   "VISUALIZAR-8-MAPAS.cmd": {
     "bytes": 81,

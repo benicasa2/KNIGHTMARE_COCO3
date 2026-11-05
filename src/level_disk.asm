@@ -12,6 +12,9 @@ level_tiles_load
         pshs cc,d,x,y,u
         orcc #$50
         clr $ff93
+        ifne SOUND_SSC
+        jsr ssc_hw_reset
+        endc
         clr FD_ERROR
         lda $ffa4
         sta FD_OLD
@@ -45,6 +48,9 @@ level_load_finish
         clr $ff40
         lda FD_OLD
         sta $ffa4
+        ifne SOUND_SSC
+        jsr ssc_init
+        endc
         tst FD_ERROR
         beq level_load_ok
         lda #$24
@@ -104,6 +110,25 @@ level_head_ready
         sta $ff4a
         lda #$80
         sta $ff48
+        ifne SOUND_SSC
+        ; Slow-E-clock path: ready byte 26 cycles, empty poll 18 cycles.
+        ; Keep both below the double-density 32 us deadline. X supplies a
+        ; bounded sector timeout; LEAX sets Z (LEAU does not).
+        clrb
+        ldx #0
+level_ssc_sector_byte
+        lda $ff48
+        bita #2
+        bne level_ssc_read_byte
+        leax -1,x
+        bne level_ssc_sector_byte
+        lbra level_disk_fail
+level_ssc_read_byte
+        lda $ff4b
+        sta ,y+
+        decb
+        bne level_ssc_sector_byte
+        else
         tfr y,d
         addd #256
         std FD_END
@@ -123,6 +148,7 @@ level_got_drq
         sta ,y+
         cmpy FD_END
         blo level_sector_byte
+        endc
         jsr level_disk_wait
         bcs level_read_done
         bita #$1c

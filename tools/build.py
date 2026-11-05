@@ -74,9 +74,11 @@ def prepare():
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--lwasm',required=True);args=ap.parse_args();meta=prepare()
  variants={}
- for orch,name in [(0,'DAC6'),(1,'ORCH90')]:
+ from prepare_ssc import main as prepare_ssc
+ prepare_ssc()
+ for orch,ssc,name in [(0,0,'DAC6'),(1,0,'ORCH90'),(0,1,'SSC')]:
   output=ROOT/f'bin/{name}.BIN'
-  subprocess.run([args.lwasm,'--format=decb',f'--define=ORCH90={orch}',f'--output={output}',f'--list={ROOT}/analysis/{name}.lst',f'--symbol-dump={ROOT}/analysis/{name}.sym','hardware_probe.asm'],cwd=ROOT/'src',check=True)
+  subprocess.run([args.lwasm,'--format=decb',f'--define=ORCH90={orch}',f'--define=SOUND_SSC={ssc}',f'--output={output}',f'--list={ROOT}/analysis/{name}.lst',f'--symbol-dump={ROOT}/analysis/{name}.sym','hardware_probe.asm'],cwd=ROOT/'src',check=True)
   data=output.read_bytes();pos=0;core=[];extra=[]
   while data[pos]==0:
    n,addr=struct.unpack_from('>HH',data,pos+1);part=data[pos+5:pos+5+n];pos+=5+n
@@ -93,7 +95,7 @@ def main():
   files=[];loader=['10 CLEAR 200,&H2BFF','20 PRINT "KNIGHTMARE - MAPAS COMPACTOS"','30 PRINT "SETAS/WASD ESPACO  I TESTE R RESET"']
   # 48 KiB scrolling ring; bank 6 holds intro plus all 8 original map scripts.
   # Bank 7 stores PCM; map decoding uses a 128-byte row-band cache.
-  resources=[(6,aux),(7,(ROOT/'assets/pcm-bank7.bin').read_bytes()),(12,(ROOT/'assets/stage1-packed-tiles.bin').read_bytes()),(13,(ROOT/'assets/player-hud-bank.bin').read_bytes()),(14,(ROOT/'assets/combat-bank.bin').read_bytes()),(15,(ROOT/'assets/items-bank15.bin').read_bytes())]
+  resources=[(6,aux),(7,(ROOT/('assets/ssc-bank7.bin' if name=='SSC' else 'assets/pcm-bank7.bin')).read_bytes()),(12,(ROOT/'assets/stage1-packed-tiles.bin').read_bytes()),(13,(ROOT/'assets/player-hud-bank.bin').read_bytes()),(14,(ROOT/'assets/combat-bank.bin').read_bytes()),(15,(ROOT/'assets/items-bank15.bin').read_bytes())]
   assert len(resources[-1][1]) <= 0x1ef4, 'Bank 15 overlaps Disk BASIC bootstrap vectors'
   chunks=[(bank,pos,data[pos:pos+4096]) for bank,data in resources for pos in range(0,len(data),4096)]
   for i,(bank,pos,part) in enumerate(chunks):
@@ -110,7 +112,7 @@ def main():
   assert int(re.search(r'program_end EQU \$([0-9A-Fa-f]+)',syms)[1],16)<=0x8000,'Program exceeds fixed CPU window'
   assert int(re.search(r'state_end EQU \$([0-9A-Fa-f]+)',syms)[1],16)<=0x0d00,'Direct page overflow'
   (ROOT/f'bin/{name}.DSK').write_bytes(disk)
-  meta[name]=dict(disk_sha256=hashlib.sha256(disk).hexdigest(),binary_bytes=output.stat().st_size)
+  meta[name]=dict(disk_sha256=hashlib.sha256(disk).hexdigest(),binary_bytes=output.stat().st_size,**(dict(audio='original AY music A/B and effects C through factory Tandy S/SC',cpu_mhz=0.895,transport_hz=3579545/3580,bank7_bytes=(ROOT/'assets/ssc-bank7.bin').stat().st_size) if name=='SSC' else {}))
  meta.update(status='two playable stages with original exit walk, ROM-derived AI and segment checkpoints; stages 3-8 pending; visual/audio adaptations remain',playable_stages=2,ram_kib=128,framebuffer_ring_bytes=49152,aux_bank=6,aux_bytes=len(aux),compressed_campaign_map_bytes=3047,compressed_campaign_maps=8,active_map_bytes=128,pcm_bank=7,framebuffer_physical_start=0,video='256x192 16 colors RGB, 176-line playfield',map_cache_cpu_address=0x400,tiles_bank=12,player_hud_bank=13,combat_bank=14,items_bank=15,introduction=True,inventory=True,nominal_game_update_hz=(3579545/912)/(131/2)/2,nominal_scroll_pixels_per_second=(3579545/912)/(131/2)/8,source_rom_sha256='589b2fd276d84827bb1b033f43a0cd5ab0aa9da3c8784cac2f62474fed00aae3',enemy_logic_kinds=[0,1,2,3,4,7,9,11,12,14],first_boss_satellite_kind=12,first_stage_checkpoints=True)
  meta.update(render_policy='retain unchanged empty frames; logic first, specialized reverse restore and unchanged painter order',stationary_frame_retention=True,specialized_background_restore=True,flicker_eliminated=False,full_double_buffer=False)
  meta.update(game_over_returns_to_konami_intro=True,test_invincibility_key='I',test_mode_default=False,test_mode_indicator='blue GIME border; black when disabled')

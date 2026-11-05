@@ -5,7 +5,7 @@ on:
       tag:
         description: Existing release tag
         required: true
-        default: v0.2.1
+        default: v0.3.0
 permissions:
   contents: write
 jobs:
@@ -27,4 +27,4 @@ jobs:
         run: |
           version=$(cat VERSION)
           test "$RELEASE_TAG" = "v$version"
-          gh release create "$RELEASE_TAG" release/* --verify-tag --title "$RELEASE_TAG Duas fases e menos cintilacao" --notes-file "docs/release-notes-$RELEASE_TAG.md"
+          gh release create "$RELEASE_TAG" release/* --verify-tag --title "$RELEASE_TAG Tandy Speech-Sound Cartridge original" --notes-file "docs/release-notes-$RELEASE_TAG.md"
